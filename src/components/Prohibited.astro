@@ -1,0 +1,19 @@
+---
+import { reportCategoriesDataEntries } from "#src/lib/report";
+---
+
+<ul>
+  {
+    reportCategoriesDataEntries.map(([_key, value]) => (
+      <li>
+        {value.description ? (
+          <>
+            <strong>{value.title}:</strong> {value.description}
+          </>
+        ) : (
+          <strong>{value.title}</strong>
+        )}
+      </li>
+    ))
+  }
+</ul>

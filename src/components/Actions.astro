@@ -1,0 +1,17 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+type Props = HTMLAttributes<"div">;
+---
+
+<div {...Astro.props}><slot /></div>
+
+<style>
+  div {
+    display: flex;
+    flex-wrap: wrap-reverse;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1.75em;
+  }
+</style>

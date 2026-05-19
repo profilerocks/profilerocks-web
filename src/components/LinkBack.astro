@@ -1,0 +1,12 @@
+---
+import { Icon } from "astro-icon/components";
+import LinkPillOutline from "#src/components/LinkPillOutline.astro";
+
+import type { HTMLAttributes } from "astro/types";
+
+type Props = HTMLAttributes<"a">;
+
+const { props } = Astro;
+---
+
+<LinkPillOutline {...props}><Icon name="arrow/left" size="1.25em" /><slot /></LinkPillOutline>

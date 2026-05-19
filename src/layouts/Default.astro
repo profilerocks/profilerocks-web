@@ -1,0 +1,21 @@
+---
+import BaseLayout from "#src/layouts/Base.astro";
+import Header from "#src/components/Header.astro";
+import Footer from "#src/components/Footer.astro";
+import type { ComponentProps } from "astro/types";
+
+type Props = ComponentProps<typeof BaseLayout>;
+---
+
+<BaseLayout {...Astro.props}>
+  <slot name="head" slot="head" />
+  <Header />
+  <slot />
+  <Footer />
+</BaseLayout>
+
+<style>
+  :global(h1) {
+    text-align: center;
+  }
+</style>

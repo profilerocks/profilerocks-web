@@ -1,0 +1,25 @@
+{
+  "profile": {
+    "premium": {
+      "description": [
+        "Everything in Free, plus:\n",
+        "- Remove **profile.rocks** branding",
+        "- Custom page title",
+        "- Custom SEO description"
+      ],
+      "prices": [
+        {
+          "amountType": "fixed",
+          "priceAmount": 249,
+          "priceCurrency": "usd",
+          "recurringInterval": "month"
+        },
+        {
+          "amountType": "fixed",
+          "priceAmount": 2499,
+          "priceCurrency": "usd"
+        }
+      ]
+    }
+  }
+}

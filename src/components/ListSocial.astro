@@ -1,0 +1,28 @@
+---
+import { Icon } from "astro-icon/components";
+import socialMedia from "#shared/social.json";
+import External from "#src/components/External.astro";
+import { SOCIAL_ICONS } from "#src/lib/social";
+import type { HTMLAttributes } from "astro/types";
+
+type Props = HTMLAttributes<"ul">;
+
+const iconDimension = "1.25em";
+---
+
+<ul {...Astro.props}>
+  {
+    Object.entries(socialMedia).map(([name, url]) => {
+      const iconName = SOCIAL_ICONS[name as keyof typeof SOCIAL_ICONS];
+      return (
+        <li>
+          <a href={url} target="_blank" rel="noopener noreferrer">
+            <Icon name={iconName} size={iconDimension} />
+            {name}
+            <External />
+          </a>
+        </li>
+      );
+    })
+  }
+</ul>

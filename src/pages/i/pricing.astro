@@ -1,0 +1,31 @@
+---
+import MainLayout from "#src/layouts/Main.astro";
+import PricingProfile from "#src/components/PricingProfile.astro";
+---
+
+<MainLayout title="Pricing">
+  <h1>Pricing</h1>
+
+  <section>
+    <hgroup class="profile-plans-hgroup">
+      <h2 class="profile-plans-title">Profile plans</h2>
+      <p class="profile-plans-description">per profile</p>
+    </hgroup>
+    <PricingProfile />
+  </section>
+</MainLayout>
+
+<style lang="scss">
+  .profile-plans-description {
+    margin-block: 0.5em 1.5em;
+    font-size: 1.125em;
+  }
+
+  .profile-plans-hgroup {
+    text-align: center;
+  }
+
+  .profile-plans-title {
+    margin: 0;
+  }
+</style>

@@ -1,0 +1,58 @@
+{
+  "name": "profilerocks-web",
+  "type": "module",
+  "author": "Stefan Samson <ss42701@outlook.com> (https://ssbit01.github.io/)",
+  "description": "profile.rocks website",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/profilerocks/profilerocks-web.git"
+  },
+  "homepage": "https://github.com/profilerocks/profilerocks-web#readme",
+  "bugs": {
+    "url": "https://github.com/profilerocks/profilerocks-web/issues"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "dev:host": "astro dev --host",
+    "build": "astro build",
+    "preview": "astro preview",
+    "eslint": "eslint",
+    "stylelint": "stylelint \"**/*.{astro,css,scss}\" --ignore-path .gitignore",
+    "prettier:check": "prettier . --check",
+    "prettier:write": "prettier . --write"
+  },
+  "dependencies": {
+    "astro": "^6.2.2"
+  },
+  "devDependencies": {
+    "@astrojs/cloudflare": "^13.3.1",
+    "@astrojs/sitemap": "^3.7.2",
+    "@eslint/js": "^10.0.1",
+    "@playform/compress": "^0.2.3",
+    "astro-icon": "^1.1.5",
+    "autoprefixer": "^10.5.0",
+    "eslint": "^10.3.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-astro": "^1.7.0",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
+    "globals": "^17.6.0",
+    "mailchecker": "^6.0.20",
+    "postcss-html": "^1.8.1",
+    "prettier": "3.8.3",
+    "prettier-plugin-astro": "0.14.1",
+    "prettier-plugin-css-order": "^2.2.0",
+    "remark-parse": "^11.0.0",
+    "remark-rehype": "^11.1.2",
+    "rollup-plugin-license": "^3.7.1",
+    "sass": "^1.99.0",
+    "stylelint": "^17.11.0",
+    "stylelint-config-html": "^1.1.0",
+    "stylelint-config-standard-scss": "^17.0.0",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.59.2",
+    "unified": "^11.0.5",
+    "vite": "^7.3.2",
+    "vite-plugin-static-copy": "^3.4.0"
+  }
+}

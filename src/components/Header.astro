@@ -1,0 +1,229 @@
+---
+import { HREF_APP } from "astro:env/client";
+import { Icon } from "astro-icon/components";
+import LinkActive from "#src/components/LinkActive.astro";
+import LinkPillSolid from "#src/components/LinkPillSolid.astro";
+import LogoLong from "#src/static/logo/long.svg";
+
+const iconDimension = "1.25em";
+---
+
+<header class="header-top">
+  <a href="/" class="link-logo"><LogoLong /></a>
+  <input type="checkbox" id="hamburguer" class="checkbox-hide-scrollbar" />
+  <ul class="list-nav">
+    <li><LinkActive href="/b"><Icon name="blog" size={iconDimension} />Blog</LinkActive></li>
+    {/*<li><LinkActive href="/r"><IconRoadmap size={iconDimension} />Roadmap</Link></li>*/}
+    {/*<li><LinkActive href="/m"><IconMarket size={iconDimension} />Marketplace</Link></li>*/}
+    <li><LinkActive href="/i/pricing"><Icon name="pricing" size={iconDimension} />Pricing</LinkActive></li>
+  </ul>
+  <LinkPillSolid href={HREF_APP} class="a-user-enter">
+    <Icon name="user/single" size="1.5em" /><span>Log in or register</span>
+  </LinkPillSolid>
+</header>
+
+<style lang="scss">
+  @use "sass:math";
+
+  $btn-shadow: 0 0.125em 0.25em var(--color-bg);
+
+  .a-user-enter {
+    transition-property: background, box-shadow, color, outline-color;
+    box-shadow: $btn-shadow;
+  }
+
+  .header-top {
+    display: flex;
+    position: sticky;
+    top: 0;
+    align-items: center;
+    gap: 2em;
+    z-index: 1;
+    box-sizing: border-box;
+    margin-inline: auto;
+    margin-block-end: 0.5em;
+    padding-inline: 1em;
+    padding-block-start: 0.875em;
+    width: 100%;
+    max-width: 120em;
+    &::before {
+      position: absolute;
+      z-index: -1;
+      inset-block-start: 0;
+      inset-inline: 0;
+      box-shadow: 0 0 1.75em 3.75em var(--color-bg);
+      content: "";
+    }
+  }
+
+  .link-logo {
+    display: inline-flex;
+    gap: 0.375em;
+    width: 17em;
+    min-width: 0; // epiphany-web doesn't show the element if min-width is not set.
+    color: var(--color) !important;
+    user-select: none;
+    text-decoration: none;
+  }
+
+  .list-nav {
+    --color-a: var(--color-3);
+    --color-a-hover: var(--color);
+    display: flex;
+    flex: 1;
+    align-items: center;
+    gap: 1.375em;
+    z-index: -1;
+    transition-duration: 0.3s;
+    transition-property: visibility, opacity; // For the hamburguer animation
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    > li {
+      transition: padding-inline-start 0.3s; // For the hamburguer animation
+      box-sizing: border-box; // Important, if not set, the padding-inline-start may cause an overflow and degraded performance
+      > a {
+        box-sizing: border-box; // Important, if not set, the padding-inline-start may cause an overflow and degraded performance
+        text-decoration: none;
+      }
+    }
+  }
+
+  #hamburguer {
+    $size: 2.75em;
+    display: none;
+    position: relative;
+    order: 3;
+    appearance: none;
+    transition-duration: 0.15s;
+    transition-property: background, box-shadow, color, outline-color;
+    cursor: pointer;
+    margin: 0;
+    outline: medium solid transparent;
+    border-radius: 50%;
+    min-width: $size;
+    min-height: $size;
+    color: var(--color-3);
+    font-size: 1em;
+    $vertical-position: 1em;
+    $new-vertical-position: 48%;
+    $rotate-degrees: 45deg;
+    &:is(:hover, :active) {
+      box-shadow: $btn-shadow;
+    }
+    &:hover {
+      background: var(--color-input-hover);
+    }
+    &:is(:active, :focus-visible) {
+      background: var(--color-input-active);
+      color: var(--color);
+    }
+    &:focus-visible {
+      outline-color: var(--color-input-outline);
+    }
+    &::before,
+    &::after {
+      position: absolute;
+      left: 0.5625em;
+      filter: drop-shadow(0 0 0.25em var(--color-bg));
+      transition-duration: 0.15s;
+      transition-property: inset, rotate;
+      border-radius: 1px;
+      background: currentcolor;
+      width: 1.625em;
+      height: 0.125em;
+      content: "";
+    }
+    &::before {
+      top: $vertical-position;
+    }
+    &::after {
+      bottom: $vertical-position;
+    }
+    &:checked {
+      &::before {
+        top: $new-vertical-position;
+        rotate: $rotate-degrees;
+      }
+      &::after {
+        bottom: $new-vertical-position;
+        rotate: -$rotate-degrees;
+      }
+    }
+  }
+
+  @media (40em < width <= 47em), (width <= 38em) {
+    .a-user-enter {
+      --color-input: transparent;
+      &:not(:hover, :active) {
+        box-shadow: none;
+      }
+      > span {
+        display: none;
+      }
+    }
+  }
+
+  @media (width <= 40em) {
+    .header-top {
+      gap: 1em;
+      &:has(#hamburguer:not(:checked)) {
+        > .list-nav {
+          visibility: hidden;
+          opacity: 0;
+          > li {
+            @for $i from 1 through 2 {
+              &:nth-child(#{$i}) {
+                padding-inline-start: math.div(24% * $i, 2);
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .link-logo {
+      margin-inline-end: auto;
+      padding-inline-end: 1em; // It creates a larger separation, so the logo shrinks more on mobile phones.
+    }
+
+    .list-nav {
+      position: fixed;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0;
+      inset-block: 0.75em 0;
+      inset-inline: 0;
+      background: var(--color-bg-transparent);
+      padding-block-start: 2em;
+      font-size: 2em;
+      > li {
+        width: 100%;
+        > a {
+          gap: 0.5em;
+          padding: 0.75em 0.625em;
+          width: 100%;
+          &::after {
+            scale: 0;
+            opacity: 0;
+            transition-duration: 0.15s;
+            transition-property: opacity, scale;
+            margin-left: auto;
+            content: ">";
+            color: var(--color-3);
+          }
+          &:is(:hover, :active) {
+            &::after {
+              scale: 1;
+              opacity: 1;
+            }
+          }
+        }
+      }
+    }
+
+    #hamburguer {
+      display: initial;
+    }
+  }
+</style>

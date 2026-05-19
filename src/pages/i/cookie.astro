@@ -1,0 +1,45 @@
+---
+import { PLATFORM_NAME } from "astro:env/client";
+import emails from "#shared/email.json";
+import ArticleLayout from "#src/layouts/Article.astro";
+
+const CLOUDFLARE_COOKIE_POLICY = "https://www.cloudflare.com/cookie-policy/";
+---
+
+<ArticleLayout title="Cookie Policy">
+  <h1>Cookie Policy</h1>
+
+  <p>
+    This platform uses "Strictly Necessary" cookies for authentication and via <a
+      href={CLOUDFLARE_COOKIE_POLICY}
+      target="_blank"
+      rel="noopener noreferrer">Cloudflare</a
+    > for security and performance. These do not require consent.
+  </p>
+
+  <h2>Third-Party Cookies</h2>
+  <p>
+    When a profile contains external content via iframes (e.g., a YouTube video), that external provider may set tracking cookies. <strong
+      >{PLATFORM_NAME}</strong
+    > will provide a consent banner, to ensure these cookies are not set without user awareness and agreement.
+  </p>
+  <p>Users can change their mind later and revoke their consent by clicking "Cookie Preferences" in the footer.</p>
+
+  <h2>Third-party services with no cookies</h2>
+  <ul>
+    <li>Azure</li>
+    <li>Backblaze B2</li>
+    <li>jsDelivr</li>
+  </ul>
+
+  <h2>More information</h2>
+  <p>
+    Full list of Cloudflare cookies: <a href={CLOUDFLARE_COOKIE_POLICY} target="_blank" rel="noopener noreferrer"
+      >{CLOUDFLARE_COOKIE_POLICY}</a
+    >
+  </p>
+
+  <p>For questions: <a href={`mailto:${emails.contact}`}>{emails.contact}</a></p>
+
+  <p>Last updated: March 2026</p>
+</ArticleLayout>

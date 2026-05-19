@@ -1,0 +1,146 @@
+---
+import { HREF_APP } from "astro:env/client";
+import { Icon } from "astro-icon/components";
+import { PLATFORM_DESCRIPTION } from "astro:env/client";
+import LinkNext from "#src/components/LinkNext.astro";
+import MainLayout from "#src/layouts/Main.astro";
+---
+
+<MainLayout>
+  <section class="section-home">
+    <div class="content">
+      <h1 class="section-home-title">{PLATFORM_DESCRIPTION}</h1>
+      <h2 class="section-home-description">Create micro-pages and profiles easily and instantly</h2>
+      <LinkNext class="link-get-started" href={HREF_APP}><Icon name="rocket" size="1.25em" />Get started</LinkNext>
+      <div class="grid-features">
+        <div class="feature-card">
+          <div class="feature-icon">
+            <Icon name="content" size="2.5em" />
+          </div>
+          <h2>Unified Presence</h2>
+          <p>
+            <strong>profile.rocks</strong> creates elegant micropages. It simplifies how content is shared across social media and the web.
+          </p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <Icon name="security" size="2.5em" />
+          </div>
+          <h2>Privacy First</h2>
+          <p>
+            <strong>profile.rocks</strong> prioritizes privacy. It does not track visitors or set advertising cookies. User data remains private
+            and is never sold to third parties.
+          </p>
+        </div>
+      </div>
+    </div>
+    <img alt="Micropage example" class="profile-img" draggable="false" src="/profile.webp" title="Micropage example" />
+  </section>
+</MainLayout>
+
+<style lang="scss">
+  .content {
+    margin-inline: auto;
+    max-width: 50em;
+  }
+
+  .feature-card {
+    transition:
+      transform 0.3s ease,
+      border-color 0.3s ease;
+    border: 2px solid var(--color-border);
+    border-radius: 1em;
+    background: var(--color-input);
+    padding: 1em;
+
+    &:hover {
+      transform: translateY(-0.5em);
+      border-color: var(--color-highlight);
+      background: var(--color-input-hover);
+    }
+
+    .feature-icon {
+      display: inline-flex;
+      margin-block-end: 1.5em;
+      border-radius: 1em;
+      background: rgb(29 221 136 / 10%);
+      padding: 1em;
+      color: var(--color-highlight);
+    }
+
+    h2 {
+      margin-block: 0 0.5em;
+      font-weight: 600;
+      font-size: 1.75em;
+    }
+
+    p {
+      margin: 0;
+      color: var(--color-3);
+      font-size: 1.1em;
+      line-height: 1.6;
+    }
+  }
+
+  .grid-features {
+    display: grid;
+    gap: 1.5em;
+    margin-block-start: 2.5em;
+  }
+
+  .link-get-started {
+    margin-block-start: 1.5em;
+    font-size: 1.125em;
+  }
+
+  .profile-img {
+    display: block;
+    transition-duration: 0.3s;
+    transition-property: border-color, box-shadow, translate;
+    margin-inline: auto;
+    margin-block-start: 3em;
+    border: 2px solid var(--color-border);
+    border-radius: 1em;
+    max-width: 85%;
+    max-height: 70vh;
+    object-fit: cover;
+    user-select: none;
+    &:hover {
+      translate: 0 -1em;
+      box-shadow: 0 0.25em 2em var(--color-highlight);
+      border-color: var(--color-highlight);
+    }
+  }
+
+  .section-home {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .section-home-description {
+    color: var(--color-2);
+    font-size: clamp(1.375em, 3vw, 1.5em);
+    text-align: center;
+  }
+
+  .section-home-title {
+    background: linear-gradient(45deg, var(--color-highlight), var(--color-premium));
+    background-clip: text;
+    color: transparent;
+    font-size: clamp(2.25em, 3vw, 3em);
+  }
+
+  @media (width > 70em) {
+    .profile-img {
+      margin-inline-start: 0;
+      min-height: 45em;
+    }
+
+    .section-home {
+      flex-direction: row;
+      gap: 5em;
+      margin-block-start: 1em;
+      // max-height: 50em;
+    }
+  }
+</style>

@@ -1,0 +1,48 @@
+---
+import { LEGAL_DATA, PLATFORM_NAME } from "astro:env/client";
+import ArticleLayout from "#src/layouts/Article.astro";
+
+const TITLE = "Legal Notice";
+---
+
+<ArticleLayout title={TITLE}>
+  <Fragment slot="head">
+    <!-- <meta name="robots" content="noindex" /> -->
+  </Fragment>
+
+  <h1>{TITLE}</h1>
+
+  <p class="p-legal">{LEGAL_DATA}</p>
+
+  <h2>General conditions of use</h2>
+  <p>
+    This Legal Notice governs the access and use of <strong>{PLATFORM_NAME}</strong>. By using the platform, you acquire the status of
+    "User" and accept the <a href="/i/terms" rel="terms-of-service">terms of service</a> and the <a href="/i/privacy" rel="privacy-policy"
+      >privacy policy</a
+    >.
+  </p>
+
+  <h2>Intellectual property</h2>
+  <p>All content and design are protected by intellectual property rights. Unauthorised reproduction is prohibited.</p>
+
+  <h2>Limitation of liability</h2>
+  <p>
+    <strong>{PLATFORM_NAME}</strong> acts only as a hosting and linking service. The user agrees to use the platform in accordance with the Law
+    and these terms. Users are solely responsible for the content they publish on their profiles.
+  </p>
+  <h3>Important</h3>
+  <p>
+    Users who use the platform to promote professional or commercial activities are independently responsible for complying with their own
+    legal obligations, including the inclusion of their own Legal Notice and any other local regulatory requirements applicable to their
+    specific activity.
+  </p>
+
+  <h2>Changes to this Legal Notice</h2>
+  <p>This Legal Notice may be updated from time to time.</p>
+</ArticleLayout>
+
+<style>
+  .p-legal {
+    user-select: none !important;
+  }
+</style>

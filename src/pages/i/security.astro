@@ -1,0 +1,99 @@
+---
+import { PLATFORM_NAME } from "astro:env/client";
+import { Font } from "astro:assets";
+import emails from "#shared/email.json";
+import socialMedia from "#shared/social.json";
+import ArticleLayout from "#src/layouts/Article.astro";
+---
+
+<ArticleLayout title="Security">
+  <Font cssVariable="--font-jetbrains-mono" preload slot="head" />
+
+  <h1>Security</h1>
+
+  <p>
+    This page outlines the security measures and cryptographic design principles implemented within <strong>{PLATFORM_NAME}</strong> to ensure
+    data integrity and user privacy.
+  </p>
+
+  <section id="auth">
+    <h2>Authentication Flow</h2>
+    <p>
+      <strong>{PLATFORM_NAME}</strong> employs a <strong>hybrid stateful/stateless design</strong> for One-Time Password (OTP) management. By
+      using envelope encryption, the server avoids storing sensitive credentials directly, instead maintaining only opaque random IDs to track
+      session progress.
+    </p>
+    <h3>The Process:</h3>
+    <ol>
+      <li>
+        <strong>Token Generation:</strong> When an OTP is created, its metadata (credential, expiry, attempts...) is compressed and appended to
+        an encrypted list (one entry per credential). The server utilizes envelope encryption featuring AES-256-KW for the Key Encryption Key
+        (KEK) and AES-256-GCM for the Data Encryption Key (DEK).
+      </li>
+      <li>
+        <strong>Client-side storage:</strong> The encrypted list is delivered to the client via a secure, HttpOnly cookie. To prevent CSRF (Cross-Site
+        Request Forgery), the cookie is strictly scoped using the <code>SameSite=Strict</code> attribute.
+      </li>
+      <li>
+        <strong>Server-side mapping:</strong> A unique, random ID is generated on the server and linked to the encrypted list to track the specific
+        verification session without exposing underlying data.
+      </li>
+      <li>
+        <strong>Verification:</strong> When the client submits an OTP, the encrypted list is returned to the server. The server decrypts the list,
+        validates the specific credential, and rotates the session ID to prevent replay attacks.
+      </li>
+    </ol>
+    <p>
+      <strong>Key Management:</strong> KEKs are randomly generated, automatically rotated and encrypted at rest.
+    </p>
+  </section>
+
+  <section id="session">
+    <h2>Session Management</h2>
+    <p>
+      Similar to the authentication mechanism, active user sessions are secured using envelope encryption with AES-256-KW (KEK) and
+      AES-256-GCM (DEK) and stored in HttpOnly secure cookies.
+    </p>
+    <p>
+      While these cookies use <code>SameSite=Lax</code> to balance security with user experience, the application architecture inherently mitigates
+      <strong>CSRF</strong> risks by using other methods rather than GET.
+    </p>
+  </section>
+
+  <section id="payment">
+    <h2>Payment Security</h2>
+    <p>
+      <strong>{PLATFORM_NAME}</strong> relies on <a href="https://polar.sh/" target="_blank" rel="noopener noreferrer">Polar</a> to handle all
+      payment processing. Polar is an open source and secure Merchant of Record that uses <a
+        href="https://stripe.com/"
+        target="_blank"
+        rel="noopener noreferrer">Stripe's infrastructure</a
+      >.
+    </p>
+    <p>
+      <strong>{PLATFORM_NAME} does not store or process any payment information</strong>, those operations remain entirely within Stripe's
+      PCI DSS compliant environment.
+    </p>
+  </section>
+
+  <section id="vulnerability">
+    <h2>Reporting a Vulnerability</h2>
+    <p>
+      If you discover a security vulnerability in <strong>{PLATFORM_NAME}</strong>, please report it privately first by sending an email to <a
+        href={`mailto:${emails.contact}`}>{emails.contact}</a
+      > or by creating a security advisory in one of the <a
+        href={socialMedia.GitHub || "https://github.com/profilerocks"}
+        target="_blank"
+        rel="noopener noreferrer">{PLATFORM_NAME} GitHub repositories</a
+      >.
+    </p>
+    <p>You will receive an acknowledgment as soon as possible, and we will work together to verify and address the issue.</p>
+  </section>
+</ArticleLayout>
+
+<style lang="scss">
+  code {
+    color: var(--color-highlight);
+    font-family: var(--font-jetbrains-mono);
+  }
+</style>

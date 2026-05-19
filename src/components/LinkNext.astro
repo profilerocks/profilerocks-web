@@ -1,0 +1,18 @@
+---
+import { Icon } from "astro-icon/components";
+import LinkPillSolid from "#src/components/LinkPillSolid.astro";
+
+import type { ComponentProps } from "astro/types";
+
+type Props = ComponentProps<typeof LinkPillSolid>;
+
+const { props } = Astro;
+---
+
+<LinkPillSolid {...props}><slot>Next</slot><Icon name="arrow/right" size="1.25em" class="icon-next" /></LinkPillSolid>
+
+<style lang="scss">
+  .icon-next {
+    margin-inline-start: auto;
+  }
+</style>

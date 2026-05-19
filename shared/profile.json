@@ -1,0 +1,6 @@
+{
+  "minLength": 3,
+  "maxLength": 32,
+  "regex": "^([a-z0-9]_?)*[a-z0-9]$",
+  "limit": 10
+}

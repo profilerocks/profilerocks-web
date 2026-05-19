@@ -1,0 +1,15 @@
+/*
+  Content-Security-Policy: base-uri 'self';connect-src 'self' blob: https://challenges.cloudflare.com https://profile.rocks;frame-ancestors 'self';frame-src 'self';font-src 'self' data: https://cdn.jsdelivr.net;form-action 'self' https://profile.rocks;img-src 'self' blob: data: https://assets.profile.rocks https://app.profile.rocks;object-src 'none';script-src-attr 'none';upgrade-insecure-requests
+  Cross-Origin-Opener-Policy: same-origin
+  Cross-Origin-Resource-Policy: same-origin
+  Origin-Agent-Cluster: ?1
+  Referrer-Policy: no-referrer
+  X-DNS-Prefetch-Control: off
+  X-Download-Options: noopen
+  X-Frame-Options: SAMEORIGIN
+  X-Permitted-Cross-Domain-Policies: none
+  X-XSS-Protection: 0
+
+# `Strict-Transport-Security` HSTS should be handled in the CDN or reverse proxy.
+# `X-Content-Type-Options: nosniff` can be set in Cloudflare when HSTS is enabled.
+# IMPORTANT: A strange issue happens with `default-src` in the CSP. When setting `default-src 'self'`, it fails to load Astro fonts, it might be a bug in Astro. In the meantime, `default-src 'self'` is not set.

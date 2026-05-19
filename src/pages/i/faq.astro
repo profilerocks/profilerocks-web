@@ -1,0 +1,116 @@
+---
+import { PLATFORM_NAME } from "astro:env/client";
+import MainLayout from "#src/layouts/Main.astro";
+---
+
+<MainLayout>
+  <h1>Frequently Asked Questions</h1>
+  <section class="faqs">
+    <details id="details-external-content">
+      <summary>Which websites are supported for external content?</summary>
+      <p id="link-preview-response">
+        <strong>{PLATFORM_NAME}</strong> utilizes the <a
+          href="https://www.npmjs.com/package/link-to-iframe"
+          target="_blank"
+          rel="noopener noreferrer">link-to-iframe</a
+        > library to power profile link previews.
+      </p>
+      <p>
+        A comprehensive list of supported platforms is available in its <a
+          href="https://github.com/crisp-oss/link-to-iframe?tab=readme-ov-file#supported-services"
+          target="_blank"
+          rel="noopener noreferrer">official documentation</a
+        >.
+      </p>
+    </details>
+    <details id="details-subscription-all-profiles">
+      <summary>Does a premium subscription apply to all profiles in my account?</summary>
+      <p>No, premium subscriptions are profile-specific.</p>
+      <p>To access premium features on multiple profiles, each one must be upgraded individually.</p>
+    </details>
+  </section>
+</MainLayout>
+
+<style lang="scss">
+  .faqs {
+    /**
+     * Useful for smooth transitions between different units (e.g. px to rem).
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/interpolate-size
+     */
+    interpolate-size: allow-keywords;
+    display: grid;
+    margin-inline: auto;
+    max-width: 48em;
+    > details {
+      border-block-end: thin solid var(--color-border);
+      > summary {
+        display: flex;
+        align-items: flex-start;
+        gap: 1em;
+        cursor: pointer;
+        padding-block: 1em;
+        font-size: clamp(1.125em, 4vw, 1.25em);
+        list-style: none;
+        user-select: none;
+        &::after {
+          content: ">";
+          $size: 1.5em;
+          transition-duration: 0.15s;
+          transition-property: background, color, rotate;
+          margin-inline-start: auto;
+          border-radius: 50%;
+          min-width: $size;
+          min-height: $size;
+          color: var(--color-3);
+          line-height: 1.4375em;
+          text-align: center;
+        }
+        &:is(:hover, :active) {
+          &::after {
+            background: var(--color-input-hover);
+            color: var(--color-2);
+          }
+        }
+        &:active {
+          &::after {
+            background: var(--color-input-active);
+            color: var(--color);
+          }
+        }
+      }
+      > p {
+        margin-block: 0.5em;
+        color: var(--color-3);
+        &:first-of-type {
+          margin-block-start: 0;
+        }
+        &:last-of-type {
+          margin-block-end: 0;
+          /**
+           * At least in Chrome, margin-block-end is not being animated when the details are closed, even with box-sizing:border-box.
+           * That's the reason why padding-block-end is used instead.
+           */
+          padding-block-end: 1.5em;
+        }
+      }
+      &::details-content {
+        opacity: 0;
+        transition:
+          height 0.15s,
+          opacity 0.15s,
+          content-visibility 0.15s allow-discrete;
+        height: 0;
+        overflow: clip;
+      }
+      &[open] {
+        > summary::after {
+          rotate: 90deg;
+        }
+        &::details-content {
+          opacity: 1;
+          height: auto;
+        }
+      }
+    }
+  }
+</style>

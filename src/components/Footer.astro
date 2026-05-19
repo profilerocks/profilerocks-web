@@ -1,0 +1,130 @@
+---
+import { PLATFORM_NAME } from "astro:env/client";
+import { Icon } from "astro-icon/components";
+
+import LinkActive from "#src/components/LinkActive.astro";
+import ListSocial from "#src/components/ListSocial.astro";
+
+const iconDimensionHeader = "1.25em";
+const iconDimension = "1.25em";
+---
+
+<footer class="footer-bottom">
+  <nav class="footer-sitemap">
+    <article class="footer-article">
+      <h3 class="footer-article-title"><Icon name="content" size={iconDimensionHeader} />General</h3>
+      <ul class="footer-article-list">
+        <li><LinkActive href="/b"><Icon name="blog" size={iconDimension} />Blog</LinkActive></li>
+        <li><LinkActive href="/i/pricing"><Icon name="pricing" size={iconDimension} />Pricing</LinkActive></li>
+        <li><LinkActive href="/i/security"><Icon name="security" size={iconDimension} />Security</LinkActive></li>
+        <li><LinkActive href="/i/about"><Icon name="info" size={iconDimension} />About</LinkActive></li>
+      </ul>
+    </article>
+    {
+      /**
+      * <article class="footer-article"]}>
+       <h3 class="footer-article-title"]}><Icon name="ranking" size={iconDimensionHeader} />Rankings</h3>
+       <ul class="footer-article-list"]}>
+         <li><LinkActive href="/i/about"><Icon name="user/multiple" size={iconDimension} />Profiles</Link></li>
+         <li><LinkActive href="/b"><Icon name="style" size={iconDimension} />Themes</Link></li>
+       </ul>
+     </article>
+       */
+    }
+    <article class="footer-article">
+      <h3 class="footer-article-title"><Icon name="support" size={iconDimensionHeader} />Support</h3>
+      <ul class="footer-article-list">
+        <li>
+          <LinkActive href="/i/faq"
+            ><Icon name="faq" size={iconDimension} /><abbr title="Frequently Asked Questions" class="abbreviation">FAQs</abbr></LinkActive
+          >
+        </li>
+        <li><LinkActive href="/i/contact"><Icon name="email" size={iconDimension} />Contact</LinkActive></li>
+        <li><LinkActive href="/i/help" rel="help"><Icon name="help" size={iconDimension} />Help</LinkActive></li>
+      </ul>
+    </article>
+    <article class="footer-article">
+      <h3 class="footer-article-title"><Icon name="legal" size={iconDimensionHeader} />Legal</h3>
+      <ul class="footer-article-list">
+        <li><LinkActive href="/i/privacy" rel="privacy-policy"><Icon name="policy" size={iconDimension} />Privacy Policy</LinkActive></li>
+        <li>
+          <LinkActive href="/i/terms" rel="terms-of-service"><Icon name="agreement" size={iconDimension} />Terms of Service</LinkActive>
+        </li>
+        <li><LinkActive href="/i/cookie"><Icon name="cookie" size={iconDimension} />Cookie Policy</LinkActive></li>
+        <li><LinkActive href="/i/legal-notice"><Icon name="page" size={iconDimension} />Legal Notice</LinkActive></li>
+      </ul>
+    </article>
+    <article class="footer-article">
+      <h3 class="footer-article-title"><Icon name="verified" size={iconDimensionHeader} />Social</h3>
+      <ListSocial class="footer-article-list" />
+    </article>
+  </nav>
+  <p class="copyright">Copyright © <span id="year">{Math.max(new Date().getUTCFullYear(), 2026)}</span> {PLATFORM_NAME}</p>
+</footer>
+
+<script>
+  const yearEl = document.getElementById("year");
+
+  if (yearEl) {
+    const currentYear = new Date().getUTCFullYear();
+    if (currentYear > +yearEl.textContent) {
+      yearEl.textContent = currentYear.toString();
+    }
+  }
+</script>
+
+<style lang="scss">
+  .abbreviation {
+    text-decoration: none;
+  }
+
+  .copyright {
+    margin-block: 2.5em 0;
+    color: var(--color-4);
+    text-align: center;
+  }
+
+  .footer-article {
+    flex: 1 0 10em;
+  }
+
+  .footer-article-list {
+    gap: 0;
+    margin-block: 0.5em 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .footer-article-title {
+    display: flex;
+    gap: 0.375rem;
+    margin: 0;
+    font-weight: 500;
+    > svg {
+      color: var(--color-highlight);
+    }
+  }
+
+  .footer-bottom {
+    padding-inline: 1.5em;
+    padding-block: 6em 3em;
+    font-size: clamp(0.875em, 1.75vw, 1em);
+  }
+
+  .footer-sitemap {
+    --color-a: var(--color-3);
+    --color-a-hover: var(--color);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2em 4em;
+    margin: auto;
+    max-width: max-content;
+    :global(a) {
+      box-sizing: border-box;
+      padding-inline: 0.125em;
+      padding-block: 0.4375em;
+      width: 100%;
+      text-decoration: none;
+    }
+  }
+</style>

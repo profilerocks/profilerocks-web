@@ -1,0 +1,408 @@
+---
+import emails from "#shared/email.json";
+import Actions from "#src/components/Actions.astro";
+import LinkBack from "#src/components/LinkBack.astro";
+import ArticleLayout from "#src/layouts/Article.astro";
+import { reportCategoriesDataEntries } from "#src/lib/report";
+
+const emailReportHref = `mailto:${emails.report}`;
+---
+
+<script>
+  import { HREF_APP, HREF_PROFILE, SITE } from "astro:env/client";
+  import { isValid as isEmailValid } from "mailchecker";
+  import { isBase64UrlIdValid } from "#src/lib/id";
+  import { isProfileNameIdValid } from "#src/lib/profile";
+  import { requestProfileDataForWebReport, requestProfileReportCreation } from "#src/lib/request";
+
+  const inputProfileUrlEl = document.getElementById("profile-url") as HTMLInputElement;
+  const inputUserEmailEl = document.getElementById("user-email") as HTMLInputElement;
+  const inputUserNameEl = document.getElementById("user-name") as HTMLInputElement;
+  const profilePublicId = new URLSearchParams(location.search).get("public_id");
+
+  let profileData: {
+    name_id: string;
+    display_name?: string;
+    photo?: boolean;
+  };
+
+  if (profilePublicId) {
+    window.history.replaceState(null, "", window.location.pathname);
+
+    inputProfileUrlEl.disabled = true;
+
+    const inputProfileUrlPlaceholder = inputProfileUrlEl.placeholder;
+
+    inputProfileUrlEl.placeholder = "Loading...";
+
+    if (isBase64UrlIdValid(profilePublicId)) {
+      requestProfileDataForWebReport(profilePublicId)
+        .then(async res => {
+          if (res.ok) {
+            profileData = await res.json();
+
+            const anchorSendEmailEl = document.getElementById("a-send-email") as HTMLAnchorElement;
+
+            if (anchorSendEmailEl) {
+              anchorSendEmailEl.href += "?subject=Report%3A%20" + profileData.name_id;
+            }
+
+            inputProfileUrlEl.value = HREF_PROFILE + "/" + profileData.name_id;
+          }
+        })
+        .finally(() => {
+          inputProfileUrlEl.disabled = false;
+          inputProfileUrlEl.placeholder = inputProfileUrlPlaceholder;
+        });
+    }
+  }
+
+  function eventInputRemoveValidity(this: HTMLInputElement, event: Event) {
+    const el = (event.currentTarget || event.target) as HTMLInputElement;
+    el.setCustomValidity("");
+    el.reportValidity();
+  }
+
+  function triggerInputValidity(inputEl: HTMLInputElement, message: string) {
+    alert(message);
+    inputEl.setCustomValidity(message);
+    inputEl.reportValidity();
+  }
+
+  function triggerInputUrlValidity() {
+    triggerInputValidity(inputProfileUrlEl, "Invalid URL");
+  }
+
+  inputProfileUrlEl.addEventListener("input", eventInputRemoveValidity);
+  inputUserEmailEl.addEventListener("input", eventInputRemoveValidity);
+
+  /**
+   * Under EU DSA, CSAM reports are anonymous by default. If the user does not provide an email address and name, they will be set to "Anonymous".
+   */
+  (document.getElementById("csam") as HTMLInputElement).addEventListener("change", event => {
+    // @ts-expect-error: event.currentTarget and event.target are not defined as HTMLInputElement.
+    if ((event.currentTarget || event.target)?.checked) {
+      inputUserEmailEl.required = false;
+      inputUserNameEl.required = false;
+    } else {
+      inputUserEmailEl.required = true;
+      inputUserNameEl.required = true;
+    }
+  });
+
+  (document.getElementById("report-form") as HTMLFormElement).addEventListener("submit", async event => {
+    event.preventDefault();
+
+    inputUserNameEl.value = inputUserNameEl.value.trim();
+
+    const textareaDetailsEl = document.getElementById("details") as HTMLTextAreaElement;
+
+    textareaDetailsEl.value = textareaDetailsEl.value.trim();
+
+    if (inputUserEmailEl.value && !isEmailValid(inputUserEmailEl.value)) {
+      triggerInputValidity(inputUserEmailEl, "Invalid email address");
+      return;
+    }
+
+    const formData = new FormData((event.currentTarget || event.target) as HTMLFormElement);
+
+    if (!textareaDetailsEl.value) {
+      formData.delete("details");
+    }
+
+    const categories = formData.getAll("category");
+
+    if ((!inputUserEmailEl.value || !inputUserNameEl.value) && !categories.includes("csam")) {
+      return;
+    }
+
+    if (!categories.length) {
+      formData.delete("category");
+    }
+
+    const profileUrlString = formData.get("url");
+
+    formData.delete("url");
+
+    if (!profileUrlString || typeof profileUrlString !== "string") {
+      return;
+    }
+
+    const profileUrl = URL.parse(profileUrlString);
+
+    if (!profileUrl) {
+      return;
+    }
+
+    if (import.meta.env.PROD) {
+      profileUrl.protocol = "https:";
+    }
+
+    switch (profileUrl.origin) {
+      case HREF_APP:
+      case HREF_PROFILE:
+      case SITE:
+        break;
+      default:
+        triggerInputUrlValidity();
+        return;
+    }
+
+    const nameId = profileUrl.pathname.replaceAll("/", "");
+
+    if (profilePublicId && nameId === profileData?.name_id) {
+      formData.set("profilePublicId", profilePublicId);
+    } else if (isProfileNameIdValid(nameId)) {
+      formData.set("profileNameId", nameId);
+    } else {
+      triggerInputUrlValidity();
+      return;
+    }
+
+    const fieldsetReportFormEl = document.getElementById("report-form-fieldset") as HTMLFieldSetElement;
+
+    fieldsetReportFormEl.disabled = true;
+
+    const buttonSubmitReportEl = document.getElementById("btn-submit-report") as HTMLButtonElement;
+    const buttonSubmitReportTextContent = buttonSubmitReportEl.textContent;
+
+    buttonSubmitReportEl.textContent = "Creating...";
+
+    try {
+      const res = await requestProfileReportCreation(formData);
+
+      if (res.status === 409) {
+        alert("You have already reported this profile.");
+        buttonSubmitReportEl.textContent = buttonSubmitReportTextContent;
+        fieldsetReportFormEl.disabled = false;
+        return;
+      }
+
+      if (!res.ok) {
+        throw new Error("Failed to create profile report.");
+      }
+
+      buttonSubmitReportEl.textContent = "Report successfully submitted";
+
+      let message = "The report has been successfully sent.";
+
+      if (inputUserEmailEl.value) {
+        message += " You should receive an email soon about the report details.";
+      }
+
+      alert(message);
+    } catch (error) {
+      console.error(error);
+      alert("An error occurred while submitting the report. Please check the URL and try again later.");
+      buttonSubmitReportEl.textContent = buttonSubmitReportTextContent;
+      fieldsetReportFormEl.disabled = false;
+    }
+  });
+</script>
+
+<ArticleLayout title="Report">
+  <Fragment slot="head">
+    <!-- <meta name="robots" content="noindex" /> -->
+  </Fragment>
+
+  <h1>Report a violation</h1>
+
+  <p>
+    Ensuring a safe and trustworthy online environment is essential. If you come across a profile that violates community guidelines or
+    engages in harmful activity, you can report it by filling out the form below or sending an email to <a
+      href={emailReportHref}
+      id="a-send-email">{emails.report}</a
+    >
+  </p>
+
+  <p class="p-thanks">Thank you for your collaboration!</p>
+
+  <p>Note: You can report child sexual abuse material (CSAM) cases anonymously without providing your email address or name.</p>
+
+  <form id="report-form">
+    <fieldset id="report-form-fieldset">
+      <div>
+        <label for="profile-url">URL</label>
+        <input id="profile-url" name="url" placeholder="e.g. https://profile.rocks/profile_example" required type="url" />
+      </div>
+      <div>
+        <p>Categories:</p>
+        <div class="categories">
+          {
+            reportCategoriesDataEntries.map(([key, value]) => (
+              <div class="checkbox-group" title={value.description}>
+                <>
+                  <input id={key} name="category" type="checkbox" value={key} />
+                  <label for={key}>{value.title}</label>
+                </>
+              </div>
+            ))
+          }
+          <div
+            class="checkbox-group"
+            title="CSAM reports are anonymous by default. If the user does not provide an email address and name, they will be set to 'Anonymous'."
+          >
+            <input id="csam" name="category" type="checkbox" value="csam" /><label for="csam">Child sexual abuse material (CSAM)</label>
+          </div>
+          <div class="checkbox-group">
+            <input id="other" name="category" type="checkbox" value="other" /><label for="other">Other</label>
+          </div>
+        </div>
+      </div>
+      <div>
+        <label for="user-email">Your email address</label>
+        <input id="user-email" name="email" placeholder="e.g. someone@example.com" required type="email" />
+      </div>
+      <div>
+        <label for="user-name">Your full name</label>
+        <input autocomplete="name" id="user-name" maxlength="255" name="userName" placeholder="e.g. John Doe" required type="text" />
+      </div>
+      <div>
+        <label for="details">Additional details</label>
+        <textarea id="details" maxlength="8000" name="details"></textarea>
+      </div>
+      <div class="checkbox-group" id="faith-checkbox-group">
+        <input id="faith" name="faith" required type="checkbox" value="1" /><label for="faith"
+          >I submit this report in good faith and agree to the <a href="/i/privacy" target="_blank">Privacy Policy</a> and <a
+            href="/i/terms"
+            target="_blank">Terms of Service</a
+          ></label
+        >
+      </div>
+      <Actions>
+        <LinkBack href="/i/contact">Other contact options</LinkBack>
+        <button id="btn-submit-report" type="submit">Submit report</button>
+      </Actions>
+    </fieldset>
+    <input type="checkbox" name="necessary" value="1" id="necessary" />
+  </form>
+</ArticleLayout>
+
+<style lang="scss">
+  .actions {
+    padding-inline: 0.5em;
+  }
+
+  label,
+  form p {
+    margin: 0;
+    color: var(--color);
+    font-weight: 500;
+    font-size: 0.95rem;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="url"],
+  textarea {
+    box-sizing: border-box;
+    margin-block-start: 0.5em;
+    border: 1px solid var(--color-border);
+    border-radius: 0.5em;
+    background-color: var(--color-input);
+    padding: 0.75em;
+    width: 100%;
+    color: var(--color);
+    font: inherit;
+
+    &:focus {
+      outline: none;
+      border-color: var(--color-input-outline);
+    }
+
+    &:hover,
+    &:active {
+      background-color: var(--color-input-hover);
+    }
+
+    &::placeholder {
+      color: var(--color-4);
+    }
+  }
+
+  textarea {
+    min-height: 120px;
+    resize: vertical;
+  }
+
+  input[type="checkbox"] {
+    cursor: pointer;
+    margin: 0;
+    width: 1.125em;
+    height: 1.125em;
+    accent-color: var(--color-highlight);
+    font-size: inherit;
+  }
+
+  button[type="submit"] {
+    transition: all 0.2s ease;
+    cursor: pointer;
+    border: none;
+    border-radius: 0.5rem;
+    background-color: var(--color-3);
+    padding: 0.75rem 1rem;
+    color: var(--color-bg);
+    font-weight: 600;
+    font-size: 1rem;
+
+    &:hover {
+      background-color: var(--color-2);
+    }
+
+    &:active {
+      background-color: var(--color);
+    }
+  }
+
+  .categories {
+    display: flex;
+    flex-direction: column;
+    margin-top: 0.5rem;
+  }
+
+  .checkbox-group {
+    display: flex;
+    align-items: flex-start;
+    transition: background-color 0.15s ease;
+    border-radius: 0.375rem;
+    padding-inline-start: 0.5rem;
+    &:hover {
+      background-color: var(--color-input-hover);
+    }
+    label {
+      display: block;
+      flex: 1;
+      cursor: pointer;
+      margin: 0;
+      padding-inline: 0.5em 0.75em;
+      padding-block: 0.5em;
+      color: var(--color-2);
+    }
+    input[type="checkbox"] {
+      margin-block-start: 0.5625em;
+      &:checked + label {
+        color: var(--color) !important;
+      }
+    }
+  }
+
+  #faith-checkbox-group {
+    max-width: max-content;
+  }
+
+  #report-form-fieldset {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-top: 2rem;
+    border: none;
+    padding: 0;
+  }
+
+  /**
+   * Trap for simple bots.
+   */
+  #necessary {
+    display: none;
+  }
+</style>

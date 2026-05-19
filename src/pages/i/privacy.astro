@@ -1,0 +1,129 @@
+---
+import { CONTROLLER, PLATFORM_NAME } from "astro:env/client";
+import ArticleLayout from "#src/layouts/Article.astro";
+import emails from "#shared/email.json";
+---
+
+<ArticleLayout title="Privacy Policy">
+  <Fragment slot="head">
+    <!-- <meta name="robots" content="noindex" /> -->
+  </Fragment>
+
+  <h1>Privacy Policy</h1>
+
+  <p>
+    <strong>{PLATFORM_NAME}</strong> is committed to protecting your privacy. This platform does not track users for advertising or analytics.
+  </p>
+
+  <h2>1. Data collected by the platform</h2>
+  <ul>
+    <li><strong>Account data:</strong> email addresses, contact names, passkeys, OAuth IDs...</li>
+    <li><strong>Profile content:</strong> links, text, images...</li>
+    <li><strong>Reports:</strong> reported profiles, email addresses and names of reporters, messages...</li>
+  </ul>
+
+  <h2>2. Data collected by third-parties</h2>
+  <p>
+    Technical data is processed by <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener noreferrer"
+      >Cloudflare</a
+    > (IP and browser information for security purposes).
+  </p>
+  <p>
+    Microsoft Azure Email Communication Services is the service used to send transactional emails to users. They may process or even
+    blacklist email addresses that resulted in a hard bounce or spam complaints.
+  </p>
+  <p>Payments inside the platform are handled by <a href="https://polar.sh/" target="_blank" rel="noopener noreferrer">Polar.sh</a>.</p>
+  <p>
+    Profiles may embed content from third parties (e.g., YouTube, Spotify). When you visit a profile containing an iframe and agree to
+    display them, these third parties may process your IP address and set cookies. <strong>{PLATFORM_NAME}</strong> does not control these third
+    parties; please refer to their respective privacy policies. For full details on cookies see the <a href="/i/cookie">Cookie Policy</a> page.
+  </p>
+  <p>
+    This website, <strong>{PLATFORM_NAME}</strong> platform and user profiles may display links to external websites, whose privacy practices
+    <strong>{PLATFORM_NAME}</strong> is not responsible for.
+  </p>
+
+  <h2>3. Purpose and legal basis</h2>
+  <ul>
+    <li><strong>Contract performance</strong> (account creation, profiles).</li>
+    <li><strong>Legitimate interest</strong> (security via Cloudflare).</li>
+    <li><strong>Legal obligation</strong> (tax, anti-fraud).</li>
+  </ul>
+
+  <h2>4. Data storage and processors</h2>
+  <ul>
+    <li>
+      <strong>Hosting:</strong>
+      <a href="https://privacy.microsoft.com/" target="_blank" rel="noopener noreferrer">Microsoft Azure</a> - Spain Central and North Europe
+      (Ireland)
+    </li>
+    <li>
+      <strong>Images:</strong>
+      <a href="https://www.backblaze.com/privacy-policy" target="_blank" rel="noopener noreferrer">Backblaze B2</a> - EU Central (Amsterdam)
+    </li>
+    <li>
+      <strong>CDN:</strong>
+      <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener noreferrer">Cloudflare</a> and <a
+        href="https://www.jsdelivr.com/terms/privacy-policy"
+        target="_blank"
+        rel="noopener noreferrer">jsDelivr</a
+      >
+    </li>
+    <li><strong>Payments:</strong> <a href="https://polar.sh/" target="_blank" rel="noopener noreferrer">Polar.sh</a></li>
+  </ul>
+
+  <h2>5. Your GDPR rights</h2>
+  <p>Access, rectification, erasure, restriction, portability, objection, and withdrawal of consent.</p>
+  <p>Contact: <a href={`mailto:${emails.contact}`}>{emails.contact}</a></p>
+
+  <h2>6. Public profiles and external archiving</h2>
+  <p>Profiles are public by default and they are accessible to anyone on the internet. As a result, their content may be:</p>
+  <ul>
+    <li>Indexed by search engines (Google, Bing, etc.).</li>
+    <li>Archived by third-party services such as the Internet Archive (Wayback Machine) or similar public archiving tools.</li>
+  </ul>
+  <p>
+    <strong>{PLATFORM_NAME}</strong> does not control these external services and cannot guarantee that content will be removed from them, even
+    if you delete a profile later. By creating a profile, you acknowledge and accept that its content may remain publicly available and archived
+    indefinitely.
+  </p>
+
+  <h2>7. Data retention</h2>
+  <p>
+    If your account was not active for 6 years, <strong>{PLATFORM_NAME}</strong> may email you to ask if you want to keep your account. If you
+    do not respond within 30 days, the account will be deleted, along with all associated profiles with no other members.
+  </p>
+  <p>After you delete or update content in your account or profiles, it may take a few minutes for those changes to become visible.</p>
+  <p>When an account is deleted, some data can remain in the <strong>{PLATFORM_NAME}</strong> systems for up to 15 days.</p>
+  <p>
+    <strong>{PLATFORM_NAME}</strong> may blacklist email addresses that resulted in a hard bounce or spam complaints. If you think your email
+    address was blacklisted by mistake, you can contact at <a href={`mailto:${emails.contact}`}>{emails.contact}</a>.
+  </p>
+  <p>
+    When a report is made to a profile, the report information will remain in the <strong>{PLATFORM_NAME}</strong> systems for up to 15 days after
+    the report is resolved.
+  </p>
+  <p>A user who has been banned remains in the system from 15 days to 180 days, depending on the severity of the ban.</p>
+
+  <h2>8. Changes to this Privacy Policy</h2>
+  <p>
+    This Privacy Policy may be updated from time to time to reflect changes or legal requirements. Material changes will be notified to
+    registered users.
+  </p>
+
+  <hr />
+
+  <p class="p-controller">{CONTROLLER}</p>
+
+  <p>For full details on cookies see the <a href="/i/cookie">Cookie Policy</a> page.</p>
+
+  <p>For information regarding the governing law and jurisdiction, please refer to the <a href="/i/legal-notice">Legal Notice</a> page.</p>
+
+  <p>Last updated: April 2026</p>
+</ArticleLayout>
+
+<style>
+  .p-controller {
+    user-select: none !important;
+  }
+</style>

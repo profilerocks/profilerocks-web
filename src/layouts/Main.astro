@@ -1,0 +1,21 @@
+---
+import DefaultLayout from "#src/layouts/Default.astro";
+import type { ComponentProps } from "astro/types";
+
+type Props = ComponentProps<typeof DefaultLayout>;
+---
+
+<DefaultLayout {...Astro.props}>
+  <slot name="head" slot="head" />
+  <main>
+    <slot />
+  </main>
+</DefaultLayout>
+
+<style>
+  main {
+    flex: 1;
+    padding-inline: 1.5em;
+    font-weight: 400;
+  }
+</style>

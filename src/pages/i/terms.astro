@@ -1,0 +1,110 @@
+---
+import { PLATFORM_NAME } from "astro:env/client";
+import ArticleLayout from "#src/layouts/Article.astro";
+import Prohibited from "#src/components/Prohibited.astro";
+---
+
+<ArticleLayout title="Terms of Service">
+  <h1>Terms of Service</h1>
+
+  <h2>1. Acceptance of Terms</h2>
+  <p>
+    By creating an account on <strong>{PLATFORM_NAME}</strong>, you agree to these terms. <strong>{PLATFORM_NAME}</strong> has the right to suspend
+    any account or profile that violates these rules. Check the <a href="/i/privacy" rel="privacy-policy">privacy policy</a> for more information
+    about how your data is handled.
+  </p>
+
+  <h2>2. User Responsibilities</h2>
+  <p>
+    Users are responsible for the content they publish on their profiles. Users must not publish content that is illegal, offensive, or
+    violates the rights of others. <strong>{PLATFORM_NAME}</strong> is not directed at anyone under the age of 16.
+  </p>
+
+  <h2>3. Prohibited Content and Conduct</h2>
+  <p>You may not use <strong>{PLATFORM_NAME}</strong> for any illegal purposes. Prohibited content includes, but is not limited to:</p>
+  <Prohibited />
+  <p>
+    A profile containing this type of content, or linking to it, may be reported (with a notification sent to the profile maintainers for
+    possible correction) or even deleted outright, depending on the severity. In the latter case, a prior notification detailing the reason
+    will be provided, along with the right to respond where applicable.
+  </p>
+  <p>A user can only report the same profile once.</p>
+  <p>
+    In cases <strong>{PLATFORM_NAME}</strong> deems severe (including, but not limited to, abuse of the reporting system) the platform reserves
+    the right to temporarily suspend a user from using the platform (including account suspension), identified by credentials such as their email
+    address. The user will be notified and will have the right to appeal.
+  </p>
+
+  <h2>4. Platform Role and Liability</h2>
+  <p>
+    <strong>{PLATFORM_NAME}</strong> provides a technical tool for creating profiles. The platform is not responsible for user-generated content
+    and users are responsible for compliance with local laws.
+  </p>
+  <p>
+    If you use your profile for business (e.g., as a lawyer, or shop), you are responsible for linking your own Legal Notice and complying
+    with local consumer laws. <strong>{PLATFORM_NAME}</strong> is not liable for your failure to provide these disclosures.
+  </p>
+  <p>
+    This website, <strong>{PLATFORM_NAME}</strong> platform and user profiles may display links to external websites, whose privacy practices
+    <strong>{PLATFORM_NAME}</strong> is not responsible for. As mentioned in the "Prohibited Content and Conduct" section, a profile that contains
+    prohibited content or links to it may be reported or even deleted.
+  </p>
+  <p>The platform has the right to add, modify or remove features at any time, including themes and the user interface of profiles.</p>
+  <p>
+    <strong>{PLATFORM_NAME}</strong> reserves the right to permanently discontinue or shut down the service at its sole discretion. In the event
+    of a planned permanent shutdown, <strong>{PLATFORM_NAME}</strong> will provide all registered users with at least 20 days advance notice.
+    Users are responsible for exporting any personal data or content within this 20-day window. After closing the service, all profiles and user
+    data will be deleted from <strong>{PLATFORM_NAME}</strong> systems.
+  </p>
+  <p>
+    Data is stored and managed using Microsoft Azure's cloud infrastructure, which includes backup and redundancy features. However, in the
+    event of a natural disaster or other force majeure event beyond reasonable control, no liability will be held for data loss or service
+    unavailability.
+  </p>
+  <p>In the event of a significant data loss, the following measures will be taken:</p>
+  <ul>
+    <li>Reasonable backup and recovery measures are maintained at all times.</li>
+    <li>Affected users and the relevant supervisory authority will be notified.</li>
+  </ul>
+
+  <h2>5. Payments and premium services</h2>
+  <p>
+    <a href="https://polar.sh/" target="_blank" rel="noopener noreferrer">Polar.sh</a> will be used as a Merchant of Records for premium subscriptions
+    and payments. By purchasing on <strong>{PLATFORM_NAME}</strong>, you may also agree to their <a
+      href="https://polar.sh/legal/checkout-buyer-terms"
+      target="_blank"
+      rel="noopener noreferrer">terms</a
+    > and <a href="https://polar.sh/legal/privacy-policy" target="_blank" rel="noopener noreferrer">privacy policy</a>. Refunds are handled
+    according to their policy: <a href="https://polar.sh/docs/features/refunds" target="_blank" rel="noopener noreferrer"
+      >https://polar.sh/docs/features/refunds</a
+    >.
+  </p>
+  <p>
+    <strong>{PLATFORM_NAME}</strong> has the right to add, modify and remove premium features, prices and plans; with at least 30 days' notice
+    if the changes are material or affect the price. Everything is listed in the <a href="/i/pricing">pricing</a> page.
+  </p>
+  <p>
+    If a premium profile uses premium features, but the subscription is cancelled, the profile will be downgraded to a free profile, the
+    premium features will be removed, and the default settings of the free profile will be applied. For example, a premium profile uses a
+    premium theme; after switching to a free profile, the default theme of the free profile will be used.
+  </p>
+  <p><strong>{PLATFORM_NAME}</strong> reserves the right to set and update the default settings for free profiles.</p>
+  <p>
+    If a premium profile is deleted, the payment order cannot be refunded unless it is within <strong>Polar.sh</strong>'s refund period
+    (i.e., it was recently paid).
+  </p>
+
+  <h2>6. Modifications to Terms</h2>
+  <p>
+    <strong>{PLATFORM_NAME}</strong> reserves the right to modify these Terms at any time. If a revision is material, <strong
+      >{PLATFORM_NAME}</strong
+    > will provide at least 30 days' notice prior to any new terms taking effect. What constitutes a material change will be determined at <strong
+      >{PLATFORM_NAME}</strong
+    >'s sole discretion. By continuing to access or use
+    <strong>{PLATFORM_NAME}</strong>'s Service after those revisions become effective, you agree to be bound by the revised terms.
+  </p>
+
+  <p>For information regarding the governing law and jurisdiction, please refer to the <a href="/i/legal-notice">Legal Notice</a> page.</p>
+
+  <p>Last updated: April 2026</p>
+</ArticleLayout>

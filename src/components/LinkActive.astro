@@ -1,0 +1,19 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+type Props = HTMLAttributes<"a">;
+
+const { props } = Astro;
+
+const pathname = props.href instanceof URL ? props.href.pathname : props.href?.split("?")[0].split("#")[0];
+---
+
+<a {...props} aria-current={Astro.url.pathname === pathname ? "page" : "false"}><slot /></a>
+
+<style>
+  a[aria-current="page"] {
+    color: var(--color-highlight) !important;
+    text-decoration-color: currentcolor;
+    text-underline-offset: 2px;
+  }
+</style>

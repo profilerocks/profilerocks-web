@@ -1,0 +1,11 @@
+{
+  "profile": {
+    "description": [
+      "Features:\n",
+      "- Add links",
+      "- Add text in markdown format",
+      "- Add code blocks",
+      "- Embed content from other websites"
+    ]
+  }
+}

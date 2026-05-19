@@ -1,0 +1,82 @@
+---
+import { Icon } from "astro-icon/components";
+import LinkNext from "#src/components/LinkNext.astro";
+import { blogCollection } from "#src/lib/collections";
+import MainLayout from "#src/layouts/Main.astro";
+---
+
+<MainLayout>
+  <h1>Blog</h1>
+  <ul class="blog-entries">
+    {
+      blogCollection.map(post => {
+        const href = "/b/" + post.id;
+
+        return (
+          <li class="blog-entry">
+            <p class="blog-entry-meta">
+              <>
+                <time datetime={post.data.date.toISOString().split("T")[0]}>{post.data.date.toDateString()}</time>
+                <span title="Author">{post.data.author}</span>
+              </>
+            </p>
+            <h2 class="blog-entry-title">
+              <a href={href} class="blog-entry-title-link">
+                {post.data.title}
+              </a>
+            </h2>
+            <p class="blog-entry-description">{post.data.description}</p>
+            <LinkNext href={href}>
+              <Icon name="page" size="1.25em" />
+              Read more
+            </LinkNext>
+          </li>
+        );
+      })
+    }
+  </ul>
+</MainLayout>
+
+<style lang="scss">
+  .blog-entries {
+    margin-inline: auto;
+    padding: 0;
+    max-width: 47.0625em;
+  }
+
+  .blog-entry-description,
+  .blog-entry-meta,
+  .blog-entry-title {
+    padding-inline: 0.625rem;
+  }
+
+  .blog-entry-description {
+    margin-block-start: 0.5em;
+    color: var(--color-2);
+  }
+
+  .blog-entry {
+    border-block-start: thin solid var(--color-highlight);
+    list-style: none;
+  }
+
+  .blog-entry-meta {
+    display: flex;
+    justify-content: space-between;
+    gap: 1em;
+    margin-block: 1em 0.375em;
+    color: var(--color-3);
+  }
+
+  .blog-entry-title {
+    margin-block: 0;
+    font-size: 1.375em;
+  }
+
+  .blog-entry-title-link {
+    width: 100%;
+    color: var(--color-highlight) !important;
+    text-decoration: none;
+    white-space: normal;
+  }
+</style>

@@ -1,0 +1,175 @@
+---
+import { Icon } from "astro-icon/components";
+import { HREF_PROFILE_CREATE, HREF_PROFILE_CREATE_PREMIUM } from "astro:env/client";
+
+import LinkNext from "#src/components/LinkNext.astro";
+import markdownToHtml from "#src/lib/markdown";
+import { profilePricingEntries } from "#src/lib/pricing/entries";
+import { formatPrice, intervalToText } from "#src/lib/pricing/utils";
+---
+
+<div class="profile-plans">
+  {
+    profilePricingEntries.map(([id, plan]) => (
+      <article class:list={["profile-plan", "profile-plan-" + id]} id={id}>
+        <div class="profile-plan-header">
+          <h3 class="profile-plan-title">{id[0]?.toUpperCase() + id.substring(1).toLowerCase()}</h3>
+          {plan.prices?.length ? (
+            <div class="profile-plan-header-pricing-box">
+              {plan.prices.map((price, i) => (
+                <>
+                  <div>
+                    {/* @ts-expect-error: price.recurringInterval is not defined in price */}
+                    <h4 class="profile-plan-pricing">{formatPrice[price.priceCurrency]?.(price.priceAmount)}</h4>
+                    {/* @ts-expect-error: price.recurringInterval is not defined in price */}
+                    <p class="description">{intervalToText[price.recurringInterval] || "forever"}</p>
+                  </div>
+                  {i < plan.prices.length - 1 && <p class="separator">or</p>}
+                </>
+              ))}
+            </div>
+          ) : (
+            <>
+              <h4 class="profile-plan-pricing">$0</h4>
+              <p class="description">forever</p>
+            </>
+          )}
+        </div>
+        {plan.prices?.length ? (
+          <LinkNext href={HREF_PROFILE_CREATE}>
+            <Icon name="premium" size="1.25em" />
+            Continue
+          </LinkNext>
+        ) : (
+          <LinkNext href={HREF_PROFILE_CREATE}>
+            <Icon name="rocket" size="1.25em" />
+            Continue
+          </LinkNext>
+        )}
+        <Fragment set:html={markdownToHtml(plan.description.join("\n"))} />
+      </article>
+    ))
+  }
+</div>
+
+<style lang="scss">
+  .description {
+    margin: 0;
+  }
+
+  .profile-plan {
+    display: flex;
+    flex-direction: column;
+    border-block-start: thin solid var(--color-border);
+    > :global(p) {
+      margin-block-start: 1.5em;
+    }
+    > :global(ul) {
+      margin-block: 0;
+      padding: 0;
+      list-style: none;
+      > :global(li::before) {
+        display: inline-block;
+        clip-path: polygon(
+          15% 45%,
+          35% 68%,
+          85% 0%,
+          100% 15%,
+          92.78% 24.39%,
+          85.27% 34.15%,
+          76.92% 45%,
+          71.79% 51.67%,
+          64.84% 60.69%,
+          59.22% 68%,
+          35% 99.48%,
+          0% 57.51%
+        );
+        content: "";
+        $size: 0.75em;
+        margin-inline-end: 0.625em;
+        background: var(--color-valid);
+        width: $size;
+        height: $size;
+      }
+    }
+  }
+
+  .profile-plan-header {
+    margin-block-end: 1.25em;
+    text-align: center;
+  }
+
+  .profile-plan-header-pricing-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    > div {
+      flex: 1;
+    }
+  }
+
+  .profile-plan-premium {
+    border-block-start-color: var(--color-premium);
+    .profile-plan-title,
+    .description {
+      color: var(--color-premium);
+    }
+    /*button {
+      background: var(--color-premium) !important;
+      border-color: transparent;
+    }*/
+  }
+
+  .profile-plan-pricing {
+    margin: 0;
+    font-size: 1.75em;
+  }
+
+  .profile-plan-title {
+    margin-block: 0.75em 0.5em;
+    color: var(--color-2);
+    font-size: 1.75em;
+  }
+
+  .profile-plans {
+    display: grid;
+    gap: 2em;
+  }
+
+  .profile-plans-description {
+    margin-block: 5px 0;
+    font-size: 1.125em;
+  }
+
+  .separator {
+    margin: 0;
+    &::before,
+    &::after {
+      display: block;
+      margin-inline: auto;
+      background: var(--color-border);
+      width: 0.0625em;
+      height: 1.25em;
+      content: "";
+    }
+  }
+
+  @media (width >= 28em) {
+    .profile-plan {
+      border-image: linear-gradient(var(--color-border), var(--color-bg)) 1 / 0.0625em;
+      padding-inline: 1.25em;
+    }
+
+    .profile-plan-premium {
+      border-image-source: linear-gradient(var(--color-premium), var(--color-bg));
+    }
+  }
+
+  @media (width >= 52em) {
+    .profile-plans {
+      $template-column: 23em;
+      grid-template-columns: $template-column $template-column;
+      justify-content: center;
+    }
+  }
+</style>
