@@ -1,7 +1,7 @@
 /*
   Content-Security-Policy: base-uri 'self';connect-src 'self' blob: https://challenges.cloudflare.com https://profile.rocks;frame-ancestors 'self';frame-src 'self';font-src 'self' data: https://cdn.jsdelivr.net;form-action 'self' https://profile.rocks;img-src 'self' blob: data: https://assets.profile.rocks https://app.profile.rocks;object-src 'none';script-src-attr 'none';upgrade-insecure-requests
   Cross-Origin-Opener-Policy: same-origin
-  Cross-Origin-Resource-Policy: same-origin
+  Cross-Origin-Resource-Policy: same-site
   Origin-Agent-Cluster: ?1
   Referrer-Policy: no-referrer
   X-DNS-Prefetch-Control: off
