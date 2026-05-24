@@ -1,7 +1,7 @@
 {
   "name": "profilerocks-web",
   "type": "module",
-  "author": "Stefan Samson <ss42701@outlook.com> (https://ssbit01.github.io/)",
+  "author": "Stefan Samson <ss42701@outlook.com> (https://ssbit01.github.io)",
   "description": "profile.rocks website",
   "license": "MIT",
   "repository": {

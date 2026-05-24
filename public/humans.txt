@@ -1,4 +1,4 @@
-profile.rocks website was originally created by Stefan Samson <ss42701@outlook.com> (https://ssbit01.github.io/)
+profile.rocks website was originally created by Stefan Samson <ss42701@outlook.com> (https://ssbit01.github.io)
 and released under the MIT license.
 
 He hopes you like it :)
