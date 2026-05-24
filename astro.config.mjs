@@ -76,7 +76,7 @@ export default defineConfig({
       SVG: false
     }),
     sitemap({
-      filter: page => !page.includes("legal-notice") && !page.includes("privacy")
+      filter: page => !page.includes("legal-notice") && !page.includes("privacy") && !page.includes("report")
     })
   ],
 
