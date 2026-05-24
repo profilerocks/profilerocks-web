@@ -1,31 +1,28 @@
 ---
-import { PLATFORM_NAME, PLATFORM_DESCRIPTION } from "astro:env/client";
+import { PLATFORM_NAME } from "astro:env/client";
 
 interface Props {
+  description?: string;
   title?: string;
 }
 
-const { title: propTitle } = Astro.props;
+const THEME_DARK = "#000";
+const { description, title: propTitle } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site).toString();
+const imageAlt = `${PLATFORM_NAME} logo`;
 
 let title = PLATFORM_NAME;
 
 if (propTitle) {
   title += ` | ${propTitle}`;
 }
-
-const canonical = new URL(Astro.url.pathname, Astro.site).toString();
-
-const THEME_DARK = "#000";
-// const THEME_LIGHT = "#FFF";
-
-const imageAlt = `${PLATFORM_NAME} logo`;
 ---
 
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="application-name" content={PLATFORM_NAME} />
 <meta name="color-scheme" content="dark light" />
-<meta name="description" content={PLATFORM_DESCRIPTION} />
+{description && <meta name="description" content={description} />}
 <meta name="generator" content="Astro" />
 <meta name="keywords" content="social, profile" />
 <meta name="referrer" content="no-referrer" />
@@ -50,11 +47,13 @@ const imageAlt = `${PLATFORM_NAME} logo`;
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#4c4c4c" type="image/svg+xml" />
 
-<meta property="og:description" content={PLATFORM_DESCRIPTION} />
-{/* <meta property="og:image" content={ogImage.url} />
+{description && <meta property="og:description" content={description} />}
+{
+  /* <meta property="og:image" content={ogImage.url} />
 <meta property="og:image:type" content={ogImage.type} />
 <meta property="og:image:height" content={ogImage.height} />
-<meta property="og:image:width" content={ogImage.width} /> */}
+<meta property="og:image:width" content={ogImage.width} /> */
+}
 <meta property="og:image:alt" content={imageAlt} />
 <meta property="og:site_name" content={PLATFORM_NAME} />
 <meta property="og:title" content={title} />
