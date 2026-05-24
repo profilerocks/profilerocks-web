@@ -9,7 +9,7 @@ interface Props {
 
 const THEME_DARK = "#000";
 const { description, title: propTitle } = Astro.props;
-const canonical = new URL(Astro.url.pathname, Astro.site).toString();
+const canonical = new URL(Astro.url.pathname.replace(".html", ""), Astro.site).toString();
 const imageAlt = `${PLATFORM_NAME} logo`;
 
 let title = PLATFORM_NAME;
