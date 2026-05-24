@@ -2,8 +2,9 @@
   "compilerOptions": {
     "checkJs": true,
     "paths": {
-      "#src/*": ["./src/*"],
-      "#shared/*": ["./shared/*"]
+      "#public/*": ["./public/*"],
+      "#shared/*": ["./shared/*"],
+      "#src/*": ["./src/*"]
     },
     "resolveJsonModule": true,
     "strictNullChecks": true,

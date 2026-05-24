@@ -1,5 +1,8 @@
 ---
 import { PLATFORM_NAME } from "astro:env/client";
+import ogImage from "#public/og.jpg";
+
+console.log(ogImage)
 
 interface Props {
   description?: string;
@@ -48,12 +51,10 @@ if (propTitle) {
 <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#4c4c4c" type="image/svg+xml" />
 
 {description && <meta property="og:description" content={description} />}
-{
-  /* <meta property="og:image" content={ogImage.url} />
-<meta property="og:image:type" content={ogImage.type} />
-<meta property="og:image:height" content={ogImage.height} />
-<meta property="og:image:width" content={ogImage.width} /> */
-}
+<meta property="og:image" content={new URL("/og.jpg", Astro.site)} />
+<meta property="og:image:type" content="image/jpeg" />
+<meta property="og:image:height" content={ogImage.height.toString()} />
+<meta property="og:image:width" content={ogImage.width.toString()} />
 <meta property="og:image:alt" content={imageAlt} />
 <meta property="og:site_name" content={PLATFORM_NAME} />
 <meta property="og:title" content={title} />
