@@ -106,6 +106,7 @@ export default defineConfig({
   },
 
   build: {
+    format: "file",
     inlineStylesheets: "never"
   },
 
