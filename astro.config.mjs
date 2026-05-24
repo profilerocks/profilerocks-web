@@ -52,6 +52,8 @@ export default defineConfig({
 
   site: SITE,
 
+  trailingSlash: "never",
+
   /**
    * Disable redirects for now.
    * @ts-expect-error: `redirects` is modified in the loop above.
