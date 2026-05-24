@@ -14,6 +14,12 @@
 # `X-Content-Type-Options: nosniff` can be set in Cloudflare when HSTS is enabled.
 # IMPORTANT: A strange issue happens with `default-src` in the CSP. When setting `default-src 'self'`, it fails to load Astro fonts, it might be a bug in Astro. In the meantime, `default-src 'self'` is not set.
 
+/sitemap-*
+  ! Cross-Origin-Resource-Policy
+
+/robots.txt
+  ! Cross-Origin-Resource-Policy
+
 /apple-icon*
   ! Cross-Origin-Resource-Policy
   Cross-Origin-Resource-Policy: cross-origin
@@ -30,18 +36,10 @@
   ! Cross-Origin-Resource-Policy
   Cross-Origin-Resource-Policy: cross-origin
 
-/sitemap-*
-  ! Cross-Origin-Resource-Policy
-  Cross-Origin-Resource-Policy: cross-origin
-
 /web-app-manifest-*
   ! Cross-Origin-Resource-Policy
   Cross-Origin-Resource-Policy: cross-origin
 
 /humans.txt
-  ! Cross-Origin-Resource-Policy
-  Cross-Origin-Resource-Policy: cross-origin
-
-/robots.txt
   ! Cross-Origin-Resource-Policy
   Cross-Origin-Resource-Policy: cross-origin
