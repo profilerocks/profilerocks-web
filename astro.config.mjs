@@ -1,6 +1,5 @@
 // import cloudflare from "@astrojs/cloudflare";
 import sitemap from "@astrojs/sitemap";
-import playformCompress from "@playform/compress";
 import { defineConfig, envField, fontProviders } from "astro/config";
 import icon from "astro-icon";
 import license from "rollup-plugin-license";
@@ -69,14 +68,6 @@ export default defineConfig({
 
   integrations: [
     icon(),
-    playformCompress({
-      CSS: false,
-      HTML: true,
-      Image: false,
-      JavaScript: false,
-      JSON: false,
-      SVG: false
-    }),
     sitemap({
       filter: page => !page.includes("legal-notice") && !page.includes("privacy") && !page.includes("report")
     })
