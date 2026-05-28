@@ -81,7 +81,7 @@ export default defineConfig({
 
   outDir: OUT_DIR,
 
-  compressHTML: true,
+  compressHTML: "jsx",
 
   security: {
     checkOrigin: true,
