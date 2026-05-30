@@ -7,35 +7,29 @@ import MainLayout from "#src/layouts/Main.astro";
 ---
 
 <MainLayout description={PLATFORM_DESCRIPTION}>
-  <section class="section-home">
+  <div class="home">
     <div class="content">
-      <h1 class="section-home-title">{PLATFORM_DESCRIPTION}</h1>
-      <h2 class="section-home-description">Create micro-pages and profiles easily and instantly</h2>
-      <LinkNext class="link-get-started" href={HREF_APP}><Icon name="rocket" size="1.25em" />Get started</LinkNext>
-      <div class="grid-features">
-        <div class="feature-card">
-          <div class="feature-icon">
-            <Icon name="content" size="2.5em" />
-          </div>
-          <h2>Unified Presence</h2>
-          <p>
-            <strong>profile.rocks</strong> creates elegant micropages. It simplifies how content is shared across social media and the web.
-          </p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">
-            <Icon name="security" size="2.5em" />
-          </div>
-          <h2>Privacy First</h2>
-          <p>
-            <strong>profile.rocks</strong> prioritizes privacy. It does not track visitors or set advertising cookies. User data remains private
-            and is never sold to third parties.
-          </p>
-        </div>
-      </div>
+      <h1 class="home-title">{PLATFORM_DESCRIPTION}</h1>
+      <h2 class="home-description">Create micro-pages and profiles easily and instantly</h2>
+      <LinkNext class="link-get-started" href={HREF_APP}><Icon name="rocket" size="1.25em" />Get started now</LinkNext>
     </div>
     <img alt="Micropage example" class="profile-img" draggable="false" src="/profile.webp" title="Micropage example" />
-  </section>
+  </div>
+  <div class="grid-features">
+    <div class="feature-card">
+      <h2><Icon class="feature-icon" name="content" size="1.375em" />Unified Presence</h2>
+      <p>
+        <strong>profile.rocks</strong> creates elegant micropages. It simplifies how content is shared across social media and the web.
+      </p>
+    </div>
+    <div class="feature-card">
+      <h2><Icon class="feature-icon" name="security" size="1.375em" />Privacy First</h2>
+      <p>
+        <strong>profile.rocks</strong> prioritizes privacy. It does not track visitors or set advertising cookies. User data remains private
+        and is never sold to third parties.
+      </p>
+    </div>
+  </div>
 </MainLayout>
 
 <style lang="scss">
@@ -48,27 +42,11 @@ import MainLayout from "#src/layouts/Main.astro";
     transition:
       transform 0.3s ease,
       border-color 0.3s ease;
-    border: 2px solid var(--color-border);
-    border-radius: 1em;
-    background: var(--color-input);
-    padding: 1em;
-
-    &:hover {
-      transform: translateY(-0.5em);
-      border-color: var(--color-highlight);
-      background: var(--color-input-hover);
-    }
-
-    .feature-icon {
-      display: inline-flex;
-      margin-block-end: 1.5em;
-      border-radius: 1em;
-      background: rgb(29 221 136 / 10%);
-      padding: 1em;
-      color: var(--color-highlight);
-    }
 
     h2 {
+      display: flex;
+      align-items: center;
+      gap: 0.375em;
       margin-block: 0 0.5em;
       font-weight: 600;
       font-size: 1.75em;
@@ -82,15 +60,49 @@ import MainLayout from "#src/layouts/Main.astro";
     }
   }
 
+  .feature-icon {
+    color: var(--color-highlight);
+
+  }
+
   .grid-features {
-    display: grid;
+    display: flex;
+    flex-direction: column;
     gap: 1.5em;
-    margin-block-start: 2.5em;
+    max-width: 90em;
+    margin-inline: auto;
+    margin-block-start: 5em;
+    > .feature-card:not(:first-child) {
+      padding-block-start: 2.25em;
+      border-block-start: thin solid var(--color-border);
+    }
   }
 
   .link-get-started {
-    margin-block-start: 1.5em;
-    font-size: 1.125em;
+    margin-block-start: 2.75em;
+    font-size: 1.25em;
+    margin-inline: auto;
+  }
+
+  .home {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 100em;
+    margin-inline: auto;
+  }
+
+  .home-description {
+    color: var(--color-2);
+    font-size: clamp(1.375em, 3vw, 1.5em);
+    text-align: center;
+  }
+
+  .home-title {
+    background: linear-gradient(45deg, var(--color-highlight), var(--color-premium));
+    background-clip: text;
+    color: transparent;
+    font-size: clamp(2.25em, 5vw, 3.125em);
   }
 
   .profile-img {
@@ -101,8 +113,8 @@ import MainLayout from "#src/layouts/Main.astro";
     margin-block-start: 3em;
     border: 2px solid var(--color-border);
     border-radius: 1em;
-    max-width: 85%;
-    max-height: 70vh;
+    max-width: 90%;
+    max-height: 46em;
     object-fit: cover;
     user-select: none;
     &:hover {
@@ -112,35 +124,37 @@ import MainLayout from "#src/layouts/Main.astro";
     }
   }
 
-  .section-home {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .section-home-description {
-    color: var(--color-2);
-    font-size: clamp(1.375em, 3vw, 1.5em);
-    text-align: center;
-  }
-
-  .section-home-title {
-    background: linear-gradient(45deg, var(--color-highlight), var(--color-premium));
-    background-clip: text;
-    color: transparent;
-    font-size: clamp(2.25em, 3vw, 3em);
-  }
-
   @media (width > 70em) {
-    .profile-img {
-      margin-inline-start: 0;
-      min-height: 45em;
-    }
-
-    .section-home {
+    .home {
       flex-direction: row;
       gap: 5em;
       margin-block-start: 1em;
       // max-height: 50em;
+    }
+
+    .content {
+      margin-block-end: 10em;
+    }
+
+    .grid-features {
+      flex-direction: row;
+      > .feature-card:not(:first-child) {
+        padding-block-start: 0;
+        padding-inline-start: 2.5em;
+        border-block-start: none;
+        border-inline-start: thin solid var(--color-border);
+      }
+    }
+
+    .link-get-started {
+      text-align: center;
+      max-width: 20em;
+    }
+
+    .profile-img {
+      height: 75vh;
+      min-height: 35em;
+      max-height: 40em;
     }
   }
 </style>
