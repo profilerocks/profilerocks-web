@@ -62,4 +62,4 @@ This website is licensed under the [MIT License](LICENSE).
 
 See [ICON-LICENSES.md](/ICON-LICENSES.md) for icon licenses.
 
-You can find other [profile.rocks](https://www.profile.rocks/) open source projects at <https://github.com/profile-rocks>.
+You can find other [profile.rocks](https://www.profile.rocks/) open source projects at <https://github.com/profilerocks>.
