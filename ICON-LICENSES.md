@@ -6,7 +6,7 @@ This website uses icons (located in `/src/icons` within the source code) from th
 
 Source: <https://github.com/danklammer/bytesize-icons>
 
-- `social/github.svg`: github
+- `github.svg`: github
 
 ### License (MIT: 2016 Dan Klammer)
 
@@ -315,6 +315,7 @@ SOFTWARE
 Source: <https://github.com/microsoft/fluentui-system-icons>
 
 - `content.svg`: content-view-28-filled
+- `markdown.svg`: markdown-28-filled
 - `premium.svg`: premium-12-filled
 - `send.svg`: send-32-filled
 - `support.svg`: person-support-20-filled

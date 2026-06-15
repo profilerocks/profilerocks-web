@@ -182,7 +182,7 @@ export default defineConfig({
       provider: fontSource,
       name: "Inter",
       cssVariable: "--font-inter",
-      weights: [400, 500],
+      weights: [400, 500, 800],
       subsets: ["latin"]
     },
     {

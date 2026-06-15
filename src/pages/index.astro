@@ -9,77 +9,104 @@ import MainLayout from "#src/layouts/Main.astro";
 <MainLayout description={PLATFORM_DESCRIPTION}>
   <div class="home">
     <div class="content">
-      <h1 class="home-title">{PLATFORM_DESCRIPTION}</h1>
+      <h1 class="home-title">Make the Map of Your Online Presence</h1>
       <h2 class="home-description">Create micro-pages and profiles easily and instantly</h2>
       <LinkNext class="link-get-started" href={HREF_APP}><Icon name="rocket" size="1.25em" />Get started now</LinkNext>
     </div>
     <img alt="Micropage example" class="profile-img" draggable="false" src="/profile.webp" title="Micropage example" />
   </div>
   <div class="grid-features">
-    <div class="feature-card">
-      <h2><Icon class="feature-icon" name="content" size="1.375em" />Unified Presence</h2>
-      <p>
-        <strong>profile.rocks</strong> creates elegant micropages. It simplifies how content is shared across social media and the web.
-      </p>
-    </div>
-    <div class="feature-card">
-      <h2><Icon class="feature-icon" name="security" size="1.375em" />Privacy First</h2>
-      <p>
-        <strong>profile.rocks</strong> prioritizes privacy. It does not track visitors or set advertising cookies. User data remains private
-        and is never sold to third parties.
-      </p>
-    </div>
+    <figure class="feature-card">
+      <Icon class="feature-icon" name="external" />
+      <figcaption>
+        <h2>Embed Content</h2>
+        <p>
+          Seamlessly integrate videos from <strong>YouTube</strong>, <strong>Dailymotion</strong>, and more. <a href="/i/faq#details-external-content">Supported external websites</a>
+        </p>
+      </figcaption>
+    </figure>
+    <figure class="feature-card">
+      <Icon class="feature-icon" name="markdown" />
+      <figcaption>
+        <h2>Write Markdown</h2>
+        <p>
+          Format your content effortlessly using the familiar syntax you already know
+        </p>
+      </figcaption>
+    </figure>
+    <figure class="feature-card">
+      <Icon class="feature-icon" name="security" />
+      <figcaption>
+        <h2>Privacy First</h2>
+        <p>
+          <strong>profile.rocks</strong> never tracks visitors, uses advertising cookies, or sells your data. Your privacy is guaranteed
+        </p>
+      </figcaption>
+    </figure>
   </div>
 </MainLayout>
 
 <style lang="scss">
   .content {
     margin-inline: auto;
-    max-width: 50em;
+    max-width: 37em;
   }
 
   .feature-card {
-    transition:
-      transform 0.3s ease,
-      border-color 0.3s ease;
-
+    display: flex;
+    gap: 1.5em;
+    position: relative;
+    margin: 0;
     h2 {
       display: flex;
       align-items: center;
       gap: 0.375em;
       margin-block: 0 0.5em;
-      font-weight: 600;
+      font-weight: 500;
       font-size: 1.75em;
     }
-
     p {
       margin: 0;
       color: var(--color-3);
       font-size: 1.1em;
       line-height: 1.6;
     }
-  }
-
-  .feature-icon {
-    color: var(--color-highlight);
-
-  }
-
-  .grid-features {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5em;
-    max-width: 74em;
-    margin-inline: auto;
-    margin-block: 5em 1em;
-    > .feature-card:not(:first-child) {
-      padding-block-start: 2.25em;
-      border-block-start: thin solid var(--color-border);
+    &:not(:first-of-type) {
+      /**
+       * Use pseudo-element instead of border because padding has no effect to elements with position absolute.
+       */
+      &::before {
+        content: "";
+        height: 0.0625em;
+        width: 100%;
+        background: var(--color-border);
+        position: absolute;
+        inset-block-start: -1.375em;;
+      }
     }
   }
 
+  .feature-icon {
+    position: absolute;
+    inset-block-start: 0.125em;
+    inset-inline-end: 0;
+    $size: 2em;
+    min-width: $size;
+    min-height: $size;
+    color: var(--color-highlight);
+  }
+
+  .grid-features {
+    display: grid;
+    gap: 2.75em;
+    position: relative;
+    margin-block: 5em 1em;
+    max-width: max-content;
+    margin-inline: auto;
+  }
+
   .link-get-started {
-    margin-block-start: 2.75em;
+    margin-block-start: 2.5em;
     font-size: 1.25em;
     margin-inline: auto;
   }
@@ -93,8 +120,8 @@ import MainLayout from "#src/layouts/Main.astro";
   }
 
   .home-description {
-    color: var(--color-2);
     font-size: clamp(1.375em, 3vw, 1.5em);
+    line-height: 1.5;
     text-align: center;
   }
 
@@ -102,13 +129,14 @@ import MainLayout from "#src/layouts/Main.astro";
     background: linear-gradient(45deg, var(--color-highlight), var(--color-premium));
     background-clip: text;
     color: transparent;
+    font-weight: 800;
     font-size: clamp(2.25em, 5vw, 3.125em);
   }
 
   .profile-img {
     display: block;
     transition-duration: 0.3s;
-    transition-property: border-color, box-shadow, translate;
+    transition-property: border-color, box-shadow;
     margin-inline: auto;
     margin-block-start: 3em;
     border: 2px solid var(--color-border);
@@ -118,7 +146,6 @@ import MainLayout from "#src/layouts/Main.astro";
     object-fit: cover;
     user-select: none;
     &:hover {
-      translate: 0 -1em;
       box-shadow: 0 0.25em 2em var(--color-highlight);
       border-color: var(--color-highlight);
     }
@@ -136,13 +163,28 @@ import MainLayout from "#src/layouts/Main.astro";
       margin-block-end: 10em;
     }
 
+    .feature-card {
+      &::before {
+        display: none;
+      }
+    }
+
+    .feature-icon {
+      position: static;
+      background: var(--color-input);
+      padding: 0.75em;
+      border: 2px solid var(--color-border);
+      border-radius: 50%;
+    }
+
     .grid-features {
-      flex-direction: row;
-      > .feature-card:not(:first-child) {
-        padding-block-start: 0;
-        padding-inline-start: 2.5em;
-        border-block-start: none;
-        border-inline-start: thin solid var(--color-border);
+      &::before {
+        content: "";
+        position: absolute;
+        inset-inline-start: 1.8125em;
+        width: 0.15em;
+        height: 80%;
+        background: var(--color-border);
       }
     }
 

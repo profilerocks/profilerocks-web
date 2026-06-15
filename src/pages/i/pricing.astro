@@ -4,7 +4,7 @@ import PricingProfile from "#src/components/PricingProfile.astro";
 ---
 
 <MainLayout title="Pricing">
-  <h1>Pricing</h1>
+  <h1 class="page-title">Pricing</h1>
 
   <section>
     <hgroup class="profile-plans-hgroup">
@@ -16,6 +16,10 @@ import PricingProfile from "#src/components/PricingProfile.astro";
 </MainLayout>
 
 <style lang="scss">
+  .page-title {
+    font-size: clamp(2em, 6vw, 3em);
+  }
+
   .profile-plans-description {
     margin-block: 0.5em 1.5em;
     font-size: 1.125em;
