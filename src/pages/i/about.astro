@@ -10,40 +10,12 @@ import ArticleLayout from "#src/layouts/Article.astro";
   </hgroup>
 
   <p>
-    <strong>{PLATFORM_NAME}</strong> was created by <a href="https://profile.rocks/ssbit01" target="_blank">Stefan Samson (SSbit01)</a> as an alternative
-    to platforms like <a href="https://linktr.ee" target="_blank">Linktree</a>. It aims to provide a simpler, more focused way to create
-    micropages and profiles, through links and markdown text.
+    Initially created by <a href="https://ssbit01.github.io/" target="_blank" rel="noopener noreferrer">Stefan Samson</a>, <strong>profile.rocks</strong> was born out of a simple need: the ability to build and deploy a fully functional web page directly from a mobile phone, without being tied to a computer.
   </p>
 
-  <section>
-    <h2>The Mission</h2>
-    <p>
-      In an increasingly fragmented digital world, <strong>{PLATFORM_NAME}</strong> was built with three core principles in mind:
-    </p>
-    <ul>
-      <li><strong>User Privacy:</strong> it don't track you or your visitors.</li>
-      <li><strong>Simplicity:</strong> No bloat, no unnecessary features, just your content.</li>
-      <li><strong>Ownership:</strong> Your profile, your content, your business.</li>
-    </ul>
-  </section>
+  <p>While existing micropage services typically restrict users to basic links and plain text, <strong>profile.rocks</strong> was designed to support rich Markdown formatting, offering greater flexibility and control over content.</p>
 
-  <section>
-    <h2>No Tracking, No Data Collection</h2>
-    <p>
-      Privacy isn't just a feature. it's a foundation. Visitors to any <strong>{PLATFORM_NAME}</strong> profile can browse with confidence, knowing
-      that their activity is never tracked. <strong>{PLATFORM_NAME}</strong> does not set advertising or analytics cookies, and your data is <strong
-        >never sold or shared</strong
-      > with third parties.
-    </p>
-  </section>
-
-  <section>
-    <h2>Open to the Community</h2>
-    <p>
-      <strong>{PLATFORM_NAME}</strong> is built using modern open-source technologies. The goal is to grow alongside users, building the features
-      that actually matter to you.
-    </p>
-  </section>
+  <p>Furthermore, unlike the majority of closed-source alternatives on the market, <strong>profile.rocks</strong> aims to be open source. Future developments will focus on expanding developer tools to support self-hosting, ensuring long-term independence and customization for its users.</p>
 </ArticleLayout>
 
 <style lang="scss">
@@ -55,6 +27,7 @@ import ArticleLayout from "#src/layouts/Article.astro";
   }
 
   .page-title {
+    font-weight: 800;
     margin-block-end: 0;
   }
 
@@ -62,14 +35,5 @@ import ArticleLayout from "#src/layouts/Article.astro";
     margin-block-start: 0;
     font-size: clamp(1em, 4.5vw, 1.25em);
     text-align: center;
-  }
-
-  section {
-    margin-block: 2.5rem;
-    h2 {
-      margin-block-end: 1rem;
-      color: var(--color-highlight);
-      font-size: 1.5rem;
-    }
   }
 </style>
