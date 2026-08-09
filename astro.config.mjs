@@ -1,5 +1,6 @@
 // import cloudflare from "@astrojs/cloudflare";
 import sitemap from "@astrojs/sitemap";
+import tailwindcss from "@tailwindcss/vite";
 import { defineConfig, envField, fontProviders } from "astro/config";
 import icon from "astro-icon";
 import license from "rollup-plugin-license";
@@ -102,29 +103,26 @@ export default defineConfig({
   },
 
   vite: {
-    plugins: [
-      license({
-        sourcemap: false,
-        thirdParty: {
-          includePrivate: true,
-          includeSelf: true,
-          multipleVersions: true,
-          output: {
-            file: OUT_DIR + "/LICENSES/DEPENDENCIES.txt",
-            encoding: "utf-8"
-          }
+    plugins: [license({
+      sourcemap: false,
+      thirdParty: {
+        includePrivate: true,
+        includeSelf: true,
+        multipleVersions: true,
+        output: {
+          file: OUT_DIR + "/LICENSES/DEPENDENCIES.txt",
+          encoding: "utf-8"
         }
-      }),
-      viteStaticCopy({
-        targets: [
-          {
-            src: "ICON-LICENSES.md",
-            dest: "LICENSES",
-            rename: "ICONS.md"
-          }
-        ]
-      })
-    ]
+      }
+    }), viteStaticCopy({
+      targets: [
+        {
+          src: "ICON-LICENSES.md",
+          dest: "LICENSES",
+          rename: "ICONS.md"
+        }
+      ]
+    }), tailwindcss()]
   },
 
   env: {
