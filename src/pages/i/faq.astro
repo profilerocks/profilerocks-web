@@ -3,6 +3,25 @@ import { PLATFORM_NAME } from "astro:env/client";
 import MainLayout from "#src/layouts/Main.astro";
 ---
 
+<script>
+  function openActiveDetails() {
+    const id = window.location.hash.replace("#", "");
+
+    if (id) {
+      const target = document.getElementById(id);
+
+      if (target && target instanceof HTMLDetailsElement) {
+        target.open = true;
+      }
+    }
+  }
+
+  // Run on page load
+  window.addEventListener('DOMContentLoaded', openActiveDetails);
+  // Run if the hash changes without reloading
+  window.addEventListener('hashchange', openActiveDetails);
+</script>
+
 <MainLayout title="FAQs">
   <h1>Frequently Asked Questions</h1>
   <section class="faqs">
@@ -43,6 +62,7 @@ import MainLayout from "#src/layouts/Main.astro";
     max-width: 48em;
     > details {
       border-block-end: thin solid var(--color-border);
+      scroll-margin-block-start: 3.125em;
       > summary {
         display: flex;
         align-items: flex-start;
