@@ -5,7 +5,7 @@ import type { ComponentProps } from "astro/types";
 type Props = ComponentProps<typeof BaseHead>;
 ---
 
-<html class="h-full scrollbar-thumb-zinc-400 scroll-smooth scrollbar-gutter-both" lang="en" prefix="og: https://ogp.me/ns#">
+<html class="h-full scrollbar-thumb-zinc-400 scrollbar-gutter-both scroll-smooth" lang="en" prefix="og: https://ogp.me/ns#">
   <head>
     <BaseHead {...Astro.props} />
     <slot name="head" />

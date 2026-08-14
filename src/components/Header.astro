@@ -8,15 +8,17 @@ import LogoLong from "#src/static/logo/long.svg";
 const iconDimension = "1.25em";
 ---
 
-<header class="header-top">
-  <a href="/" class="link-logo"><LogoLong /></a>
-  <input type="checkbox" id="hamburguer" class="checkbox-hide-scrollbar" />
-  <ul class="list-nav">
-    <li><LinkActive href="/b"><Icon name="blog" size={iconDimension} />Blog</LinkActive></li>
-    {/*<li><LinkActive href="/r"><IconRoadmap size={iconDimension} />Roadmap</Link></li>*/}
-    {/*<li><LinkActive href="/m"><IconMarket size={iconDimension} />Marketplace</Link></li>*/}
-    <li><LinkActive href="/i/pricing"><Icon name="pricing" size={iconDimension} />Pricing</LinkActive></li>
-  </ul>
+<header class="sticky inset-bs-0 z-1 mx-auto mbe-2 flex w-full max-w-7xl items-center gap-4 px-4 pbs-3.5 sm:gap-8">
+  <a class="w-3xs min-w-0 select-none sm:me-auto sm:pe-4" href="/"><LogoLong /></a>
+  <input class="peer" id="hamburguer" type="checkbox" />
+  <nav
+    class="fixed inset-x-0 inset-bs-3 inset-be-0 -z-1 flex flex-col bg-zinc-950/80 pbs-14 text-3xl transition transition-discrete *:flex *:gap-3 *:px-3 *:py-4 peer-not-checked:hidden peer-not-checked:opacity-0 *:after:ms-auto *:after:scale-0 *:after:font-light *:after:text-zinc-400 *:after:opacity-0 *:after:transition *:after:content-['>'] *:hover:after:scale-100 *:hover:after:opacity-100 *:active:after:scale-100 *:active:after:opacity-100 starting:opacity-0"
+  >
+    <LinkActive href="/b"><Icon name="blog" size={iconDimension} />Blog</LinkActive>
+    {/*<LinkActive href="/r"><IconRoadmap size={iconDimension} />Roadmap</Link>*/}
+    {/*<LinkActive href="/m"><IconMarket size={iconDimension} />Marketplace</Link>∫*/}
+    <LinkActive href="/i/pricing"><Icon name="pricing" size={iconDimension} />Pricing</LinkActive>
+  </nav>
   <LinkPillSolid href={HREF_APP} class="a-user-enter">
     <Icon name="user/single" size="1.5em" /><span>Log in or register</span>
   </LinkPillSolid>

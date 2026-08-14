@@ -103,26 +103,30 @@ export default defineConfig({
   },
 
   vite: {
-    plugins: [license({
-      sourcemap: false,
-      thirdParty: {
-        includePrivate: true,
-        includeSelf: true,
-        multipleVersions: true,
-        output: {
-          file: OUT_DIR + "/LICENSES/DEPENDENCIES.txt",
-          encoding: "utf-8"
+    plugins: [
+      license({
+        sourcemap: false,
+        thirdParty: {
+          includePrivate: true,
+          includeSelf: true,
+          multipleVersions: true,
+          output: {
+            file: OUT_DIR + "/LICENSES/DEPENDENCIES.txt",
+            encoding: "utf-8"
+          }
         }
-      }
-    }), viteStaticCopy({
-      targets: [
-        {
-          src: "ICON-LICENSES.md",
-          dest: "LICENSES",
-          rename: "ICONS.md"
-        }
-      ]
-    }), tailwindcss()]
+      }),
+      viteStaticCopy({
+        targets: [
+          {
+            src: "ICON-LICENSES.md",
+            dest: "LICENSES",
+            rename: "ICONS.md"
+          }
+        ]
+      }),
+      tailwindcss()
+    ]
   },
 
   env: {
