@@ -1,4 +1,5 @@
 ---
+import { Font } from "astro:assets";
 import BaseHead from "#src/components/BaseHead.astro";
 import type { ComponentProps } from "astro/types";
 
@@ -9,6 +10,7 @@ type Props = ComponentProps<typeof BaseHead>;
   <head>
     <BaseHead {...Astro.props} />
     <slot name="head" />
+    <Font cssVariable="--font-inter" />
   </head>
 
   <body class="flex min-h-full flex-col bg-black text-zinc-100">
@@ -18,6 +20,10 @@ type Props = ComponentProps<typeof BaseHead>;
 
 <style is:global>
   @import "tailwindcss";
+
+  @theme inline {
+    --font-sans: var(--font-inter);
+  }
 
   :root {
     color-scheme: dark light;
