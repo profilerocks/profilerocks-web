@@ -3,17 +3,39 @@ import type { HTMLAttributes } from "astro/types";
 
 type Props = HTMLAttributes<"a">;
 
-const { props } = Astro;
+const {
+  props: { class: className, href, ...restProps }
+} = Astro;
 
-const pathname = props.href instanceof URL ? props.href.pathname : props.href?.split("?")[0].split("#")[0];
+let active = false;
+
+if (href) {
+  let hrefPathname: string;
+
+  if (href instanceof URL) {
+    hrefPathname = href.pathname;
+  } else {
+    hrefPathname = "";
+
+    let i = 0;
+    let run = true;
+
+    do {
+      const char = href[i];
+
+      switch (char) {
+        case "?":
+        case "#":
+          run = false;
+          break;
+        default:
+          hrefPathname += char;
+      }
+    } while (run && i < href.length);
+  }
+
+  active = Astro.url.pathname.replace(/(index)?\.html/, "") === hrefPathname;
+}
 ---
 
-<a {...props} aria-current={Astro.url.pathname.replace(/(index)?\.html/, "") === pathname ? "page" : "false"}><slot /></a>
-
-<style>
-  a[aria-current="page"] {
-    color: var(--color-highlight) !important;
-    text-decoration-color: currentcolor;
-    text-underline-offset: 2px;
-  }
-</style>
+<a aria-current={active ? "page" : "false"} {href} {...restProps}><slot /></a>
