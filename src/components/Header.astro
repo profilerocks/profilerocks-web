@@ -8,9 +8,9 @@ const iconDimension = "1.25em";
 ---
 
 <header
-  class="sticky inset-bs-0 z-1 mx-auto mbe-2 flex w-full max-w-7xl items-center gap-4 px-4 pbs-3.5 before:absolute before:inset-x-0 before:inset-bs-0 before:-z-1 before:shadow-[0_0_1.75em_3.75em_#000] sm:gap-8"
+  class="sticky inset-bs-0 z-1 mx-auto mbe-2 flex w-full max-w-7xl items-center px-4 pbs-3.5 before:absolute before:inset-x-0 before:inset-bs-0 before:-z-1 before:shadow-[0_0_1.75em_3.75em_#000]"
 >
-  <a class="w-3xs min-w-0 select-none sm:pe-4" href="/"><LogoLong /></a>
+  <a class="w-3xs min-w-0 pe-4 select-none" href="/"><LogoLong /></a>
   <input class="peer" id="hamburguer" type="checkbox" />
   <nav
     class="fixed inset-x-0 inset-bs-4 inset-be-0 -z-1 flex flex-col bg-black/80 pbs-14 text-3xl transition transition-discrete select-none *:flex *:items-center *:gap-3 *:px-3 *:py-4 peer-not-checked:hidden peer-not-checked:opacity-0 *:after:ms-auto *:after:scale-0 *:after:font-light *:after:text-zinc-400 *:after:opacity-0 *:after:transition *:after:content-['>'] *:hover:after:scale-100 *:hover:after:opacity-100 *:active:after:scale-100 *:active:after:opacity-100 sm:static sm:flex-row sm:gap-5.5 sm:bg-transparent sm:pbs-0 sm:text-base sm:select-text sm:*:gap-1.5 sm:*:p-0 sm:peer-not-checked:flex sm:peer-not-checked:opacity-100 sm:*:after:hidden starting:opacity-0"
@@ -21,10 +21,10 @@ const iconDimension = "1.25em";
     <LinkActive href="/i/pricing"><Icon name="pricing" size={iconDimension} />Pricing</LinkActive>
   </nav>
   <a
-    class="flex gap-2.5 rounded-3xl bg-zinc-900 p-2.5 font-medium text-zinc-400 transition-colors select-none hover:bg-zinc-800 hover:text-zinc-300 active:bg-zinc-700 active:text-zinc-200"
+    class="ms-auto flex gap-2.5 rounded-3xl bg-zinc-900 p-2.5 font-medium text-zinc-400 transition-colors select-none hover:bg-zinc-800 hover:text-zinc-300 active:bg-zinc-700 active:text-zinc-200"
     href={HREF_APP}
   >
-    <Icon name="user/single" size="1.5em" /><span class="pe-1.5">Log in or register</span>
+    <Icon class="drop-shadow-sm drop-shadow-black" name="user/single" size="1.5em" /><span class="pe-1.5">Log in or register</span>
   </a>
 </header>
 
