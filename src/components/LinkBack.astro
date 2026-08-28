@@ -9,4 +9,6 @@ type Props = HTMLAttributes<"a">;
 const { props } = Astro;
 ---
 
-<LinkPillOutline {...props}><Icon name="arrow/left" size="1.25em" /><slot /></LinkPillOutline>
+<LinkPillOutline {...props}
+  ><Icon class="ms-auto drop-shadow-xs drop-shadow-black" name="arrow/left" size="1.25em" /><slot /></LinkPillOutline
+>

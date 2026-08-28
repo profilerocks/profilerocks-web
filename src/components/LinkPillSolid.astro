@@ -5,20 +5,4 @@ import type { ComponentProps } from "astro/types";
 type Props = ComponentProps<typeof LinkPill>;
 ---
 
-<LinkPill {...Astro.props}><slot /></LinkPill>
-
-<style lang="scss">
-  a {
-    background: var(--color-input);
-    color: var(--color-3);
-    &:hover {
-      color: var(--color-2);
-    }
-    &:is(:active, :focus-visible) {
-      color: var(--color);
-    }
-    &:focus-visible {
-      outline-color: var(--color-input-outline);
-    }
-  }
-</style>
+<LinkPill {...Astro.props} class="bg-zinc-800 text-zinc-400 hover:text-zinc-300 active:text-zinc-200"><slot /></LinkPill>

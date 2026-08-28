@@ -1,6 +1,5 @@
 ---
 import emails from "#shared/email.json";
-import Actions from "#src/components/Actions.astro";
 import LinkBack from "#src/components/LinkBack.astro";
 import ArticleLayout from "#src/layouts/ArticleLayout.astro";
 import { reportCategoriesDataEntries } from "#src/lib/report";
@@ -269,10 +268,10 @@ const emailReportHref = `mailto:${emails.report}`;
           ></label
         >
       </div>
-      <Actions>
+      <div class="flex flex-wrap-reverse items-center justify-between gap-7">
         <LinkBack href="/i/contact">Other contact options</LinkBack>
         <button id="btn-submit-report" type="submit">Submit report</button>
-      </Actions>
+      </div>
     </fieldset>
     <input type="checkbox" name="necessary" value="1" id="necessary" />
   </form>

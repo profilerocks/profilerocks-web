@@ -3,21 +3,10 @@ import LinkPill from "#src/components/LinkPill.astro";
 import type { ComponentProps } from "astro/types";
 
 type Props = ComponentProps<typeof LinkPill>;
+
+const {
+  props: { class: className, ...props }
+} = Astro;
 ---
 
-<LinkPill {...Astro.props}><slot /></LinkPill>
-
-<style lang="scss">
-  a {
-    color: var(--color-a);
-    &:hover {
-      color: var(--color-a-hover);
-    }
-    &:is(:active, :focus-visible) {
-      color: var(--color-a-active);
-    }
-    &:focus-visible {
-      outline-color: var(--color-a-hover);
-    }
-  }
-</style>
+<LinkPill {...Astro.props} class:list={["text-teal-500 hover:text-teal-400 active:text-teal-300", className]}><slot /></LinkPill>
