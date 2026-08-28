@@ -1,19 +1,19 @@
 ---
 import type { HTMLAttributes } from "astro/types";
 
-type Props = HTMLAttributes<"a">;
+type Props = Exclude<HTMLAttributes<"a">, "aria-current">;
 
 const {
-  props: { class: className, href, ...restProps }
+  props: { class: className, ...restProps }
 } = Astro;
 
 let active = false;
 
-if (href) {
+if (restProps.href) {
   let hrefPathname: string;
 
-  if (href instanceof URL) {
-    hrefPathname = href.pathname;
+  if (restProps.href instanceof URL) {
+    hrefPathname = restProps.href.pathname;
   } else {
     hrefPathname = "";
 
@@ -21,7 +21,7 @@ if (href) {
     let run = true;
 
     do {
-      const char = href[i];
+      const char = restProps.href[i];
 
       switch (char) {
         case "?":
@@ -32,11 +32,11 @@ if (href) {
           hrefPathname += char;
           i++;
       }
-    } while (run && i < href.length);
+    } while (run && i < restProps.href.length);
   }
 
   active = Astro.url.pathname.replace(/(index)?\.html/, "") === hrefPathname;
 }
 ---
 
-<a aria-current={active ? "page" : "false"} {href} {...restProps}><slot /></a>
+<a {...restProps} aria-current={active ? "page" : "false"} class:list={[className, active && "!text-emerald-400"]}><slot /></a>
