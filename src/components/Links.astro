@@ -8,4 +8,12 @@ const {
 } = Astro;
 ---
 
-<div class:list={["*:flex", className]} {...props}><slot /></div>
+<div
+  class:list={[
+    "*:flex *:items-center *:gap-2 *:py-1.5 *:ps-0.5 *:text-zinc-400 *:transition-colors *:hover:text-zinc-300 *:active:text-zinc-200",
+    className
+  ]}
+  {...props}
+>
+  <slot />
+</div>

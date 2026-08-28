@@ -1,18 +1,18 @@
 ---
 import { PLATFORM_NAME } from "astro:env/client";
 import { Icon } from "astro-icon/components";
+import FooterTitle from "#src/components/FooterTitle.astro";
 import LinkActive from "#src/components/LinkActive.astro";
 import Links from "#src/components/Links.astro";
 import Social from "#src/components/Social.astro";
 
-const iconDimensionHeader = "1.25em";
 const iconDimension = "1.25em";
 ---
 
 <footer class="px-6 pbs-16 pbe-10 text-sm sm:text-base">
-  <nav class="flex flex-wrap justify-center">
+  <nav class="mx-auto flex max-w-max flex-wrap gap-6 *:flex *:min-w-40 *:flex-col *:gap-1">
     <article>
-      <h3><Icon name="content" size={iconDimensionHeader} />General</h3>
+      <FooterTitle icon="content">General</FooterTitle>
       <Links>
         <LinkActive href="/b"><Icon name="blog" size={iconDimension} />Blog</LinkActive>
         <LinkActive href="/i/pricing"><Icon name="pricing" size={iconDimension} />Pricing</LinkActive>
@@ -21,7 +21,7 @@ const iconDimension = "1.25em";
       </Links>
     </article>
     <article>
-      <h3><Icon name="support" size={iconDimensionHeader} />Support</h3>
+      <FooterTitle icon="support">Support</FooterTitle>
       <Links>
         <LinkActive href="/i/faq"
           ><Icon name="faq" size={iconDimension} /><abbr class="no-underline" title="Frequently Asked Questions">FAQs</abbr></LinkActive
@@ -31,7 +31,7 @@ const iconDimension = "1.25em";
       </Links>
     </article>
     <article>
-      <h3><Icon name="legal" size={iconDimensionHeader} />Legal</h3>
+      <FooterTitle icon="legal">Legal</FooterTitle>
       <Links>
         <LinkActive href="/i/privacy" rel="privacy-policy"><Icon name="policy" size={iconDimension} />Privacy Policy</LinkActive>
         <LinkActive href="/i/terms" rel="terms-of-service"><Icon name="agreement" size={iconDimension} />Terms of Service</LinkActive>
@@ -40,7 +40,7 @@ const iconDimension = "1.25em";
       </Links>
     </article>
     <article>
-      <h3><Icon name="verified" size={iconDimensionHeader} />Social</h3>
+      <FooterTitle icon="verified">Social</FooterTitle>
       <Links>
         <Social />
       </Links>

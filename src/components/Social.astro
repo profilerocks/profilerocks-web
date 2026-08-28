@@ -1,7 +1,6 @@
 ---
 import { Icon } from "astro-icon/components";
 import socialMedia from "#shared/social.json";
-import External from "#src/components/External.astro";
 import { SOCIAL_ICONS } from "#src/lib/social";
 
 const iconDimension = "1.25em";
@@ -15,7 +14,7 @@ const iconDimension = "1.25em";
       <a {href} target="_blank" rel="noopener noreferrer">
         <Icon name={iconName} size={iconDimension} />
         {name}
-        <External />
+        <Icon name="external" size="1em" class="text-zinc-500" />
       </a>
     );
   })
