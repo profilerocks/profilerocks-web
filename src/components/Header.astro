@@ -8,12 +8,15 @@ const iconDimension = "1.25em";
 ---
 
 <header
-  class="sticky inset-bs-0 z-1 mx-auto mbe-2 flex w-full max-w-7xl items-center gap-3 px-4 pbs-3.5 before:absolute before:inset-x-0 before:inset-bs-0 before:-z-1 before:shadow-[0_0_1.75em_3.75em_#000]"
+  class="sticky inset-bs-0 z-1 mx-auto mbe-2 flex w-full max-w-7xl items-center gap-2 px-4 pbs-3.5 before:absolute before:inset-x-0 before:inset-bs-0 before:-z-1 before:shadow-[0_0_1.75em_3.75em_#000]"
 >
   <a class="w-3xs min-w-0 pe-4 select-none" href="/"><LogoLong /></a>
-  <input class="peer" id="hamburguer" type="checkbox" />
+  <input
+    class="hamburguer peer relative order-1 size-11 cursor-pointer appearance-none rounded-full text-zinc-400 transition-colors before:absolute before:inset-s-2.5 before:inset-bs-4 before:h-0.5 before:w-6 before:rounded-xs before:bg-current before:transition-transform after:absolute after:inset-s-2.5 after:inset-be-4 after:h-0.5 after:w-6 after:rounded-xs after:bg-current after:transition-transform checked:before:inset-bs-5.5 checked:before:rotate-45 checked:after:inset-be-5 checked:after:-rotate-45 hover:bg-zinc-700 hover:text-zinc-300 active:bg-zinc-600 active:text-zinc-200 md:hidden"
+    type="checkbox"
+  />
   <nav
-    class="fixed inset-x-0 inset-bs-4 inset-be-0 -z-1 flex flex-col bg-black/80 pbs-14 text-3xl transition transition-discrete select-none *:flex *:items-center *:gap-3 *:px-3 *:py-4 *:text-zinc-400 *:transition-colors peer-not-checked:hidden peer-not-checked:opacity-0 *:after:ms-auto *:after:scale-0 *:after:font-light *:after:text-zinc-400 *:after:opacity-0 *:after:transition *:after:content-['>'] *:hover:text-zinc-300 *:hover:after:scale-100 *:hover:after:opacity-100 *:active:text-zinc-200 *:active:after:scale-100 *:active:after:opacity-100 sm:static sm:flex-row sm:gap-5.5 sm:bg-transparent sm:pbs-0 sm:text-base sm:select-text sm:*:gap-1.5 sm:*:p-0 sm:peer-not-checked:flex sm:peer-not-checked:opacity-100 sm:*:after:hidden starting:opacity-0"
+    class="fixed inset-x-0 inset-bs-5 inset-be-0 -z-1 flex flex-col bg-black/85 pbs-14 text-3xl transition transition-discrete select-none *:flex *:items-center *:gap-3 *:px-3 *:py-4 *:text-zinc-400 *:transition-colors peer-not-checked:hidden peer-not-checked:opacity-0 *:after:ms-auto *:after:scale-0 *:after:font-light *:after:text-zinc-400 *:after:opacity-0 *:after:transition *:after:content-['>'] *:hover:text-zinc-300 *:hover:after:scale-100 *:hover:after:opacity-100 *:active:text-zinc-200 *:active:after:scale-100 *:active:after:opacity-100 md:static md:flex-row md:gap-5.5 md:bg-transparent md:pbs-0 md:text-base md:select-text md:*:gap-1.5 md:*:p-0 md:peer-not-checked:flex md:peer-not-checked:opacity-100 md:*:after:hidden starting:opacity-0"
   >
     <LinkActive href="/b"><Icon name="blog" size={iconDimension} />Blog</LinkActive>
     {/*<LinkActive href="/r"><IconRoadmap size={iconDimension} />Roadmap</Link>*/}
@@ -21,7 +24,7 @@ const iconDimension = "1.25em";
     <LinkActive href="/i/pricing"><Icon name="pricing" size={iconDimension} />Pricing</LinkActive>
   </nav>
   <a
-    class="ms-auto flex gap-2.5 rounded-3xl p-2.5 font-medium text-zinc-400 transition-colors select-none hover:bg-zinc-800 hover:text-zinc-300 active:bg-zinc-700 active:text-zinc-200 sm:bg-zinc-900"
+    class="ms-auto flex gap-2.5 rounded-3xl p-2.5 font-medium text-zinc-400 transition-colors select-none hover:bg-zinc-700 hover:text-zinc-300 active:bg-zinc-600 active:text-zinc-200 sm:bg-zinc-800"
     href={HREF_APP}
     title="Log in or register"
   >
@@ -31,208 +34,8 @@ const iconDimension = "1.25em";
   </a>
 </header>
 
-<style lang="scss">
-  @use "sass:math";
-
-  $btn-shadow: 0 0.125em 0.25em var(--color-bg);
-
-  .a-user-enter {
-    transition-property: background, box-shadow, color, outline-color;
-    box-shadow: $btn-shadow;
-  }
-
-  .header-top {
-    display: flex;
-    position: sticky;
-    top: 0;
-    align-items: center;
-    gap: 2em;
-    z-index: 1;
-    box-sizing: border-box;
-    margin-inline: auto;
-    margin-block-end: 0.5em;
-    padding-inline: 1em;
-    padding-block-start: 0.875em;
-    width: 100%;
-    max-width: 120em;
-    &::before {
-      position: absolute;
-      z-index: -1;
-      inset-block-start: 0;
-      inset-inline: 0;
-      box-shadow: 0 0 1.75em 3.75em var(--color-bg);
-      content: "";
-    }
-  }
-
-  .link-logo {
-    display: inline-flex;
-    gap: 0.375em;
-    width: 17em;
-    min-width: 0; // epiphany-web doesn't show the element if min-width is not set.
-    color: var(--color) !important;
-    user-select: none;
-    text-decoration: none;
-  }
-
-  .list-nav {
-    --color-a: var(--color-3);
-    --color-a-hover: var(--color);
-    display: flex;
-    flex: 1;
-    align-items: center;
-    gap: 1.375em;
-    z-index: -1;
-    transition-duration: 0.3s;
-    transition-property: visibility, opacity; // For the hamburguer animation
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    > li {
-      transition: padding-inline-start 0.3s; // For the hamburguer animation
-      box-sizing: border-box; // Important, if not set, the padding-inline-start may cause an overflow and degraded performance
-      > a {
-        box-sizing: border-box; // Important, if not set, the padding-inline-start may cause an overflow and degraded performance
-        text-decoration: none;
-      }
-    }
-  }
-
-  #hamburguer {
-    $size: 2.75em;
-    display: none;
-    position: relative;
-    order: 3;
-    appearance: none;
-    transition-duration: 0.15s;
-    transition-property: background, box-shadow, color, outline-color;
-    cursor: pointer;
-    margin: 0;
-    outline: medium solid transparent;
-    border-radius: 50%;
-    min-width: $size;
-    min-height: $size;
-    color: var(--color-3);
-    font-size: 1em;
-    $vertical-position: 1em;
-    $new-vertical-position: 48%;
-    $rotate-degrees: 45deg;
-    &:is(:hover, :active) {
-      box-shadow: $btn-shadow;
-    }
-    &:hover {
-      background: var(--color-input-hover);
-    }
-    &:is(:active, :focus-visible) {
-      background: var(--color-input-active);
-      color: var(--color);
-    }
-    &:focus-visible {
-      outline-color: var(--color-input-outline);
-    }
-    &::before,
-    &::after {
-      position: absolute;
-      left: 0.5625em;
-      filter: drop-shadow(0 0 0.25em var(--color-bg));
-      transition-duration: 0.15s;
-      transition-property: inset, rotate;
-      border-radius: 1px;
-      background: currentcolor;
-      width: 1.625em;
-      height: 0.125em;
-      content: "";
-    }
-    &::before {
-      top: $vertical-position;
-    }
-    &::after {
-      bottom: $vertical-position;
-    }
-    &:checked {
-      &::before {
-        top: $new-vertical-position;
-        rotate: $rotate-degrees;
-      }
-      &::after {
-        bottom: $new-vertical-position;
-        rotate: -$rotate-degrees;
-      }
-    }
-  }
-
-  @media (40em < width <= 47em), (width <= 38em) {
-    .a-user-enter {
-      --color-input: transparent;
-      &:not(:hover, :active) {
-        box-shadow: none;
-      }
-      > span {
-        display: none;
-      }
-    }
-  }
-
-  @media (width <= 40em) {
-    .header-top {
-      gap: 1em;
-      &:has(#hamburguer:not(:checked)) {
-        > .list-nav {
-          visibility: hidden;
-          opacity: 0;
-          > li {
-            @for $i from 1 through 2 {
-              &:nth-child(#{$i}) {
-                padding-inline-start: math.div(24% * $i, 2);
-              }
-            }
-          }
-        }
-      }
-    }
-
-    .link-logo {
-      margin-inline-end: auto;
-      padding-inline-end: 1em; // It creates a larger separation, so the logo shrinks more on mobile phones.
-    }
-
-    .list-nav {
-      position: fixed;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 0;
-      inset-block: 0.75em 0;
-      inset-inline: 0;
-      background: var(--color-bg-transparent);
-      padding-block-start: 2em;
-      font-size: 2em;
-      > li {
-        width: 100%;
-        > a {
-          gap: 0.5em;
-          padding: 0.75em 0.625em;
-          width: 100%;
-          &::after {
-            scale: 0;
-            opacity: 0;
-            transition-duration: 0.15s;
-            transition-property: opacity, scale;
-            margin-left: auto;
-            content: ">";
-            color: var(--color-3);
-          }
-          &:is(:hover, :active) {
-            &::after {
-              scale: 1;
-              opacity: 1;
-            }
-          }
-        }
-      }
-    }
-
-    #hamburguer {
-      display: initial;
-    }
+<style is:global>
+  body:has(.hamburguer:checked) {
+    overflow: hidden;
   }
 </style>
