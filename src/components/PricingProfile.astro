@@ -1,37 +1,40 @@
 ---
 import { Icon } from "astro-icon/components";
 import { HREF_PROFILE_CREATE, HREF_PROFILE_CREATE_PREMIUM } from "astro:env/client";
-
 import LinkNext from "#src/components/LinkNext.astro";
 import markdownToHtml from "#src/lib/markdown";
 import { profilePricingEntries } from "#src/lib/pricing/entries";
 import { formatPrice, intervalToText } from "#src/lib/pricing/utils";
 ---
 
-<div class="profile-plans">
+<div class="flex flex-col gap-8">
   {
     profilePricingEntries.map(([id, plan]) => (
       <article class:list={["profile-plan", "profile-plan-" + id]} id={id}>
-        <div class="profile-plan-header">
-          <h3 class="profile-plan-title">{id[0]?.toUpperCase() + id.substring(1).toLowerCase()}</h3>
+        <div class="mbe-5 text-center">
+          <h3 class="text-3xl text-zinc-300 mbe-4 mbs-5">{id[0]?.toUpperCase() + id.substring(1).toLowerCase()}</h3>
           {plan.prices?.length ? (
-            <div class="profile-plan-header-pricing-box">
+            <div class="flex justify-center items-center">
               {plan.prices.map((price, i) => (
                 <>
-                  <div>
+                  <div class="flex-1">
                     {/* @ts-expect-error: price.recurringInterval is not defined in price */}
-                    <h4 class="profile-plan-pricing">{formatPrice[price.priceCurrency]?.(price.priceAmount)}</h4>
+                    <h4 class="text-3xl">{formatPrice[price.priceCurrency]?.(price.priceAmount)}</h4>
                     {/* @ts-expect-error: price.recurringInterval is not defined in price */}
-                    <p class="description">{intervalToText[price.recurringInterval] || "forever"}</p>
+                    <p>{intervalToText[price.recurringInterval] || "forever"}</p>
                   </div>
-                  {i < plan.prices.length - 1 && <p class="separator">or</p>}
+                  {i < plan.prices.length - 1 && (
+                    <p class="text-zinc-300 before:mx-auto before:block before:h-4.5 before:w-px before:bg-zinc-700 after:mx-auto after:block after:h-4.5 after:w-px after:bg-zinc-700">
+                      or
+                    </p>
+                  )}
                 </>
               ))}
             </div>
           ) : (
             <>
-              <h4 class="profile-plan-pricing">$0</h4>
-              <p class="description">forever</p>
+              <h4 class="text-3xl">$0</h4>
+              <p>forever</p>
             </>
           )}
         </div>
