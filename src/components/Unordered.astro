@@ -1,0 +1,11 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+type Props = HTMLAttributes<"ul">;
+
+const {
+  props: { class: className, ...props }
+} = Astro;
+---
+
+<ul class:list={["text-zinc-400 marker:text-emerald-400", className]} {...props}><slot /></ul>
