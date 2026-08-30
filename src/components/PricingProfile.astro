@@ -12,9 +12,9 @@ import { formatPrice, intervalToText } from "#src/lib/pricing/utils";
     profilePricingEntries.map(([id, plan]) => (
       <article class:list={["profile-plan", "profile-plan-" + id]} id={id}>
         <div class="mbe-5 text-center">
-          <h3 class="text-3xl text-zinc-300 mbe-4 mbs-5">{id[0]?.toUpperCase() + id.substring(1).toLowerCase()}</h3>
+          <h3 class="mbs-5 mbe-4 text-3xl text-zinc-300">{id[0]?.toUpperCase() + id.substring(1).toLowerCase()}</h3>
           {plan.prices?.length ? (
-            <div class="flex justify-center items-center">
+            <div class="flex items-center justify-center">
               {plan.prices.map((price, i) => (
                 <>
                   <div class="flex-1">
@@ -55,7 +55,7 @@ import { formatPrice, intervalToText } from "#src/lib/pricing/utils";
   }
 </div>
 
-<style lang="scss">
+<style>
   .description {
     margin: 0;
   }
@@ -88,11 +88,10 @@ import { formatPrice, intervalToText } from "#src/lib/pricing/utils";
           0% 57.51%
         );
         content: "";
-        $size: 0.75em;
         margin-inline-end: 0.625em;
         background: var(--color-valid);
-        width: $size;
-        height: $size;
+        width: 0.75em;
+        height: 0.75em;
       }
     }
   }
@@ -170,8 +169,7 @@ import { formatPrice, intervalToText } from "#src/lib/pricing/utils";
 
   @media (width >= 52em) {
     .profile-plans {
-      $template-column: 23em;
-      grid-template-columns: $template-column $template-column;
+      grid-template-columns: 23em 23em;
       justify-content: center;
     }
   }

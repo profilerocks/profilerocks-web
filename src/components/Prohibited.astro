@@ -4,7 +4,7 @@ import { reportCategoriesDataEntries } from "#src/lib/report";
 
 <ul>
   {
-    reportCategoriesDataEntries.map(([_key, value]) => (
+    reportCategoriesDataEntries.map(([, value]) => (
       <li>
         {value.description ? (
           <>
