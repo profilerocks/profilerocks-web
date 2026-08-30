@@ -3,7 +3,7 @@
  * @type {import("prettier").Config}
  */
 const prettierConfig = {
-  plugins: ["prettier-plugin-astro", "prettier-plugin-tailwindcss"],
+  plugins: ["prettier-plugin-astro", "prettier-plugin-css-order", "prettier-plugin-tailwindcss"],
   overrides: [
     {
       files: "*.astro",
@@ -17,7 +17,7 @@ const prettierConfig = {
   useTabs: false,
   semi: true,
   singleQuote: false,
-  quoteProps: "consistent",
+  quoteProps: "as-needed",
   jsxSingleQuote: false,
   trailingComma: "none",
   bracketSpacing: true,

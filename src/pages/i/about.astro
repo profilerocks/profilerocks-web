@@ -1,6 +1,7 @@
 ---
 import { PLATFORM_DESCRIPTION, PLATFORM_NAME } from "astro:env/client";
 import ArticleLayout from "#src/layouts/ArticleLayout.astro";
+import Link from "#src/components/Link.astro";
 ---
 
 <ArticleLayout title="About">
@@ -10,7 +11,7 @@ import ArticleLayout from "#src/layouts/ArticleLayout.astro";
   </hgroup>
 
   <p class="mbs-4 text-zinc-300">
-    Created by <a href="https://ssbit01.github.io/" target="_blank" rel="noopener noreferrer">Stefan Samson</a>, <strong
+    Created by <Link href="https://ssbit01.github.io/" target="_blank" rel="noopener noreferrer">Stefan Samson</Link>, <strong
       >profile.rocks</strong
     > was born out of a simple need: the ability to create and publish a fully functional micro-page directly from any device, from a mobile phone
     to a computer, without restrictions.

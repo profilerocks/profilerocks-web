@@ -54,8 +54,8 @@ import MainLayout from "#src/layouts/MainLayout.astro";
 
   .feature-card {
     display: flex;
-    gap: 1.5em;
     position: relative;
+    gap: 1.5em;
     margin: 0;
     h2 {
       display: flex;
@@ -76,12 +76,12 @@ import MainLayout from "#src/layouts/MainLayout.astro";
        * Use pseudo-element instead of border because padding has no effect to elements with position absolute.
        */
       &::before {
-        content: "";
-        height: 0.0625em;
-        width: 100%;
-        background: var(--color-border);
         position: absolute;
         inset-block-start: -1.375em;
+        background: var(--color-border);
+        width: 100%;
+        height: 0.0625em;
+        content: "";
       }
     }
   }
@@ -98,25 +98,25 @@ import MainLayout from "#src/layouts/MainLayout.astro";
 
   .grid-features {
     display: grid;
-    gap: 2.75em;
     position: relative;
+    gap: 2.75em;
+    margin-inline: auto;
     margin-block: 5em 1em;
     max-width: max-content;
-    margin-inline: auto;
   }
 
   .link-get-started {
+    margin-inline: auto;
     margin-block-start: 2.5em;
     font-size: 1.25em;
-    margin-inline: auto;
   }
 
   .home {
     display: flex;
     flex-direction: column;
     align-items: center;
-    max-width: 100em;
     margin-inline: auto;
+    max-width: 100em;
   }
 
   .home-description {
@@ -170,26 +170,26 @@ import MainLayout from "#src/layouts/MainLayout.astro";
 
     .feature-icon {
       position: static;
-      background: var(--color-input);
-      padding: 0.75em;
       border: 2px solid var(--color-border);
       border-radius: 50%;
+      background: var(--color-input);
+      padding: 0.75em;
     }
 
     .grid-features {
       &::before {
-        content: "";
         position: absolute;
         inset-inline-start: 1.8125em;
+        background: var(--color-border);
         width: 0.15em;
         height: 80%;
-        background: var(--color-border);
+        content: "";
       }
     }
 
     .link-get-started {
-      text-align: center;
       max-width: 20em;
+      text-align: center;
     }
 
     .profile-img {

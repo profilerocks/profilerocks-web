@@ -10,7 +10,7 @@ import reportCategories from "#shared/report.json";
  * @type {Record<string,ReportCategory>}
  */
 export const reportCategoriesData = {
-  "abuse": {
+  abuse: {
     title: "Abuse",
     description: "Cruelty, exploitation, or promotion of harm against people or other living beings."
   },
@@ -18,23 +18,23 @@ export const reportCategoriesData = {
     title: "Age restricted content",
     description: "Including, but not limited to, pornography."
   },
-  "confusing": {
+  confusing: {
     title: "Confusing links",
     description: "Links that are intentionally confusing, misleading, or fraudulent."
   },
-  "fraud": {
+  fraud: {
     title: "Scam or fraud",
     description: "Deceiving users for financial gain."
   },
-  "harassment": {
+  harassment: {
     title: "Harassment",
     description: "Targeted insults or hate speech."
   },
-  "illegal": {
+  illegal: {
     title: "Illegal goods or services",
     description: "Sale of drugs, weapons, or regulated items without permits."
   },
-  "impersonation": {
+  impersonation: {
     title: "Impersonation",
     description: "Falsely claiming to be another person or entity."
   },
@@ -42,11 +42,11 @@ export const reportCategoriesData = {
     title: "Intellectual property infringement",
     description: "Posting content you do not own or have rights to."
   },
-  "misinformation": {
+  misinformation: {
     title: "Misinformation",
     description: "Spreading false or misleading information that could cause harm or confusion."
   },
-  "phishing": {
+  phishing: {
     title: "Phishing",
     description: "Attempting to steal user credentials or data."
   },
@@ -54,7 +54,7 @@ export const reportCategoriesData = {
     title: "Self-harm",
     description: "Content that encourages or promotes self-injury or suicide."
   },
-  "violent": {
+  violent: {
     title: "Violent content",
     description: "Promoting violence or graphic depictions of harm."
   }
