@@ -1,5 +1,7 @@
 ---
 import { PLATFORM_NAME } from "astro:env/client";
+import Link from "#src/components/Link.astro";
+import Summary from "#src/components/Summary.astro";
 import MainLayout from "#src/layouts/MainLayout.astro";
 ---
 
@@ -23,114 +25,32 @@ import MainLayout from "#src/layouts/MainLayout.astro";
 </script>
 
 <MainLayout title="FAQs">
-  <h1>Frequently Asked Questions</h1>
-  <section class="faqs">
-    <details id="details-external-content">
-      <summary>Which websites are supported for external content?</summary>
-      <p id="link-preview-response">
-        <strong>{PLATFORM_NAME}</strong> utilizes the <a
+  <h1 class="mbs-2 mbe-4 text-center text-3xl">Frequently Asked Questions</h1>
+  <section
+    class="mx-auto max-w-3xl *:scroll-mbs-12.5 *:border-be *:border-be-zinc-700 *:details-content:h-0 *:details-content:overflow-clip *:details-content:opacity-0 *:details-content:transition-all *:details-content:transition-discrete *:open:details-content:h-auto *:open:details-content:opacity-100"
+    style={{ "interpolate-size": "allow-keywords" }}
+  >
+    <details class="group" id="details-external-content">
+      <Summary>Which websites are supported for external content?</Summary>
+      <p class="text-zinc-300">
+        <strong>{PLATFORM_NAME}</strong> utilizes the <Link
           href="https://www.npmjs.com/package/link-to-iframe"
           target="_blank"
-          rel="noopener noreferrer">link-to-iframe</a
+          rel="noopener noreferrer">link-to-iframe</Link
         > library to power profile link previews.
       </p>
-      <p>
-        A comprehensive list of supported platforms is available in its <a
+      <p class="pbs-2 pbe-4 text-zinc-300">
+        A comprehensive list of supported platforms is available in its <Link
           href="https://github.com/crisp-oss/link-to-iframe?tab=readme-ov-file#supported-services"
           target="_blank"
-          rel="noopener noreferrer">official documentation</a
+          rel="noopener noreferrer">official documentation</Link
         >.
       </p>
     </details>
-    <details id="details-subscription-all-profiles">
-      <summary>Does a premium subscription apply to all profiles in my account?</summary>
-      <p>No, premium subscriptions are profile-specific.</p>
-      <p>To access premium features on multiple profiles, each one must be upgraded individually.</p>
+    <details class="group" id="details-subscription-all-profiles">
+      <Summary>Does a premium subscription apply to all profiles in my account?</Summary>
+      <p class="text-zinc-300">No, premium subscriptions are tied to a single profile.</p>
+      <p class="pbs-2 pbe-4 text-zinc-300">To access premium features on multiple profiles, each one must be upgraded individually.</p>
     </details>
   </section>
 </MainLayout>
-
-<style>
-  .faqs {
-    /**
-     * Useful for smooth transitions between different units (e.g. px to rem).
-     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/interpolate-size
-     */
-    interpolate-size: allow-keywords;
-    display: grid;
-    margin-inline: auto;
-    max-width: 48em;
-    > details {
-      border-block-end: thin solid var(--color-border);
-      scroll-margin-block-start: 3.125em;
-      > summary {
-        display: flex;
-        align-items: flex-start;
-        gap: 1em;
-        cursor: pointer;
-        padding-block: 1em;
-        font-size: clamp(1.125em, 4vw, 1.25em);
-        list-style: none;
-        user-select: none;
-        &::after {
-          content: ">";
-          $size: 1.5em;
-          transition-duration: 0.15s;
-          transition-property: background, color, rotate;
-          margin-inline-start: auto;
-          border-radius: 50%;
-          min-width: $size;
-          min-height: $size;
-          color: var(--color-3);
-          line-height: 1.4375em;
-          text-align: center;
-        }
-        &:is(:hover, :active) {
-          &::after {
-            background: var(--color-input-hover);
-            color: var(--color-2);
-          }
-        }
-        &:active {
-          &::after {
-            background: var(--color-input-active);
-            color: var(--color);
-          }
-        }
-      }
-      > p {
-        margin-block: 0.5em;
-        color: var(--color-3);
-        &:first-of-type {
-          margin-block-start: 0;
-        }
-        &:last-of-type {
-          margin-block-end: 0;
-          /**
-           * At least in Chrome, margin-block-end is not being animated when the details are closed, even with box-sizing:border-box.
-           * That's the reason why padding-block-end is used instead.
-           */
-          padding-block-end: 1.5em;
-        }
-      }
-      &::details-content {
-        opacity: 0;
-        transition:
-          height 0.15s,
-          opacity 0.15s,
-          content-visibility 0.15s allow-discrete;
-        height: 0;
-        overflow: clip;
-      }
-      &[open] {
-        > summary::after {
-          rotate: 90deg;
-        }
-        &::details-content {
-          opacity: 1;
-          height: auto;
-        }
-      }
-    }
-  }
-</style>
