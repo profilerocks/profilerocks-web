@@ -1,4 +1,4 @@
-const formatPrice = {
+const formatPrice = Object.freeze({
   /**
    * @function usd
    * @param {number} ammount
@@ -7,7 +7,7 @@ const formatPrice = {
   usd(ammount) {
     return "$" + ammount / 100;
   }
-};
+});
 
 const intervalToText = Object.freeze({
   month: "per month"
