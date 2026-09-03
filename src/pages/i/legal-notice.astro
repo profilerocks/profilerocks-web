@@ -1,6 +1,7 @@
 ---
 import { LEGAL_DATA, PLATFORM_NAME } from "astro:env/client";
 import Link from "#src/components/Link.astro";
+import Strong from "#src/components/Strong.astro";
 import ArticleLayout from "#src/layouts/ArticleLayout.astro";
 
 const TITLE = "Legal Notice";
@@ -13,12 +14,12 @@ const TITLE = "Legal Notice";
 
   <h1 class="text-center text-3xl">{TITLE}</h1>
 
-  <p class="my-6 text-zinc-300 select-none">{LEGAL_DATA}</p>
+  <p class="my-6 text-zinc-400 select-none">{LEGAL_DATA}</p>
 
-  <h2 class="text-2xl">General conditions of use</h2>
-  <p class="mbs-3 text-zinc-300">
-    This Legal Notice governs the access and use of <strong class="font-medium text-zinc-200">{PLATFORM_NAME}</strong>. By using the
-    platform, you acquire the status of "User" and accept the{" "}
+  <h2 class="text-2xl text-zinc-300">General conditions of use</h2>
+  <p class="mbs-3 text-zinc-400">
+    This Legal Notice governs the access and use of <Strong>{PLATFORM_NAME}</Strong>. By using the platform, you acquire the status of
+    "User" and accept the{" "}
     <Link href="/i/terms" rel="terms-of-service">
       terms of service
     </Link>{" "}
@@ -29,15 +30,15 @@ const TITLE = "Legal Notice";
     .
   </p>
 
-  <h2 class="mbs-6 text-2xl">Intellectual property</h2>
-  <p class="mbs-3 text-zinc-300">
+  <h2 class="mbs-6 text-2xl text-zinc-300">Intellectual property</h2>
+  <p class="mbs-3 text-zinc-400">
     All content and design are protected by intellectual property rights. Unauthorised reproduction is prohibited.
   </p>
 
-  <h2 class="mbs-6 text-2xl">Limitation of liability</h2>
-  <p class="my-3 text-zinc-300">
-    <strong class="font-medium text-zinc-200">{PLATFORM_NAME}</strong> acts only as a hosting and linking service. The user agrees to use
-    the platform in accordance with the Law and these terms. Users are solely responsible for the content they publish on their profiles.
+  <h2 class="mbs-6 text-2xl text-zinc-300">Limitation of liability</h2>
+  <p class="my-3 text-zinc-400">
+    <Strong>{PLATFORM_NAME}</Strong> acts only as a hosting and linking service. The user agrees to use the platform in accordance with the
+    Law and these terms. Users are solely responsible for the content they publish on their profiles.
   </p>
 
   <div class="rounded-xl border-rose-500 bg-rose-950 p-3 sm:rounded-s-xs sm:border-s-4 sm:px-4">
@@ -49,6 +50,6 @@ const TITLE = "Legal Notice";
     </p>
   </div>
 
-  <h2 class="mbs-6 text-2xl">Changes to this Legal Notice</h2>
-  <p class="mbs-3 text-zinc-300">This Legal Notice may be updated from time to time.</p>
+  <h2 class="mbs-6 text-2xl text-zinc-300">Changes to this Legal Notice</h2>
+  <p class="mbs-3 text-zinc-400">This Legal Notice may be updated from time to time.</p>
 </ArticleLayout>
