@@ -4,13 +4,13 @@ import { PLATFORM_NAME } from "astro:env/client";
 import LinkNext from "#src/components/LinkNext.astro";
 import Links from "#src/components/Links.astro";
 import Social from "#src/components/Social.astro";
-import Main from "#src/layouts/MainLayout.astro";
+import MainLayout from "#src/layouts/MainLayout.astro";
 
 const iconDimension = "1.25em";
 ---
 
-<Main title="Help">
-  <h1 class="mbs-2 text-center text-3xl sm:mbs-4">Need a hand?</h1>
+<MainLayout title="Help">
+  <h1 class="text-center text-3xl">Need a hand?</h1>
   <div
     class="mx-auto mbs-6 flex max-w-4xl flex-col gap-x-12 gap-y-8 *:flex *:flex-1 *:flex-col *:border-bs *:border-bs-emerald-400 md:flex-row"
   >
@@ -45,4 +45,4 @@ const iconDimension = "1.25em";
   <Links class="mbs-4 flex justify-center gap-5 text-lg select-none">
     <Social class="social" />
   </Links>
-</Main>
+</MainLayout>
