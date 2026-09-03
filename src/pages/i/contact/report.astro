@@ -208,10 +208,10 @@ const emailReportHref = `mailto:${emails.report}`;
 
   <p>
     Ensuring a safe and trustworthy online environment is essential. If you come across a profile that violates community guidelines or
-    engages in harmful activity, you can report it by filling out the form below or sending an email to <a
-      href={emailReportHref}
-      id="a-send-email">{emails.report}</a
-    >
+    engages in harmful activity, you can report it by filling out the form below or sending an email to{" "}
+    <a href={emailReportHref} id="a-send-email">
+      {emails.report}
+    </a>
   </p>
 
   <p class="p-thanks">Thank you for your collaboration!</p>
@@ -227,24 +227,24 @@ const emailReportHref = `mailto:${emails.report}`;
       <div>
         <p>Categories:</p>
         <div class="categories">
-          {
-            reportCategoriesDataEntries.map(([key, value]) => (
-              <div class="checkbox-group" title={value.description}>
-                <>
-                  <input id={key} name="category" type="checkbox" value={key} />
-                  <label for={key}>{value.title}</label>
-                </>
-              </div>
-            ))
-          }
+          {reportCategoriesDataEntries.map(([key, value]) => (
+            <div class="checkbox-group" title={value.description}>
+              <>
+                <input id={key} name="category" type="checkbox" value={key} />
+                <label for={key}>{value.title}</label>
+              </>
+            </div>
+          ))}
           <div
             class="checkbox-group"
             title="CSAM reports are anonymous by default. If the user does not provide an email address and name, they will be set to 'Anonymous'."
           >
-            <input id="csam" name="category" type="checkbox" value="csam" /><label for="csam">Child sexual abuse material (CSAM)</label>
+            <input id="csam" name="category" type="checkbox" value="csam" />
+            <label for="csam">Child sexual abuse material (CSAM)</label>
           </div>
           <div class="checkbox-group">
-            <input id="other" name="category" type="checkbox" value="other" /><label for="other">Other</label>
+            <input id="other" name="category" type="checkbox" value="other" />
+            <label for="other">Other</label>
           </div>
         </div>
       </div>
@@ -261,16 +261,23 @@ const emailReportHref = `mailto:${emails.report}`;
         <textarea id="details" maxlength="8000" name="details"></textarea>
       </div>
       <div class="checkbox-group" id="faith-checkbox-group">
-        <input id="faith" name="faith" required type="checkbox" value="1" /><label for="faith"
-          >I submit this report in good faith and agree to the <a href="/i/privacy" target="_blank">Privacy Policy</a> and <a
-            href="/i/terms"
-            target="_blank">Terms of Service</a
-          ></label
-        >
+        <input id="faith" name="faith" required type="checkbox" value="1" />
+        <label for="faith">
+          I submit this report in good faith and agree to the{" "}
+          <a href="/i/privacy" target="_blank">
+            Privacy Policy
+          </a>{" "}
+          and{" "}
+          <a href="/i/terms" target="_blank">
+            Terms of Service
+          </a>
+        </label>
       </div>
       <div class="flex flex-wrap-reverse items-center justify-between gap-7">
         <LinkBack href="/i/contact">Other contact options</LinkBack>
-        <button id="btn-submit-report" type="submit">Submit report</button>
+        <button id="btn-submit-report" type="submit">
+          Submit report
+        </button>
       </div>
     </fieldset>
     <input type="checkbox" name="necessary" value="1" id="necessary" />

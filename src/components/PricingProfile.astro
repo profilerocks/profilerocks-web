@@ -17,9 +17,7 @@ const components = Object.freeze({
 });
 ---
 
-<div
-  class="flex flex-col justify-center gap-8 *:flex *:basis-sm *:flex-col *:border-bs *:border-zinc-700 *:pbs-4 sm:px-2 sm:*:border-x sm:*:px-4 md:flex-row"
->
+<div class="flex flex-col justify-center gap-8 *:flex *:basis-sm *:flex-col *:border-bs *:border-zinc-700 *:pbs-4 sm:px-2 sm:*:border-x sm:*:px-4 md:flex-row">
   <article id="free">
     <div class="mbe-5 text-center">
       <h3 class="text-3xl text-zinc-300">Free</h3>
@@ -37,23 +35,21 @@ const components = Object.freeze({
     <div class="mbe-5 text-center">
       <h3 class="text-3xl text-yellow-400">Premium</h3>
       <div class="mbs-4 flex items-center justify-center">
-        {
-          pricing.profile.premium.prices.map((price, i) => (
-            <>
-              <div class="flex-1">
-                {/* @ts-expect-error: price.recurringInterval is not defined in price */}
-                <h4 class="text-3xl">{formatPrice[price.priceCurrency]?.(price.priceAmount)}</h4>
-                {/* @ts-expect-error: price.recurringInterval is not defined in price */}
-                <p class="text-zinc-300">{intervalToText[price.recurringInterval] || "forever"}</p>
-              </div>
-              {i < pricing.profile.premium.prices.length - 1 && (
-                <p class="text-zinc-300 before:mx-auto before:block before:h-4.5 before:w-px before:bg-zinc-600 after:mx-auto after:block after:h-4.5 after:w-px after:bg-zinc-600">
-                  or
-                </p>
-              )}
-            </>
-          ))
-        }
+        {pricing.profile.premium.prices.map((price, i) => (
+          <>
+            <div class="flex-1">
+              {/* @ts-expect-error: price.recurringInterval is not defined in price */}
+              <h4 class="text-3xl">{formatPrice[price.priceCurrency]?.(price.priceAmount)}</h4>
+              {/* @ts-expect-error: price.recurringInterval is not defined in price */}
+              <p class="text-zinc-300">{intervalToText[price.recurringInterval] || "forever"}</p>
+            </div>
+            {i < pricing.profile.premium.prices.length - 1 && (
+              <p class="text-zinc-300 before:mx-auto before:block before:h-4.5 before:w-px before:bg-zinc-600 after:mx-auto after:block after:h-4.5 after:w-px after:bg-zinc-600">
+                or
+              </p>
+            )}
+          </>
+        ))}
       </div>
     </div>
     <LinkNext href={HREF_PROFILE_CREATE}>

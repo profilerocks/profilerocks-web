@@ -42,5 +42,7 @@ if (props.href) {
 <a
   {...props}
   aria-current={active ? "page" : "false"}
-  class:list={[className, active && "!text-emerald-400 hover:!text-emerald-300 active:!text-emerald-200"]}><slot /></a
+  class:list={[className, active && "!text-emerald-400 hover:!text-emerald-300 active:!text-emerald-200"]}
 >
+  <slot />
+</a>

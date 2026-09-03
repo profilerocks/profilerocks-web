@@ -9,6 +9,7 @@ type Props = ComponentProps<typeof LinkPillSolid>;
 const { props } = Astro;
 ---
 
-<LinkPillSolid {...props}
-  ><slot>Next</slot><Icon class="ms-auto drop-shadow-xs drop-shadow-black" name="arrow/right" size="1.25em" /></LinkPillSolid
->
+<LinkPillSolid {...props}>
+  <slot>Next</slot>
+  <Icon class="ms-auto drop-shadow-xs drop-shadow-black" name="arrow/right" size="1.25em" />
+</LinkPillSolid>

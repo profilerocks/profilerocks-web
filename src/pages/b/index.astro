@@ -8,32 +8,30 @@ import MainLayout from "#src/layouts/MainLayout.astro";
 <MainLayout>
   <h1>Blog</h1>
   <ul class="blog-entries">
-    {
-      blogCollection.map(post => {
-        const href = "/b/" + post.id;
+    {blogCollection.map(post => {
+      const href = "/b/" + post.id;
 
-        return (
-          <li class="blog-entry">
-            <p class="blog-entry-meta">
-              <>
-                <time datetime={post.data.date.toISOString().split("T")[0]}>{post.data.date.toDateString()}</time>
-                <span title="Author">{post.data.author}</span>
-              </>
-            </p>
-            <h2 class="blog-entry-title">
-              <a href={href} class="blog-entry-title-link">
-                {post.data.title}
-              </a>
-            </h2>
-            <p class="blog-entry-description">{post.data.description}</p>
-            <LinkNext href={href}>
-              <Icon name="page" size="1.25em" />
-              Read more
-            </LinkNext>
-          </li>
-        );
-      })
-    }
+      return (
+        <li class="blog-entry">
+          <p class="blog-entry-meta">
+            <>
+              <time datetime={post.data.date.toISOString().split("T")[0]}>{post.data.date.toDateString()}</time>
+              <span title="Author">{post.data.author}</span>
+            </>
+          </p>
+          <h2 class="blog-entry-title">
+            <a {href} class="blog-entry-title-link">
+              {post.data.title}
+            </a>
+          </h2>
+          <p class="blog-entry-description">{post.data.description}</p>
+          <LinkNext {href}>
+            <Icon name="page" size="1.25em" />
+            Read more
+          </LinkNext>
+        </li>
+      );
+    })}
   </ul>
 </MainLayout>
 

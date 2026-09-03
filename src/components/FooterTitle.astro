@@ -6,4 +6,7 @@ interface Props {
 }
 ---
 
-<h3 class="flex gap-2 text-base sm:text-lg"><Icon class="text-emerald-400" name={Astro.props.icon} size="1.25em" /><slot /></h3>
+<h3 class="flex gap-2 text-base sm:text-lg">
+  <Icon class="text-emerald-400" name={Astro.props.icon} size="1.25em" />
+  <slot />
+</h3>

@@ -14,29 +14,62 @@ const iconDimension = "1.25em";
     <article>
       <FooterTitle icon="content">General</FooterTitle>
       <Links>
-        <LinkActive href="/b"><Icon name="blog" size={iconDimension} />Blog</LinkActive>
-        <LinkActive href="/i/pricing"><Icon name="pricing" size={iconDimension} />Pricing</LinkActive>
-        <LinkActive href="/i/security"><Icon name="security" size={iconDimension} />Security</LinkActive>
-        <LinkActive href="/i/about"><Icon name="info" size={iconDimension} />About</LinkActive>
+        <LinkActive href="/b">
+          <Icon name="blog" size={iconDimension} />
+          Blog
+        </LinkActive>
+        <LinkActive href="/i/pricing">
+          <Icon name="pricing" size={iconDimension} />
+          Pricing
+        </LinkActive>
+        <LinkActive href="/i/security">
+          <Icon name="security" size={iconDimension} />
+          Security
+        </LinkActive>
+        <LinkActive href="/i/about">
+          <Icon name="info" size={iconDimension} />
+          About
+        </LinkActive>
       </Links>
     </article>
     <article>
       <FooterTitle icon="support">Support</FooterTitle>
       <Links>
-        <LinkActive href="/i/faq"
-          ><Icon name="faq" size={iconDimension} /><abbr class="no-underline" title="Frequently Asked Questions">FAQs</abbr></LinkActive
-        >
-        <LinkActive href="/i/contact"><Icon name="email" size={iconDimension} />Contact</LinkActive>
-        <LinkActive href="/i/help" rel="help"><Icon name="help" size={iconDimension} />Help</LinkActive>
+        <LinkActive href="/i/faq">
+          <Icon name="faq" size={iconDimension} />
+          <abbr class="no-underline" title="Frequently Asked Questions">
+            FAQs
+          </abbr>
+        </LinkActive>
+        <LinkActive href="/i/contact">
+          <Icon name="email" size={iconDimension} />
+          Contact
+        </LinkActive>
+        <LinkActive href="/i/help" rel="help">
+          <Icon name="help" size={iconDimension} />
+          Help
+        </LinkActive>
       </Links>
     </article>
     <article>
       <FooterTitle icon="legal">Legal</FooterTitle>
       <Links>
-        <LinkActive href="/i/privacy" rel="privacy-policy"><Icon name="policy" size={iconDimension} />Privacy Policy</LinkActive>
-        <LinkActive href="/i/terms" rel="terms-of-service"><Icon name="agreement" size={iconDimension} />Terms of Service</LinkActive>
-        <LinkActive href="/i/cookie"><Icon name="cookie" size={iconDimension} />Cookie Policy</LinkActive>
-        <LinkActive href="/i/legal-notice"><Icon name="page" size={iconDimension} />Legal Notice</LinkActive>
+        <LinkActive href="/i/privacy" rel="privacy-policy">
+          <Icon name="policy" size={iconDimension} />
+          Privacy Policy
+        </LinkActive>
+        <LinkActive href="/i/terms" rel="terms-of-service">
+          <Icon name="agreement" size={iconDimension} />
+          Terms of Service
+        </LinkActive>
+        <LinkActive href="/i/cookie">
+          <Icon name="cookie" size={iconDimension} />
+          Cookie Policy
+        </LinkActive>
+        <LinkActive href="/i/legal-notice">
+          <Icon name="page" size={iconDimension} />
+          Legal Notice
+        </LinkActive>
       </Links>
     </article>
     <article>
@@ -47,8 +80,7 @@ const iconDimension = "1.25em";
     </article>
   </nav>
   <p class="mbs-8 text-center text-zinc-500">
-    Copyright © <span id="year">{Math.max(new Date().getUTCFullYear(), 2026)}</span>{" "}
-    {PLATFORM_NAME}
+    Copyright © <span id="year">{Math.max(new Date().getUTCFullYear(), 2026)}</span> {PLATFORM_NAME}
   </p>
 </footer>
 

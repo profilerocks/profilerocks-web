@@ -3,17 +3,15 @@ import { reportCategoriesDataEntries } from "#src/lib/report";
 ---
 
 <ul>
-  {
-    reportCategoriesDataEntries.map(([, value]) => (
-      <li>
-        {value.description ? (
-          <>
-            <strong>{value.title}:</strong> {value.description}
-          </>
-        ) : (
-          <strong>{value.title}</strong>
-        )}
-      </li>
-    ))
-  }
+  {reportCategoriesDataEntries.map(([, value]) => (
+    <li>
+      {value.description ? (
+        <>
+          <strong>{value.title}:</strong> {value.description}
+        </>
+      ) : (
+        <strong>{value.title}</strong>
+      )}
+    </li>
+  ))}
 </ul>

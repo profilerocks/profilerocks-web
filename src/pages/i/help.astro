@@ -11,32 +11,58 @@ const iconDimension = "1.25em";
 
 <MainLayout title="Help">
   <h1 class="text-center text-3xl">Need a hand?</h1>
-  <div
-    class="mx-auto mbs-6 flex max-w-4xl flex-col gap-x-12 gap-y-8 *:flex *:flex-1 *:flex-col *:border-bs *:border-bs-emerald-400 md:flex-row"
-  >
+  <div class="mx-auto mbs-6 flex max-w-4xl flex-col gap-x-12 gap-y-8 *:flex *:flex-1 *:flex-col *:border-bs *:border-bs-emerald-400 md:flex-row">
     <section>
       <hgroup>
-        <h2 class="my-2 text-center text-xl text-emerald-400"><abbr title="Frequently Asked Questions">FAQs</abbr> page</h2>
+        <h2 class="my-2 text-center text-xl text-emerald-400">
+          <abbr title="Frequently Asked Questions">FAQs</abbr> page
+        </h2>
         <p class="mx-auto mbe-4 max-w-max text-zinc-300">
-          If you have a question, take a moment to visit the <abbr title="Frequently Asked Questions">FAQs</abbr> page; it covers the most common
-          topics and issues. You might find your answer there right away!
+          If you have a question, take a moment to visit the <abbr title="Frequently Asked Questions">FAQs</abbr> page; it covers the most
+          common topics and issues. You might find your answer there right away!
         </p>
       </hgroup>
-      <LinkNext href="/i/faq" class="mbs-auto"><Icon name="faq" size={iconDimension} />Visit the FAQs page</LinkNext>
+      <LinkNext href="/i/faq" class="mbs-auto">
+        <Icon name="faq" size={iconDimension} />
+        Visit the FAQs page
+      </LinkNext>
     </section>
     <section>
       <hgroup>
         <h2 class="my-2 text-center text-xl text-emerald-400">Still Need Help?</h2>
         <p class="mx-auto mbe-4 max-w-max text-zinc-300">Feel free to contact</p>
       </hgroup>
-      <LinkNext class="mbs-auto" href="/i/contact"><Icon name="email" size={iconDimension} />Visit the contact page</LinkNext>
+      <LinkNext class="mbs-auto" href="/i/contact">
+        <Icon name="email" size={iconDimension} />
+        Visit the contact page
+      </LinkNext>
     </section>
   </div>
   <ul class="mx-auto mbs-10 grid max-w-4xl gap-3 border-bs border-bs-emerald-400 pbs-8 sm:grid-cols-2 sm:gap-x-6 sm:gap-y-4 md:gap-x-12">
-    <li><LinkNext href="/i/policy"><Icon name="policy" size={iconDimension} />Privacy policy</LinkNext></li>
-    <li><LinkNext href="/i/terms"><Icon name="agreement" size={iconDimension} />Terms and conditions</LinkNext></li>
-    <li><LinkNext href="/i/security"><Icon name="security" size={iconDimension} />Security</LinkNext></li>
-    <li><LinkNext href="/i/about"><Icon name="info" size={iconDimension} />About {PLATFORM_NAME}</LinkNext></li>
+    <li>
+      <LinkNext href="/i/policy">
+        <Icon name="policy" size={iconDimension} />
+        Privacy policy
+      </LinkNext>
+    </li>
+    <li>
+      <LinkNext href="/i/terms">
+        <Icon name="agreement" size={iconDimension} />
+        Terms and conditions
+      </LinkNext>
+    </li>
+    <li>
+      <LinkNext href="/i/security">
+        <Icon name="security" size={iconDimension} />
+        Security
+      </LinkNext>
+    </li>
+    <li>
+      <LinkNext href="/i/about">
+        <Icon name="info" size={iconDimension} />
+        About {PLATFORM_NAME}
+      </LinkNext>
+    </li>
   </ul>
   <hgroup class="mbs-10">
     <h2 class="text-center text-2xl text-emerald-400">Social media</h2>

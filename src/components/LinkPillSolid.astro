@@ -9,4 +9,6 @@ const {
 } = Astro;
 ---
 
-<LinkPill class:list={["bg-zinc-800 text-zinc-400 hover:text-zinc-300 active:text-zinc-200", className]} {...props}><slot /></LinkPill>
+<LinkPill class:list={["bg-zinc-800 text-zinc-400 hover:text-zinc-300 active:text-zinc-200", className]} {...props}>
+  <slot />
+</LinkPill>

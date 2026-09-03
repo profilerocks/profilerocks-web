@@ -3,7 +3,7 @@
  * @type {import("prettier").Config}
  */
 const prettierConfig = {
-  plugins: ["prettier-plugin-astro", "prettier-plugin-css-order", "prettier-plugin-tailwindcss"],
+  plugins: ["prettier-plugin-astro", "prettier-plugin-tailwindcss"],
   overrides: [
     {
       files: "*.astro",
@@ -34,7 +34,8 @@ const prettierConfig = {
   /**
    * `prettier-plugin-astro` custom properties
    */
-  astroAllowShorthand: true
+  astroAllowShorthand: true,
+  astroCompressHTML: "jsx"
 };
 
 export default prettierConfig;

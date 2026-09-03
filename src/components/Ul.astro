@@ -8,4 +8,6 @@ const {
 } = Astro;
 ---
 
-<ul class:list={["list-disc space-y-1.5 ps-8 pe-2 text-zinc-400 marker:text-emerald-400", className]} {...props}><slot /></ul>
+<ul class:list={["list-disc space-y-1.5 ps-8 pe-2 text-zinc-400 marker:text-emerald-400", className]} {...props}>
+  <slot />
+</ul>

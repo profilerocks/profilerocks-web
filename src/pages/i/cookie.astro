@@ -12,18 +12,18 @@ const CLOUDFLARE_COOKIE_POLICY = "https://www.cloudflare.com/cookie-policy/";
   <h1 class="text-center text-3xl">Cookie Policy</h1>
 
   <p class="my-4 text-zinc-300">
-    This platform uses "Strictly Necessary" cookies for authentication and via <Link
-      href={CLOUDFLARE_COOKIE_POLICY}
-      target="_blank"
-      rel="noopener noreferrer">Cloudflare</Link
-    > for security and performance. These do not require consent.
+    This platform uses "Strictly Necessary" cookies for authentication and via{" "}
+    <Link href={CLOUDFLARE_COOKIE_POLICY} target="_blank" rel="noopener noreferrer">
+      Cloudflare
+    </Link>{" "}
+    for security and performance. These do not require consent.
   </p>
 
   <h2 class="text-2xl">Third-Party Cookies</h2>
   <p class="my-3 text-zinc-300">
-    When a profile contains external content via iframes (e.g., a YouTube video), that external provider may set tracking cookies. <strong
-      class="font-medium text-zinc-200">{PLATFORM_NAME}</strong
-    > will provide a consent banner, to ensure these cookies are not set without user awareness and agreement.
+    When a profile contains external content via iframes (e.g., a YouTube video), that external provider may set tracking cookies.{" "}
+    <strong class="font-medium text-zinc-200">{PLATFORM_NAME}</strong> will provide a consent banner, to ensure these cookies are not set
+    without user awareness and agreement.
   </p>
   <p class="text-zinc-300">Users can change their mind later and revoke their consent by clicking "Cookie Preferences" in the footer.</p>
 
@@ -36,12 +36,15 @@ const CLOUDFLARE_COOKIE_POLICY = "https://www.cloudflare.com/cookie-policy/";
 
   <h2 class="mbs-4 text-2xl">More information</h2>
   <p class="my-3 text-zinc-300">
-    Full list of Cloudflare cookies: <Link href={CLOUDFLARE_COOKIE_POLICY} target="_blank" rel="noopener noreferrer"
-      >{CLOUDFLARE_COOKIE_POLICY}</Link
-    >
+    Full list of Cloudflare cookies:{" "}
+    <Link href={CLOUDFLARE_COOKIE_POLICY} target="_blank" rel="noopener noreferrer">
+      {CLOUDFLARE_COOKIE_POLICY}
+    </Link>
   </p>
 
-  <p class="text-zinc-300">For questions: <Link href={`mailto:${emails.contact}`}>{emails.contact}</Link></p>
+  <p class="text-zinc-300">
+    For questions: <Link href={`mailto:${emails.contact}`}>{emails.contact}</Link>
+  </p>
 
   <p class="mbs-6 text-zinc-500">Last updated: March 2026</p>
 </ArticleLayout>
