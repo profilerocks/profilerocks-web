@@ -16,7 +16,7 @@ import { formatPrice, intervalToText } from "#src/lib/pricing/utils";
       <p class="text-zinc-300">forever</p>
     </div>
     <LinkNext href={HREF_PROFILE_CREATE}>
-      <Icon name="premium" size="1.25em" />
+      <Icon class="drop-shadow-xs drop-shadow-black" name="premium" size="1.25em" />
       Continue
     </LinkNext>
     <Fragment set:html={markdownToHtml(free.profile.description.join("\n"))} />
@@ -26,25 +26,27 @@ import { formatPrice, intervalToText } from "#src/lib/pricing/utils";
     <div class="mbe-5 text-center">
       <h3 class="mbs-5 mbe-4 text-3xl text-yellow-400">Premium</h3>
       <div class="flex items-center justify-center">
-        {pricing.profile.premium.prices.map((price, i) => (
-          <>
-            <div class="flex-1">
-              {/* @ts-expect-error: price.recurringInterval is not defined in price */}
-              <h4 class="text-3xl">{formatPrice[price.priceCurrency]?.(price.priceAmount)}</h4>
-              {/* @ts-expect-error: price.recurringInterval is not defined in price */}
-              <p class="text-zinc-300">{intervalToText[price.recurringInterval] || "forever"}</p>
-            </div>
-            {i < pricing.profile.premium.prices.length - 1 && (
-              <p class="text-zinc-300 before:mx-auto before:block before:h-4.5 before:w-px before:bg-zinc-700 after:mx-auto after:block after:h-4.5 after:w-px after:bg-zinc-700">
-                or
-              </p>
-            )}
-          </>
-        ))}
+        {
+          pricing.profile.premium.prices.map((price, i) => (
+            <>
+              <div class="flex-1">
+                {/* @ts-expect-error: price.recurringInterval is not defined in price */}
+                <h4 class="text-3xl">{formatPrice[price.priceCurrency]?.(price.priceAmount)}</h4>
+                {/* @ts-expect-error: price.recurringInterval is not defined in price */}
+                <p class="text-zinc-300">{intervalToText[price.recurringInterval] || "forever"}</p>
+              </div>
+              {i < pricing.profile.premium.prices.length - 1 && (
+                <p class="text-zinc-300 before:mx-auto before:block before:h-4.5 before:w-px before:bg-zinc-700 after:mx-auto after:block after:h-4.5 after:w-px after:bg-zinc-700">
+                  or
+                </p>
+              )}
+            </>
+          ))
+        }
       </div>
     </div>
     <LinkNext href={HREF_PROFILE_CREATE}>
-      <Icon name="rocket" size="1.25em" />
+      <Icon class="drop-shadow-xs drop-shadow-black" name="rocket" size="1.25em" />
       Continue
     </LinkNext>
     <Fragment set:html={markdownToHtml(pricing.profile.premium.description.join("\n"))} />
