@@ -1,10 +1,11 @@
 ---
-import { Icon } from "astro-icon/components";
+
 import { HREF_PROFILE_CREATE, HREF_PROFILE_CREATE_PREMIUM } from "astro:env/client";
+import { Icon } from "astro-icon/components";
+import { Markdown } from "astro-remote";
 import free from "#shared/free.json";
 import pricing from "#shared/pricing.json";
 import LinkNext from "#src/components/LinkNext.astro";
-import markdownToHtml from "#src/lib/markdown";
 import { formatPrice, intervalToText } from "#src/lib/pricing/utils";
 ---
 
@@ -19,7 +20,7 @@ import { formatPrice, intervalToText } from "#src/lib/pricing/utils";
       <Icon class="drop-shadow-xs drop-shadow-black" name="premium" size="1.25em" />
       Continue
     </LinkNext>
-    <Fragment set:html={markdownToHtml(free.profile.description.join("\n"))} />
+    <Markdown content={free.profile.description.join("\n")} />
   </article>
 
   <article class="!border-yellow-400" id="premium">
@@ -49,6 +50,6 @@ import { formatPrice, intervalToText } from "#src/lib/pricing/utils";
       <Icon class="drop-shadow-xs drop-shadow-black" name="rocket" size="1.25em" />
       Continue
     </LinkNext>
-    <Fragment set:html={markdownToHtml(pricing.profile.premium.description.join("\n"))} />
+    <Markdown content={pricing.profile.premium.description.join("\n")} />
   </article>
 </div>
