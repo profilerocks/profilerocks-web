@@ -1,19 +1,19 @@
 ---
 import { PLATFORM_NAME } from "astro:env/client";
 import Link from "#src/components/Link.astro";
-import Ul from "#src/components/Ul.astro";
 import Prohibited from "#src/components/Prohibited.astro";
+import Strong from "#src/components/Strong.astro";
+import Ul from "#src/components/Ul.astro";
 import ArticleLayout from "#src/layouts/ArticleLayout.astro";
 ---
 
 <ArticleLayout title="Terms of Service">
   <h1 class="text-center text-3xl">Terms of Service</h1>
 
-  <h2 class="mbs-6 text-2xl">1. Acceptance of Terms</h2>
-  <p class="mbs-3 text-zinc-300">
-    By creating an account on <strong class="font-medium text-zinc-200">{PLATFORM_NAME}</strong>, you agree to these terms.{" "}
-    <strong class="font-medium text-zinc-200">{PLATFORM_NAME}</strong> has the right to suspend any account or profile that violates these
-    rules. Check the{" "}
+  <h2 class="mbs-6 text-2xl text-zinc-300">1. Acceptance of Terms</h2>
+  <p class="mbs-3 text-zinc-400">
+    By creating an account on <Strong>{PLATFORM_NAME}</Strong>, you agree to these terms. <Strong>{PLATFORM_NAME}</Strong> has the right to
+    suspend any account or profile that violates these rules. Check the{" "}
     <Link href="/i/privacy" rel="privacy-policy">
       {" "}
       privacy policy{" "}
@@ -21,76 +21,71 @@ import ArticleLayout from "#src/layouts/ArticleLayout.astro";
     for more information about how your data is handled.
   </p>
 
-  <h2 class="mbs-6 text-2xl">2. User Responsibilities</h2>
-  <p class="mbs-3 text-zinc-300">
+  <h2 class="mbs-6 text-2xl text-zinc-300">2. User Responsibilities</h2>
+  <p class="mbs-3 text-zinc-400">
     Users are responsible for the content they publish on their profiles. Users must not publish content that is illegal, offensive, or
-    violates the rights of others. <strong class="font-medium text-zinc-200">{PLATFORM_NAME}</strong> is not directed at anyone under the
-    age of 16.
+    violates the rights of others. <Strong>{PLATFORM_NAME}</Strong> is not directed at anyone under the age of 16.
   </p>
 
-  <h2 class="mbs-6 text-2xl">3. Prohibited Content and Conduct</h2>
-  <p class="mbs-3 text-zinc-300">
-    You may not use <strong class="font-medium text-zinc-200">{PLATFORM_NAME}</strong> for any illegal purposes. Prohibited content
-    includes, but is not limited to:
+  <h2 class="mbs-6 text-2xl text-zinc-300">3. Prohibited Content and Conduct</h2>
+  <p class="mbs-3 text-zinc-400">
+    You may not use <Strong>{PLATFORM_NAME}</Strong> for any illegal purposes. Prohibited content includes, but is not limited to:
   </p>
   <Prohibited class="my-3" />
-  <p class="text-zinc-300">
+  <p class="text-zinc-400">
     A profile containing this type of content, or linking to it, may be reported (with a notification sent to the profile maintainers for
     possible correction) or even deleted outright, depending on the severity. In the latter case, a prior notification detailing the reason
     will be provided, along with the right to respond where applicable.
   </p>
-  <p class="text-zinc-300 my-3">A user can only report the same profile once.</p>
-  <p class="text-zinc-300">
-    In cases <strong class="text-zinc-200 font-medium">{PLATFORM_NAME}</strong> deems severe (including, but not limited to, abuse of the
-    reporting system) the platform reserves the right to temporarily suspend a user from using the platform (including account suspension),
-    identified by credentials such as their email address. The user will be notified and will have the right to appeal.
+  <p class="text-zinc-400 my-3">A user can only report the same profile once.</p>
+  <p class="text-zinc-400">
+    In cases <Strong>{PLATFORM_NAME}</Strong> deems severe (including, but not limited to, abuse of the reporting system) the platform
+    reserves the right to temporarily suspend a user from using the platform (including account suspension), identified by credentials such
+    as their email address. The user will be notified and will have the right to appeal.
   </p>
 
-  <h2 class="mbs-6 text-2xl">4. Platform Role and Liability</h2>
-  <p class="text-zinc-300 my-3">
-    <strong class="font-medium text-zinc-200">{PLATFORM_NAME}</strong> provides a technical tool for creating profiles. The platform is not
-    responsible for user-generated content and users are responsible for compliance with local laws.
+  <h2 class="mbs-6 text-2xl text-zinc-300">4. Platform Role and Liability</h2>
+  <p class="text-zinc-400 my-3">
+    <Strong>{PLATFORM_NAME}</Strong> provides a technical tool for creating profiles. The platform is not responsible for user-generated
+    content and users are responsible for compliance with local laws.
   </p>
-  <p class="text-zinc-300">
+  <p class="text-zinc-400">
     If you use your profile for business (e.g., as a lawyer, or shop), you are responsible for linking your own Legal Notice and complying
-    with local consumer laws. <strong class="font-medium text-zinc-200">{PLATFORM_NAME}</strong> is not liable for your failure to provide
-    these disclosures.
+    with local consumer laws. <Strong>{PLATFORM_NAME}</Strong> is not liable for your failure to provide these disclosures.
   </p>
-  <p class="text-zinc-300 my-3">
-    This website, <strong class="font-medium text-zinc-200">{PLATFORM_NAME}</strong> platform and user profiles may display links to
-    external websites, whose privacy practices <strong class="font-medium text-zinc-200">{PLATFORM_NAME}</strong> is not responsible for. As
-    mentioned in the "Prohibited Content and Conduct" section, a profile that contains prohibited content or links to it may be reported or
-    even deleted.
+  <p class="text-zinc-400 my-3">
+    This website, <Strong>{PLATFORM_NAME}</Strong> platform and user profiles may display links to external websites, whose privacy
+    practices <Strong>{PLATFORM_NAME}</Strong> is not responsible for. As mentioned in the "Prohibited Content and Conduct" section, a
+    profile that contains prohibited content or links to it may be reported or even deleted.
   </p>
-  <p class="text-zinc-300">
+  <p class="text-zinc-400">
     The platform has the right to add, modify or remove features at any time, including themes and the user interface of profiles.
   </p>
-  <p class="text-zinc-300 my-3">
-    <strong class="font-medium text-zinc-200">{PLATFORM_NAME}</strong> reserves the right to permanently discontinue or shut down the
-    service at its sole discretion. In the event of a planned permanent shutdown,{" "}
-    <strong class="font-medium text-zinc-200">{PLATFORM_NAME}</strong> will provide all registered users with at least 20 days advance
+  <p class="text-zinc-400 my-3">
+    <Strong>{PLATFORM_NAME}</Strong> reserves the right to permanently discontinue or shut down the service at its sole discretion. In the
+    event of a planned permanent shutdown, <Strong>{PLATFORM_NAME}</Strong> will provide all registered users with at least 20 days advance
     notice. Users are responsible for exporting any personal data or content within this 20-day window. After closing the service, all
-    profiles and user data will be deleted from <strong class="font-medium text-zinc-200">{PLATFORM_NAME}</strong> systems.
+    profiles and user data will be deleted from <Strong>{PLATFORM_NAME}</Strong> systems.
   </p>
-  <p class="text-zinc-300">
+  <p class="text-zinc-400">
     Data is stored and managed using Microsoft Azure's cloud infrastructure, which includes backup and redundancy features. However, in the
     event of a natural disaster or other force majeure event beyond reasonable control, no liability will be held for data loss or service
     unavailability.
   </p>
-  <p class="text-zinc-300 my-3">In the event of a significant data loss, the following measures will be taken:</p>
+  <p class="text-zinc-400 my-3">In the event of a significant data loss, the following measures will be taken:</p>
   <Ul>
     <li>Reasonable backup and recovery measures are maintained at all times.</li>
     <li>Affected users and the relevant supervisory authority will be notified.</li>
   </Ul>
 
-  <h2 class="text-2xl mbs-6">5. Payments and premium services</h2>
-  <p class="text-zinc-300 my-3">
+  <h2 class="text-2xl mbs-6 text-zinc-300">5. Payments and premium services</h2>
+  <p class="text-zinc-400 my-3">
     <Link href="https://polar.sh/" target="_blank" rel="noopener noreferrer">
       {" "}
       Polar.sh{" "}
     </Link>{" "}
-    will be used as a Merchant of Records for premium subscriptions and payments. By purchasing on{" "}
-    <strong class="font-medium text-zinc-200">{PLATFORM_NAME}</strong>, you may also agree to their{" "}
+    will be used as a Merchant of Records for premium subscriptions and payments. By purchasing on <Strong>{PLATFORM_NAME}</Strong>, you may
+    also agree to their{" "}
     <Link href="https://polar.sh/legal/checkout-buyer-terms" target="_blank" rel="noopener noreferrer">
       {" "}
       terms{" "}
@@ -106,38 +101,35 @@ import ArticleLayout from "#src/layouts/ArticleLayout.astro";
     </Link>
     .
   </p>
-  <p class="text-zinc-300">
-    <strong class="font-medium text-zinc-200">{PLATFORM_NAME}</strong> has the right to add, modify and remove premium features, prices and
-    plans; with at least 30 days' notice if the changes are material or affect the price. Everything is listed in the{" "}
-    <Link href="/i/pricing">pricing</Link> page.
+  <p class="text-zinc-400">
+    <Strong>{PLATFORM_NAME}</Strong> has the right to add, modify and remove premium features, prices and plans; with at least 30 days'
+    notice if the changes are material or affect the price. Everything is listed in the <Link href="/i/pricing">pricing</Link> page.
   </p>
-  <p class="text-zinc-300 my-3">
+  <p class="text-zinc-400 my-3">
     If a premium profile uses premium features, but the subscription is cancelled, the profile will be downgraded to a free profile, the
     premium features will be removed, and the default settings of the free profile will be applied. For example, a premium profile uses a
     premium theme; after switching to a free profile, the default theme of the free profile will be used.
   </p>
-  <p class="text-zinc-300">
-    <strong class="font-medium text-zinc-200">{PLATFORM_NAME}</strong> reserves the right to set and update the default settings for free
-    profiles.
+  <p class="text-zinc-400">
+    <Strong>{PLATFORM_NAME}</Strong> reserves the right to set and update the default settings for free profiles.
   </p>
-  <p class="text-zinc-300 mbs-3">
-    If a premium profile is deleted, the payment order cannot be refunded unless it is within{" "}
-    <strong class="font-medium text-zinc-200">Polar.sh</strong>'s refund period (i.e., it was recently paid).
+  <p class="text-zinc-400 mbs-3">
+    If a premium profile is deleted, the payment order cannot be refunded unless it is within <Strong>Polar.sh</Strong>'s refund period
+    (i.e., it was recently paid).
   </p>
 
-  <h2 class="mbs-6 text-2xl">6. Modifications to Terms</h2>
-  <p class="text-zinc-300 mbs-3">
-    <strong class="font-medium text-zinc-200">{PLATFORM_NAME}</strong> reserves the right to modify these Terms at any time. If a revision
-    is material, <strong class="font-medium text-zinc-200">{PLATFORM_NAME}</strong> will provide at least 30 days' notice prior to any new
-    terms taking effect. What constitutes a material change will be determined at{" "}
-    <strong class="font-medium text-zinc-200">{PLATFORM_NAME}</strong>
+  <h2 class="mbs-6 text-2xl text-zinc-300">6. Modifications to Terms</h2>
+  <p class="text-zinc-400 mbs-3">
+    <Strong>{PLATFORM_NAME}</Strong> reserves the right to modify these Terms at any time. If a revision is material,{" "}
+    <Strong>{PLATFORM_NAME}</Strong> will provide at least 30 days' notice prior to any new terms taking effect. What constitutes a material
+    change will be determined at <Strong>{PLATFORM_NAME}</Strong>
     's sole discretion. By continuing to access or use {PLATFORM_NAME}'s Service after those revisions become effective, you agree to be
     bound by the revised terms.
   </p>
 
-  <p class="text-zinc-300 mbs-6">
+  <p class="text-zinc-400 mbs-6">
     For information regarding the governing law and jurisdiction, please refer to the <Link href="/i/legal-notice">Legal Notice</Link> page.
   </p>
 
-  <p class="mbs-6 text-zinc-400">Last updated: April 2026</p>
+  <p class="mbs-6 text-zinc-500">Last updated: April 2026</p>
 </ArticleLayout>
