@@ -1,0 +1,15 @@
+---
+/**
+ * Remember that the monospace font must be loaded; otherwise, the browser's default monospace font will be used.
+ */
+
+import type { HTMLAttributes } from "astro/types";
+
+type Props = HTMLAttributes<"code">;
+
+const {
+  props: { class: className, ...props }
+} = Astro;
+---
+
+<code class:list={["font-mono text-emerald-400", className]} {...props}><slot /></code>

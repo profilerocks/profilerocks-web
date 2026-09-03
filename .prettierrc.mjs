@@ -30,7 +30,11 @@ const prettierConfig = {
   proseWrap: "preserve",
   htmlWhitespaceSensitivity: "css",
   vueIndentScriptAndStyle: false,
-  singleAttributePerLine: false
+  singleAttributePerLine: false,
+  /**
+   * `prettier-plugin-astro` custom properties
+   */
+  astroAllowShorthand: true
 };
 
 export default prettierConfig;
