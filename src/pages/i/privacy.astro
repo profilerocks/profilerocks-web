@@ -3,6 +3,7 @@ import { CONTROLLER, PLATFORM_NAME } from "astro:env/client";
 import ArticleLayout from "#src/layouts/ArticleLayout.astro";
 import emails from "#shared/email.json";
 import Link from "#src/components/Link.astro";
+import Strong from "#src/components/Strong.astro";
 import Ul from "#src/components/Ul.astro";
 ---
 
@@ -13,85 +14,85 @@ import Ul from "#src/components/Ul.astro";
 
   <h1 class="text-center text-3xl">Privacy Policy</h1>
 
-  <p class="my-6 text-zinc-300">
-    <strong class="font-medium text-zinc-200">{PLATFORM_NAME}</strong> is committed to protecting your privacy. This platform does not track
-    users for advertising or analytics.
+  <p class="my-6 text-zinc-400">
+    <Strong>{PLATFORM_NAME}</Strong> is committed to protecting your privacy. This platform does not track users for advertising or
+    analytics.
   </p>
 
-  <h2 class="text-2xl">1. Data collected by the platform</h2>
+  <h2 class="text-2xl text-zinc-300">1. Data collected by the platform</h2>
   <Ul class="mbs-3">
     <li>
-      <strong class="font-medium text-zinc-300">Account data:</strong> email addresses, contact names, passkeys, OAuth IDs...
+      <Strong>Account data:</Strong> email addresses, contact names, passkeys, OAuth IDs...
     </li>
     <li>
-      <strong class="font-medium text-zinc-300">Profile content:</strong> links, text, images...
+      <Strong>Profile content:</Strong> links, text, images...
     </li>
     <li>
-      <strong class="font-medium text-zinc-300">Reports:</strong> reported profiles, email addresses and names of reporters, messages...
+      <Strong>Reports:</Strong> reported profiles, email addresses and names of reporters, messages...
     </li>
   </Ul>
 
-  <h2 class="mbs-6 text-2xl">2. Data collected by third-parties</h2>
-  <p class="my-3 text-zinc-300">
+  <h2 class="mbs-6 text-2xl text-zinc-300">2. Data collected by third-parties</h2>
+  <p class="my-3 text-zinc-400">
     Technical data is processed by{" "}
     <Link href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener noreferrer">
       Cloudflare
     </Link>{" "}
     (IP and browser information for security purposes).
   </p>
-  <p class="text-zinc-300">
+  <p class="text-zinc-400">
     Microsoft Azure Email Communication Services is the service used to send transactional emails to users. They may process or even
     blacklist email addresses that resulted in a hard bounce or spam complaints.
   </p>
-  <p class="my-3 text-zinc-300">
+  <p class="my-3 text-zinc-400">
     Payments inside the platform are handled by{" "}
     <Link href="https://polar.sh/" target="_blank" rel="noopener noreferrer">
       Polar.sh
     </Link>
     .
   </p>
-  <p class="text-zinc-300">
+  <p class="text-zinc-400">
     Profiles may embed content from third parties (e.g., YouTube, Spotify). When you visit a profile containing an iframe and agree to
-    display them, these third parties may process your IP address and set cookies.{" "}
-    <strong class="font-medium text-zinc-200">{PLATFORM_NAME}</strong> does not control these third parties; please refer to their
-    respective privacy policies. For full details on cookies see the <Link href="/i/cookie">Cookie Policy</Link> page.
+    display them, these third parties may process your IP address and set cookies. <Strong>{PLATFORM_NAME}</Strong> does not control these
+    third parties; please refer to their respective privacy policies. For full details on cookies see the{" "}
+    <Link href="/i/cookie">Cookie Policy</Link> page.
   </p>
-  <p class="mbs-3 text-zinc-300">
-    This website, <strong class="font-medium text-zinc-200">{PLATFORM_NAME}</strong> platform and user profiles may display links to
-    external websites, whose privacy practices <strong class="font-medium text-zinc-200">{PLATFORM_NAME}</strong> is not responsible for.
+  <p class="mbs-3 text-zinc-400">
+    This website, <Strong>{PLATFORM_NAME}</Strong> platform and user profiles may display links to external websites, whose privacy
+    practices <Strong>{PLATFORM_NAME}</Strong> is not responsible for.
   </p>
 
-  <h2 class="mbs-6 text-2xl">3. Purpose and legal basis</h2>
+  <h2 class="mbs-6 text-2xl text-zinc-300">3. Purpose and legal basis</h2>
   <Ul class="mbs-3">
     <li>
-      <strong class="font-medium text-zinc-300">Contract performance:</strong> account creation, profiles...
+      <Strong>Contract performance:</Strong> account creation, profiles...
     </li>
     <li>
-      <strong class="font-medium text-zinc-300">Legitimate interest: </strong>security via Cloudflare
+      <Strong>Legitimate interest: </Strong>security via Cloudflare
     </li>
     <li>
-      <strong class="font-medium text-zinc-300">Legal obligation:</strong> tax, anti-fraud
+      <Strong>Legal obligation:</Strong> tax, anti-fraud
     </li>
   </Ul>
 
-  <h2 class="mbs-6 text-2xl">4. Data storage and processors</h2>
+  <h2 class="mbs-6 text-2xl text-zinc-300">4. Data storage and processors</h2>
   <Ul class="mbs-3">
     <li>
-      <strong class="font-medium text-zinc-300">Hosting:</strong>{" "}
+      <Strong>Hosting:</Strong>{" "}
       <Link href="https://privacy.microsoft.com/" target="_blank" rel="noopener noreferrer">
         Microsoft Azure
       </Link>{" "}
       - Spain Central and North Europe (Ireland)
     </li>
     <li>
-      <strong class="font-medium text-zinc-300">Images:</strong>{" "}
+      <Strong>Images:</Strong>{" "}
       <Link href="https://www.backblaze.com/privacy-policy" target="_blank" rel="noopener noreferrer">
         Backblaze B2
       </Link>{" "}
       - EU Central (Amsterdam)
     </li>
     <li>
-      <strong class="font-medium text-zinc-300">CDN:</strong>{" "}
+      <Strong>CDN:</Strong>{" "}
       <Link href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener noreferrer">
         Cloudflare
       </Link>{" "}
@@ -101,74 +102,71 @@ import Ul from "#src/components/Ul.astro";
       </Link>
     </li>
     <li>
-      <strong class="font-medium text-zinc-300">Payments:</strong>{" "}
+      <Strong>Payments:</Strong>{" "}
       <Link href="https://polar.sh/" target="_blank" rel="noopener noreferrer">
         Polar.sh
       </Link>
     </li>
   </Ul>
 
-  <h2 class="mbs-6 text-2xl">5. Your GDPR rights</h2>
-  <p class="my-3 text-zinc-300">Access, rectification, erasure, restriction, portability, objection, and withdrawal of consent.</p>
-  <p class="text-zinc-300">
+  <h2 class="mbs-6 text-2xl text-zinc-300">5. Your GDPR rights</h2>
+  <p class="my-3 text-zinc-400">Access, rectification, erasure, restriction, portability, objection, and withdrawal of consent.</p>
+  <p class="text-zinc-400">
     Contact: <Link href={`mailto:${emails.contact}`}>{emails.contact}</Link>
   </p>
 
-  <h2 class="mbs-6 text-2xl">6. Public profiles and external archiving</h2>
-  <p class="my-3 text-zinc-300">
+  <h2 class="mbs-6 text-2xl text-zinc-300">6. Public profiles and external archiving</h2>
+  <p class="my-3 text-zinc-400">
     Profiles are public by default and they are accessible to anyone on the internet. As a result, their content may be:
   </p>
   <Ul>
     <li>Indexed by search engines (Google, Bing, etc.).</li>
     <li>Archived by third-party services such as the Internet Archive (Wayback Machine) or similar public archiving tools.</li>
   </Ul>
-  <p class="mbs-3 text-zinc-300">
-    <strong class="font-medium text-zinc-200">{PLATFORM_NAME}</strong> does not control these external services and cannot guarantee that
-    content will be removed from them, even if you delete a profile later. By creating a profile, you acknowledge and accept that its
-    content may remain publicly available and archived indefinitely by the third-party services mentioned above.
+  <p class="mbs-3 text-zinc-400">
+    <Strong>{PLATFORM_NAME}</Strong> does not control these external services and cannot guarantee that content will be removed from them,
+    even if you delete a profile later. By creating a profile, you acknowledge and accept that its content may remain publicly available and
+    archived indefinitely by the third-party services mentioned above.
   </p>
 
-  <h2 class="mbs-6 text-2xl">7. Data retention</h2>
-  <p class="my-3 text-zinc-300">
-    If your account was not active for 6 years, <strong class="font-medium text-zinc-200">{PLATFORM_NAME}</strong> may email you to ask if
-    you want to keep your account. If you do not respond within 30 days, the account will be deleted, along with all associated profiles
-    with no other members.
+  <h2 class="mbs-6 text-2xl text-zinc-300">7. Data retention</h2>
+  <p class="my-3 text-zinc-400">
+    If your account was not active for 6 years, <Strong>{PLATFORM_NAME}</Strong> may email you to ask if you want to keep your account. If
+    you do not respond within 30 days, the account will be deleted, along with all associated profiles with no other members.
   </p>
-  <p class="text-zinc-300">
+  <p class="text-zinc-400">
     After you delete or update content in your account or profiles, it may take a few minutes for those changes to become visible.
   </p>
-  <p class="my-3 text-zinc-300">
-    When an account is deleted, some data can remain in the <strong class="font-medium text-zinc-200">{PLATFORM_NAME}</strong> systems for
-    up to 15 days.
+  <p class="my-3 text-zinc-400">
+    When an account is deleted, some data can remain in the <Strong>{PLATFORM_NAME}</Strong> systems for up to 15 days.
   </p>
-  <p class="text-zinc-300">
-    <strong class="font-medium text-zinc-200">{PLATFORM_NAME}</strong> may blacklist email addresses that resulted in a hard bounce or spam
-    complaints. If you think your email address was blacklisted by mistake, you can contact at{" "}
-    <Link href={`mailto:${emails.contact}`}>{emails.contact}</Link>.
+  <p class="text-zinc-400">
+    <Strong>{PLATFORM_NAME}</Strong> may blacklist email addresses that resulted in a hard bounce or spam complaints. If you think your
+    email address was blacklisted by mistake, you can contact at <Link href={`mailto:${emails.contact}`}>{emails.contact}</Link>.
   </p>
-  <p class="my-3 text-zinc-300">
-    When a report is made to a profile, the report information will remain in the{" "}
-    <strong class="font-medium text-zinc-200">{PLATFORM_NAME}</strong> systems for up to 15 days after the report is resolved.
+  <p class="my-3 text-zinc-400">
+    When a report is made to a profile, the report information will remain in the <Strong>{PLATFORM_NAME}</Strong> systems for up to 15 days
+    after the report is resolved.
   </p>
-  <p class="text-zinc-300">
+  <p class="text-zinc-400">
     A user who has been banned remains in the system from 15 days to 180 days, depending on the severity of the ban.
   </p>
 
-  <h2 class="mbs-6 text-2xl">8. Changes to this Privacy Policy</h2>
-  <p class="mbs-3 text-zinc-300">
+  <h2 class="mbs-6 text-2xl text-zinc-300">8. Changes to this Privacy Policy</h2>
+  <p class="mbs-3 text-zinc-400">
     This Privacy Policy may be updated from time to time to reflect changes or legal requirements. Material changes will be notified to
     registered users.
   </p>
 
-  <p class="mbs-8 border-bs border-zinc-700 pbs-8 text-zinc-300 select-none">{CONTROLLER}</p>
+  <p class="mbs-8 border-bs border-zinc-700 pbs-8 text-zinc-400 select-none">{CONTROLLER}</p>
 
-  <p class="my-6 text-zinc-300">
+  <p class="my-6 text-zinc-400">
     For full details on cookies see the <Link href="/i/cookie">Cookie Policy</Link> page.
   </p>
 
-  <p class="text-zinc-300">
+  <p class="text-zinc-400">
     For information regarding the governing law and jurisdiction, please refer to the <Link href="/i/legal-notice">Legal Notice</Link> page.
   </p>
 
-  <p class="mbs-6 text-zinc-400">Last updated: April 2026</p>
+  <p class="mbs-6 text-zinc-500">Last updated: April 2026</p>
 </ArticleLayout>

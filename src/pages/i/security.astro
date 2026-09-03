@@ -6,6 +6,7 @@ import socialMedia from "#shared/social.json";
 import Code from "#src/components/Code.astro";
 import Link from "#src/components/Link.astro";
 import Ol from "#src/components/Ol.astro";
+import Strong from "#src/components/Strong.astro";
 import ArticleLayout from "#src/layouts/ArticleLayout.astro";
 ---
 
@@ -14,62 +15,59 @@ import ArticleLayout from "#src/layouts/ArticleLayout.astro";
 
   <h1 class="text-center text-3xl">Security</h1>
 
-  <p class="my-6 text-zinc-300">
-    This page outlines the security measures and cryptographic design principles implemented within{" "}
-    <strong class="font-medium text-zinc-200">{PLATFORM_NAME}</strong> to ensure data integrity and user privacy.
+  <p class="my-6 text-zinc-400">
+    This page outlines the security measures and cryptographic design principles implemented within <Strong>{PLATFORM_NAME}</Strong> to
+    ensure data integrity and user privacy.
   </p>
 
   <section id="auth">
-    <h2 class="text-2xl">Authentication Flow</h2>
-    <p class="my-3 text-zinc-300">
-      <strong class="font-medium text-zinc-200">{PLATFORM_NAME}</strong> employs a{" "}
-      <strong class="font-medium text-zinc-200">hybrid stateful/stateless design</strong> for One-Time Password (OTP) management. By using
-      envelope encryption, the server avoids storing sensitive credentials directly, instead maintaining only opaque random IDs to track
-      session progress.
+    <h2 class="text-2xl text-zinc-300">Authentication Flow</h2>
+    <p class="my-3 text-zinc-400">
+      <Strong>{PLATFORM_NAME}</Strong> employs a <Strong>hybrid stateful/stateless design</Strong> for One-Time Password (OTP) management.
+      By using envelope encryption, the server avoids storing sensitive credentials directly, instead maintaining only opaque random IDs to
+      track session progress.
     </p>
-    <h3 class="text-xl">The Process:</h3>
+    <h3 class="text-xl text-zinc-300">The Process:</h3>
     <Ol class="mbs-2">
       <li>
-        <strong class="font-medium text-zinc-300">Token Generation:</strong> When an OTP is created, its metadata (credential, expiry,
-        attempts...) is compressed and appended to an encrypted list (one entry per credential). The server utilizes envelope encryption
-        featuring AES-256-KW for the Key Encryption Key (KEK) and AES-256-GCM for the Data Encryption Key (DEK).
+        <Strong>Token Generation:</Strong> When an OTP is created, its metadata (credential, expiry, attempts...) is compressed and appended
+        to an encrypted list (one entry per credential). The server utilizes envelope encryption featuring AES-256-KW for the Key Encryption
+        Key (KEK) and AES-256-GCM for the Data Encryption Key (DEK).
       </li>
       <li>
-        <strong class="font-medium text-zinc-300">Client-side storage:</strong> The encrypted list is delivered to the client via a secure,
-        HttpOnly cookie. To prevent CSRF (Cross-Site Request Forgery), the cookie is strictly scoped using the <Code>SameSite=Strict</Code>{" "}
-        attribute.
+        <Strong>Client-side storage:</Strong> The encrypted list is delivered to the client via a secure, HttpOnly cookie. To prevent CSRF
+        (Cross-Site Request Forgery), the cookie is strictly scoped using the <Code>SameSite=Strict</Code> attribute.
       </li>
       <li>
-        <strong class="font-medium text-zinc-300">Server-side mapping:</strong> A unique, random ID is generated on the server and linked to
-        the encrypted list to track the specific verification session without exposing underlying data.
+        <Strong>Server-side mapping:</Strong> A unique, random ID is generated on the server and linked to the encrypted list to track the
+        specific verification session without exposing underlying data.
       </li>
       <li>
-        <strong class="font-medium text-zinc-300">Verification:</strong> When the client submits an OTP, the encrypted list is returned to
-        the server. The server decrypts the list, validates the specific credential, and rotates the session ID to prevent replay attacks.
+        <Strong>Verification:</Strong> When the client submits an OTP, the encrypted list is returned to the server. The server decrypts the
+        list, validates the specific credential, and rotates the session ID to prevent replay attacks.
       </li>
     </Ol>
-    <p class="mbs-3 text-zinc-300">
-      <strong class="font-medium text-zinc-200">Key Management:</strong> KEKs are randomly generated, automatically rotated and encrypted at
-      rest.
+    <p class="mbs-3 text-zinc-400">
+      <Strong>Key Management:</Strong> KEKs are randomly generated, automatically rotated and encrypted at rest.
     </p>
   </section>
 
   <section class="mbs-6" id="session">
-    <h2 class="text-2xl">Session Management</h2>
-    <p class="my-3 text-zinc-300">
+    <h2 class="text-2xl text-zinc-300">Session Management</h2>
+    <p class="my-3 text-zinc-400">
       Similar to the authentication mechanism, active user sessions are secured using envelope encryption with AES-256-KW (KEK) and
       AES-256-GCM (DEK) and stored in HttpOnly secure cookies.
     </p>
-    <p class="text-zinc-300">
+    <p class="text-zinc-400">
       While these cookies use <Code>SameSite=Lax</Code> to balance security with user experience, the application architecture inherently
-      mitigates <strong class="font-medium text-zinc-200">CSRF</strong> risks by using other methods rather than GET.
+      mitigates <Strong>CSRF</Strong> risks by using other methods rather than GET.
     </p>
   </section>
 
   <section class="mbs-6" id="payment">
-    <h2 class="text-2xl">Payment Security</h2>
-    <p class="my-3 text-zinc-300">
-      <strong class="font-medium text-zinc-200">{PLATFORM_NAME}</strong> relies on{" "}
+    <h2 class="text-2xl text-zinc-300">Payment Security</h2>
+    <p class="my-3 text-zinc-400">
+      <Strong>{PLATFORM_NAME}</Strong> relies on{" "}
       <Link href="https://polar.sh/" target="_blank" rel="noopener noreferrer">
         Polar
       </Link>{" "}
@@ -79,24 +77,23 @@ import ArticleLayout from "#src/layouts/ArticleLayout.astro";
       </Link>
       .
     </p>
-    <p class="text-zinc-300">
-      <strong class="font-medium text-zinc-200">{PLATFORM_NAME} does not store or process any payment information</strong>, those operations
-      remain entirely within Stripe's PCI DSS compliant environment.
+    <p class="text-zinc-400">
+      <Strong>{PLATFORM_NAME} does not store or process any payment information</Strong>, those operations remain entirely within Stripe's
+      PCI DSS compliant environment.
     </p>
   </section>
 
   <section class="mbs-6" id="vulnerability">
-    <h2 class="text-2xl">Reporting a Vulnerability</h2>
-    <p class="my-3 text-zinc-300">
-      If you discover a security vulnerability in <strong class="font-medium text-zinc-200">{PLATFORM_NAME}</strong>, please report it
-      privately first by sending an email to <Link href={`mailto:${emails.contact}`}>{emails.contact}</Link> or by creating a security
-      advisory in one of the{" "}
+    <h2 class="text-2xl text-zinc-300">Reporting a Vulnerability</h2>
+    <p class="my-3 text-zinc-400">
+      If you discover a security vulnerability in <Strong>{PLATFORM_NAME}</Strong>, please report it privately first by sending an email to{" "}
+      <Link href={`mailto:${emails.contact}`}>{emails.contact}</Link> or by creating a security advisory in one of the{" "}
       <Link href={socialMedia.GitHub || "https://github.com/profilerocks"} target="_blank" rel="noopener noreferrer">
         {PLATFORM_NAME} GitHub repositories
       </Link>
       .
     </p>
-    <p class="text-zinc-300">
+    <p class="text-zinc-400">
       You will receive an acknowledgment as soon as possible, and we will work together to verify and address the issue.
     </p>
   </section>
