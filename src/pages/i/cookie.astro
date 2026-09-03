@@ -2,7 +2,7 @@
 import { PLATFORM_NAME } from "astro:env/client";
 import emails from "#shared/email.json";
 import Link from "#src/components/Link.astro";
-import Unordered from "#src/components/Unordered.astro";
+import Ul from "#src/components/Ul.astro";
 import ArticleLayout from "#src/layouts/ArticleLayout.astro";
 
 const CLOUDFLARE_COOKIE_POLICY = "https://www.cloudflare.com/cookie-policy/";
@@ -28,11 +28,11 @@ const CLOUDFLARE_COOKIE_POLICY = "https://www.cloudflare.com/cookie-policy/";
   <p class="text-zinc-300">Users can change their mind later and revoke their consent by clicking "Cookie Preferences" in the footer.</p>
 
   <h2 class="my-4 text-2xl">Third-party services with no cookies</h2>
-  <Unordered>
+  <Ul>
     <li>Azure</li>
     <li>Backblaze B2</li>
     <li>jsDelivr</li>
-  </Unordered>
+  </Ul>
 
   <h2 class="my-4 text-2xl">More information</h2>
   <p class="text-zinc-300">

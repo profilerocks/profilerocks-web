@@ -6,7 +6,16 @@ import { Markdown } from "astro-remote";
 import free from "#shared/free.json";
 import pricing from "#shared/pricing.json";
 import LinkNext from "#src/components/LinkNext.astro";
+import MdPPricing from "#src/components/MdPPricing.astro";
+import MdStrongPricing from "#src/components/MdStrongPricing.astro";
+import Ul from "#src/components/Ul.astro";
 import { formatPrice, intervalToText } from "#src/lib/pricing/utils";
+
+const components = Object.freeze({
+  p: MdPPricing,
+  strong: MdStrongPricing,
+  ul: Ul
+})
 ---
 
 <div class="flex flex-col justify-center gap-8 *:flex *:flex-col *:border-bs *:border-zinc-700 md:flex-row">
@@ -20,7 +29,7 @@ import { formatPrice, intervalToText } from "#src/lib/pricing/utils";
       <Icon class="drop-shadow-xs drop-shadow-black" name="premium" size="1.25em" />
       Continue
     </LinkNext>
-    <Markdown content={free.profile.description.join("\n")} />
+    <Markdown {components} content={free.profile.description.join("\n")} />
   </article>
 
   <article class="!border-yellow-400" id="premium">
@@ -50,6 +59,6 @@ import { formatPrice, intervalToText } from "#src/lib/pricing/utils";
       <Icon class="drop-shadow-xs drop-shadow-black" name="rocket" size="1.25em" />
       Continue
     </LinkNext>
-    <Markdown content={pricing.profile.premium.description.join("\n")} />
+    <Markdown {components} content={pricing.profile.premium.description.join("\n")} />
   </article>
 </div>
