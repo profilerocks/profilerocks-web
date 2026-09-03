@@ -2,6 +2,7 @@
 import { PLATFORM_DESCRIPTION, PLATFORM_NAME } from "astro:env/client";
 import ArticleLayout from "#src/layouts/ArticleLayout.astro";
 import Link from "#src/components/Link.astro";
+import Strong from "#src/components/Strong.astro";
 ---
 
 <ArticleLayout title="About">
@@ -10,24 +11,23 @@ import Link from "#src/components/Link.astro";
     <p class="text-lg sm:text-xl">{PLATFORM_DESCRIPTION}</p>
   </hgroup>
 
-  <p class="mbs-6 text-zinc-300">
+  <p class="mbs-6 text-zinc-400">
     Created by{" "}
     <Link href="https://ssbit01.github.io/" target="_blank" rel="noopener noreferrer">
       Stefan Samson
     </Link>
-    , <strong class="font-medium text-zinc-200">profile.rocks</strong> was born out of a simple need: the ability to create and publish a
-    fully functional micro-page directly from any device, from a mobile phone to a computer, without restrictions.
+    , <Strong>profile.rocks</Strong> was born out of a simple need: the ability to create and publish a fully functional micro-page directly
+    from any device, from a mobile phone to a computer, without restrictions.
   </p>
 
-  <p class="my-6 text-zinc-300">
-    While existing micropage services typically restrict users to basic links and plain text,{" "}
-    <strong class="font-medium text-zinc-200">profile.rocks</strong> was designed to support rich Markdown formatting, offering greater
-    flexibility and control over content.
+  <p class="my-6 text-zinc-400">
+    While existing micropage services typically restrict users to basic links and plain text, <Strong>profile.rocks</Strong> was designed to
+    support rich Markdown formatting, offering greater flexibility and control over content.
   </p>
 
-  <p class="text-zinc-300">
-    Furthermore, unlike the majority of closed-source alternatives on the market,{" "}
-    <strong class="font-medium text-zinc-200">profile.rocks</strong> aims to be open source. Future developments will focus on expanding
-    developer tools to support self-hosting, ensuring long-term independence and customization for users.
+  <p class="text-zinc-400">
+    Furthermore, unlike the majority of closed-source alternatives on the market, <Strong>profile.rocks</Strong> aims to be open source.
+    Future developments will focus on expanding developer tools to support self-hosting, ensuring long-term independence and customization
+    for users.
   </p>
 </ArticleLayout>

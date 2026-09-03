@@ -6,13 +6,13 @@ import free from "#shared/free.json";
 import pricing from "#shared/pricing.json";
 import LinkNext from "#src/components/LinkNext.astro";
 import MdPPricing from "#src/components/MdPPricing.astro";
-import MdStrongPricing from "#src/components/MdStrongPricing.astro";
+import Strong from "#src/components/Strong.astro";
 import Ul from "#src/components/Ul.astro";
 import { formatPrice, intervalToText } from "#src/lib/pricing/utils";
 
 const components = Object.freeze({
   p: MdPPricing,
-  strong: MdStrongPricing,
+  strong: Strong,
   ul: Ul
 });
 ---

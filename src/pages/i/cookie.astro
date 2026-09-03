@@ -2,6 +2,7 @@
 import { PLATFORM_NAME } from "astro:env/client";
 import emails from "#shared/email.json";
 import Link from "#src/components/Link.astro";
+import Strong from "#src/components/Strong.astro";
 import Ul from "#src/components/Ul.astro";
 import ArticleLayout from "#src/layouts/ArticleLayout.astro";
 
@@ -11,7 +12,7 @@ const CLOUDFLARE_COOKIE_POLICY = "https://www.cloudflare.com/cookie-policy/";
 <ArticleLayout title="Cookie Policy">
   <h1 class="text-center text-3xl">Cookie Policy</h1>
 
-  <p class="my-6 text-zinc-300">
+  <p class="my-6 text-zinc-400">
     This platform uses "Strictly Necessary" cookies for authentication and via{" "}
     <Link href={CLOUDFLARE_COOKIE_POLICY} target="_blank" rel="noopener noreferrer">
       Cloudflare
@@ -19,32 +20,32 @@ const CLOUDFLARE_COOKIE_POLICY = "https://www.cloudflare.com/cookie-policy/";
     for security and performance. These do not require consent.
   </p>
 
-  <h2 class="text-2xl">Third-Party Cookies</h2>
-  <p class="my-3 text-zinc-300">
+  <h2 class="text-2xl text-zinc-300">Third-Party Cookies</h2>
+  <p class="my-3 text-zinc-400">
     When a profile contains external content via iframes (e.g., a YouTube video), that external provider may set tracking cookies.{" "}
-    <strong class="font-medium text-zinc-200">{PLATFORM_NAME}</strong> will provide a consent banner, to ensure these cookies are not set
-    without user awareness and agreement.
+    <Strong>{PLATFORM_NAME}</Strong> will provide a consent banner, to ensure these cookies are not set without user awareness and
+    agreement.
   </p>
-  <p class="text-zinc-300">Users can change their mind later and revoke their consent by clicking "Cookie Preferences" in the footer.</p>
+  <p class="text-zinc-400">Users can change their mind later and revoke their consent by clicking "Cookie Preferences" in the footer.</p>
 
-  <h2 class="mbs-6 text-2xl">Third-party services with no cookies</h2>
+  <h2 class="mbs-6 text-2xl text-zinc-300">Third-party services with no cookies</h2>
   <Ul class="mbs-3">
     <li>Azure</li>
     <li>Backblaze B2</li>
     <li>jsDelivr</li>
   </Ul>
 
-  <h2 class="mbs-6 text-2xl">More information</h2>
-  <p class="my-3 text-zinc-300">
+  <h2 class="mbs-6 text-2xl text-zinc-300">More information</h2>
+  <p class="my-3 text-zinc-400">
     Full list of Cloudflare cookies:{" "}
     <Link href={CLOUDFLARE_COOKIE_POLICY} target="_blank" rel="noopener noreferrer">
       {CLOUDFLARE_COOKIE_POLICY}
     </Link>
   </p>
 
-  <p class="text-zinc-300">
+  <p class="text-zinc-400">
     For questions: <Link href={`mailto:${emails.contact}`}>{emails.contact}</Link>
   </p>
 
-  <p class="mbs-6 text-zinc-400">Last updated: March 2026</p>
+  <p class="mbs-6 text-zinc-500">Last updated: March 2026</p>
 </ArticleLayout>

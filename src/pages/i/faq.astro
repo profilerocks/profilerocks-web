@@ -1,6 +1,7 @@
 ---
 import { PLATFORM_NAME } from "astro:env/client";
 import Link from "#src/components/Link.astro";
+import Strong from "#src/components/Strong.astro";
 import Summary from "#src/components/Summary.astro";
 import MainLayout from "#src/layouts/MainLayout.astro";
 ---
@@ -32,14 +33,14 @@ import MainLayout from "#src/layouts/MainLayout.astro";
   >
     <details class="group" id="details-external-content">
       <Summary>Which websites are supported for external content?</Summary>
-      <p class="text-zinc-300">
-        <strong class="font-medium text-zinc-200">{PLATFORM_NAME}</strong> utilizes the{" "}
+      <p class="text-zinc-400">
+        <Strong>{PLATFORM_NAME}</Strong> utilizes the{" "}
         <Link href="https://www.npmjs.com/package/link-to-iframe" target="_blank" rel="noopener noreferrer">
           link-to-iframe
         </Link>{" "}
         library to power profile link previews.
       </p>
-      <p class="pbs-2 pbe-5 text-zinc-300">
+      <p class="pbs-2 pbe-5 text-zinc-400">
         A comprehensive list of supported platforms is available in its{" "}
         <Link
           href="https://github.com/crisp-oss/link-to-iframe?tab=readme-ov-file#supported-services"
@@ -53,8 +54,8 @@ import MainLayout from "#src/layouts/MainLayout.astro";
     </details>
     <details class="group" id="details-subscription-all-profiles">
       <Summary>Does a premium subscription apply to all profiles in my account?</Summary>
-      <p class="text-zinc-300">No, premium subscriptions are tied to a single profile.</p>
-      <p class="pbs-2 pbe-5 text-zinc-300">To access premium features on multiple profiles, each one must be upgraded individually.</p>
+      <p class="text-zinc-400">No, premium subscriptions are tied to a single profile.</p>
+      <p class="pbs-2 pbe-5 text-zinc-400">To access premium features on multiple profiles, each one must be upgraded individually.</p>
     </details>
   </section>
 </MainLayout>

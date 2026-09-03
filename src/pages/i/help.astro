@@ -4,6 +4,7 @@ import { PLATFORM_NAME } from "astro:env/client";
 import LinkNext from "#src/components/LinkNext.astro";
 import Links from "#src/components/Links.astro";
 import Social from "#src/components/Social.astro";
+import Strong from "#src/components/Strong.astro";
 import MainLayout from "#src/layouts/MainLayout.astro";
 
 const iconDimension = "1.25em";
@@ -17,7 +18,7 @@ const iconDimension = "1.25em";
         <h2 class="my-2 text-center text-xl text-emerald-400">
           <abbr title="Frequently Asked Questions">FAQs</abbr> page
         </h2>
-        <p class="mx-auto mbe-4 max-w-max text-zinc-300">
+        <p class="mx-auto mbe-4 max-w-max text-zinc-400">
           If you have a question, take a moment to visit the <abbr title="Frequently Asked Questions">FAQs</abbr> page; it covers the most
           common topics and issues. You might find your answer there right away!
         </p>
@@ -30,7 +31,7 @@ const iconDimension = "1.25em";
     <section>
       <hgroup>
         <h2 class="my-2 text-center text-xl text-emerald-400">Still Need Help?</h2>
-        <p class="mx-auto mbe-4 max-w-max text-zinc-300">Feel free to contact</p>
+        <p class="mx-auto mbe-4 max-w-max text-zinc-400">Feel free to contact</p>
       </hgroup>
       <LinkNext class="mbs-auto" href="/i/contact">
         <Icon name="email" size={iconDimension} />
@@ -66,8 +67,8 @@ const iconDimension = "1.25em";
   </ul>
   <hgroup class="mbs-10">
     <h2 class="text-center text-2xl text-emerald-400">Social media</h2>
-    <p class="mx-auto mbs-2 max-w-max text-zinc-300">
-      Look for <strong class="font-medium text-zinc-200">{PLATFORM_NAME}</strong> in other platforms
+    <p class="mx-auto mbs-2 max-w-max text-zinc-400">
+      Look for <Strong>{PLATFORM_NAME}</Strong> in other platforms
     </p>
   </hgroup>
   <Links class="mbs-4 flex justify-center gap-5 text-lg select-none">

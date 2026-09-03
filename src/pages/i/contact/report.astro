@@ -1,6 +1,7 @@
 ---
 import emails from "#shared/email.json";
 import LinkBack from "#src/components/LinkBack.astro";
+import Link from "#src/components/Link.astro";
 import ArticleLayout from "#src/layouts/ArticleLayout.astro";
 import { reportCategoriesDataEntries } from "#src/lib/report";
 
@@ -206,15 +207,15 @@ const emailReportHref = `mailto:${emails.report}`;
 
   <h1>Report a violation</h1>
 
-  <p>
+  <p class="text-zinc-300">
     Ensuring a safe and trustworthy online environment is essential. If you come across a profile that violates community guidelines or
     engages in harmful activity, you can report it by filling out the form below or sending an email to{" "}
-    <a href={emailReportHref} id="a-send-email">
+    <Link href={emailReportHref} id="a-send-email">
       {emails.report}
-    </a>
+    </Link>
   </p>
 
-  <p class="p-thanks">Thank you for your collaboration!</p>
+  <p class="text-zinc-300">Thank you for your collaboration!</p>
 
   <p>Note: You can report child sexual abuse material (CSAM) cases anonymously without providing your email address or name.</p>
 
@@ -264,17 +265,19 @@ const emailReportHref = `mailto:${emails.report}`;
         <input id="faith" name="faith" required type="checkbox" value="1" />
         <label for="faith">
           I submit this report in good faith and agree to the{" "}
-          <a href="/i/privacy" target="_blank">
+          <Link href="/i/privacy" target="_blank">
             Privacy Policy
-          </a>{" "}
+          </Link>{" "}
           and{" "}
-          <a href="/i/terms" target="_blank">
+          <Link href="/i/terms" target="_blank">
             Terms of Service
-          </a>
+          </Link>
         </label>
       </div>
       <div class="flex flex-wrap-reverse items-center justify-between gap-7">
-        <LinkBack href="/i/contact">Other contact options</LinkBack>
+        <LinkBack class="pe-3.5" href="/i/contact">
+          Other contact options
+        </LinkBack>
         <button id="btn-submit-report" type="submit">
           Submit report
         </button>
