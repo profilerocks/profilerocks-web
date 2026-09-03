@@ -4,48 +4,24 @@ import emails from "#shared/email.json";
 import MainLayout from "#src/layouts/MainLayout.astro";
 import LinkNext from "#src/components/LinkNext.astro";
 
-const iconDimension = "1.375em";
 const iconSendDimension = "1.25em";
 ---
 
 <MainLayout>
-  <h1>Contact</h1>
+  <h1 class="text-3xl sm:text-4xl text-center">Contact</h1>
 
-  <div class="container-contact">
-    {/* <article class="article-contact">
-      <h2 class="article-contact-title"><Icon name="user/issue" size={iconDimension} />Account or profile issues</h2>
-      <p><Icon name="email" size={iconDimension} />{emails.issues}</p>
-      <LinkNext href={`mailto:${emails.issues}`}><Icon name="send" size={iconSendDimension} />Send an email</LinkNext>
-    </article>
-    <article class="article-contact">
-      <h2 class="article-contact-title"><Icon name="feedback" size={iconDimension} />Feedback</h2>
-      <p><Icon name="email" size={iconDimension} />{emails.feedback}</p>
-      <LinkNext href={`mailto:${emails.feedback}`}><Icon name="send" size={iconSendDimension} />Send an email</LinkNext>
-    </article>
-    <article class="article-contact">
-      <h2 class="article-contact-title"><Icon name="business" size={iconDimension} />Business</h2>
-      <p><Icon name="email" size={iconDimension} />{emails.business}</p>
-      <LinkNext href={`mailto:${emails.business}`}><Icon name="send" size={iconSendDimension} />Send an email</LinkNext>
-    </article>
-    <article class="article-contact">
-      <h2 class="article-contact-title"><Icon name="bug" size={iconDimension} />Report a bug</h2>
-      <p><Icon name="email" size={iconDimension} />{emails.bugs}</p>
-      <LinkNext href={`mailto:${emails.bugs}`}><Icon name="send" size={iconSendDimension} />Send an email</LinkNext>
-    </article> */}
-    <article class="article-contact">
-      <h2 class="article-contact-title">
-        <Icon name="pencil" size={iconDimension} />
+  <div class="flex gap-8 flex-col mx-auto mbs-6 max-w-2xl *:flex *:flex-col *:gap-4.5 *:border-bs *:border-emerald-400 *:pbs-4 sm:mbs-8">
+    <article>
+      <h2 class="flex items-center gap-2.5 px-1.5 min-w-max text-emerald-400 text-xl">
+        <Icon name="pencil" class="min-w-6.5 h-6.5" />
         General
       </h2>
-      {/* <p>
-        <Icon name="info" size={iconDimension} />If none of the above email addresses satisfy your request, use this address.
-      </p> */}
-      <p>
-        <Icon name="info" size={iconDimension} />
+      <p class="flex flex-start gap-3 text-zinc-300 px-2">
+        <Icon name="info" class="min-w-5.5 h-5.5" />
         For support, reports, bugs, or feedback, please use this address.
       </p>
-      <p>
-        <Icon name="email" size={iconDimension} />
+      <p class="flex flex-start gap-3 text-zinc-300 px-2">
+        <Icon name="email" class="min-w-5.5 h-5.5" />
         {emails.contact}
       </p>
       <LinkNext href={`mailto:${emails.contact}`}>
@@ -53,13 +29,13 @@ const iconSendDimension = "1.25em";
         Send an email
       </LinkNext>
     </article>
-    <article class="article-contact">
-      <h2 class="article-contact-title">
-        <Icon name="report" size={iconDimension} />
+    <article>
+      <h2 class="flex items-center gap-2.5 px-1.5 min-w-max text-emerald-400 text-xl">
+        <Icon name="report" class="min-w-6.5 h-6.5" />
         Report a violation
       </h2>
-      <p>
-        <Icon name="info" size={iconDimension} />
+      <p class="flex flex-start gap-3 text-zinc-300 px-2">
+        <Icon name="info" class="min-w-5.5 h-5.5" />
         If you encounter profiles that seem inappropriate or problematic, you can report them. For more details, please visit the report
         information page.
       </p>
