@@ -1,5 +1,6 @@
 ---
 import { LEGAL_DATA, PLATFORM_NAME } from "astro:env/client";
+import Link from "#src/components/Link.astro";
 import ArticleLayout from "#src/layouts/ArticleLayout.astro";
 
 const TITLE = "Legal Notice";
@@ -16,9 +17,10 @@ const TITLE = "Legal Notice";
 
   <h2 class="text-2xl">General conditions of use</h2>
   <p class="mbs-3 text-zinc-300">
-    This Legal Notice governs the access and use of <strong>{PLATFORM_NAME}</strong>. By using the platform, you acquire the status of
-    "User" and accept the <a href="/i/terms" rel="terms-of-service">terms of service</a> and the <a href="/i/privacy" rel="privacy-policy"
-      >privacy policy</a
+    This Legal Notice governs the access and use of <strong class="font-medium text-zinc-200">{PLATFORM_NAME}</strong>. By using the
+    platform, you acquire the status of "User" and accept the <Link href="/i/terms" rel="terms-of-service">terms of service</Link> and the <Link
+      href="/i/privacy"
+      rel="privacy-policy">privacy policy</Link
     >.
   </p>
 
@@ -29,8 +31,8 @@ const TITLE = "Legal Notice";
 
   <h2 class="mbs-4 text-2xl">Limitation of liability</h2>
   <p class="my-3 text-zinc-300">
-    <strong>{PLATFORM_NAME}</strong> acts only as a hosting and linking service. The user agrees to use the platform in accordance with the Law
-    and these terms. Users are solely responsible for the content they publish on their profiles.
+    <strong class="font-medium text-zinc-200">{PLATFORM_NAME}</strong> acts only as a hosting and linking service. The user agrees to use the
+    platform in accordance with the Law and these terms. Users are solely responsible for the content they publish on their profiles.
   </p>
 
   <div class="rounded-xl border-rose-500 bg-rose-950 p-3 sm:rounded-s-xs sm:border-s-4 sm:px-4">

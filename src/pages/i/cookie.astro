@@ -20,28 +20,28 @@ const CLOUDFLARE_COOKIE_POLICY = "https://www.cloudflare.com/cookie-policy/";
   </p>
 
   <h2 class="text-2xl">Third-Party Cookies</h2>
-  <p class="my-4 text-zinc-300">
+  <p class="my-3 text-zinc-300">
     When a profile contains external content via iframes (e.g., a YouTube video), that external provider may set tracking cookies. <strong
-      >{PLATFORM_NAME}</strong
+      class="font-medium text-zinc-200">{PLATFORM_NAME}</strong
     > will provide a consent banner, to ensure these cookies are not set without user awareness and agreement.
   </p>
   <p class="text-zinc-300">Users can change their mind later and revoke their consent by clicking "Cookie Preferences" in the footer.</p>
 
-  <h2 class="my-4 text-2xl">Third-party services with no cookies</h2>
-  <Ul>
+  <h2 class="mbs-4 text-2xl">Third-party services with no cookies</h2>
+  <Ul class="mbs-3">
     <li>Azure</li>
     <li>Backblaze B2</li>
     <li>jsDelivr</li>
   </Ul>
 
-  <h2 class="my-4 text-2xl">More information</h2>
-  <p class="text-zinc-300">
+  <h2 class="mbs-4 text-2xl">More information</h2>
+  <p class="my-3 text-zinc-300">
     Full list of Cloudflare cookies: <Link href={CLOUDFLARE_COOKIE_POLICY} target="_blank" rel="noopener noreferrer"
       >{CLOUDFLARE_COOKIE_POLICY}</Link
     >
   </p>
 
-  <p class="mbs-4 text-zinc-300">For questions: <Link href={`mailto:${emails.contact}`}>{emails.contact}</Link></p>
+  <p class="text-zinc-300">For questions: <Link href={`mailto:${emails.contact}`}>{emails.contact}</Link></p>
 
   <p class="mbs-6 text-zinc-500">Last updated: March 2026</p>
 </ArticleLayout>
