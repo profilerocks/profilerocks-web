@@ -1,5 +1,4 @@
 ---
-
 import { HREF_PROFILE_CREATE, HREF_PROFILE_CREATE_PREMIUM } from "astro:env/client";
 import { Icon } from "astro-icon/components";
 import { Markdown } from "astro-remote";
@@ -15,14 +14,16 @@ const components = Object.freeze({
   p: MdPPricing,
   strong: MdStrongPricing,
   ul: Ul
-})
+});
 ---
 
-<div class="flex flex-col justify-center gap-8 *:flex *:flex-col *:border-bs *:border-zinc-700 md:flex-row">
+<div
+  class="flex flex-col justify-center gap-8 *:flex *:basis-sm *:flex-col *:border-bs *:border-zinc-700 *:pbs-4 sm:px-2 sm:*:border-x sm:*:px-4 md:flex-row"
+>
   <article id="free">
     <div class="mbe-5 text-center">
-      <h3 class="mbs-5 mbe-4 text-3xl text-zinc-300">Free</h3>
-      <h4 class="text-3xl">$0</h4>
+      <h3 class="text-3xl text-zinc-300">Free</h3>
+      <h4 class="mbs-4 text-3xl">$0</h4>
       <p class="text-zinc-300">forever</p>
     </div>
     <LinkNext href={HREF_PROFILE_CREATE}>
@@ -34,8 +35,8 @@ const components = Object.freeze({
 
   <article class="!border-yellow-400" id="premium">
     <div class="mbe-5 text-center">
-      <h3 class="mbs-5 mbe-4 text-3xl text-yellow-400">Premium</h3>
-      <div class="flex items-center justify-center">
+      <h3 class="text-3xl text-yellow-400">Premium</h3>
+      <div class="mbs-4 flex items-center justify-center">
         {
           pricing.profile.premium.prices.map((price, i) => (
             <>
@@ -46,7 +47,7 @@ const components = Object.freeze({
                 <p class="text-zinc-300">{intervalToText[price.recurringInterval] || "forever"}</p>
               </div>
               {i < pricing.profile.premium.prices.length - 1 && (
-                <p class="text-zinc-300 before:mx-auto before:block before:h-4.5 before:w-px before:bg-zinc-700 after:mx-auto after:block after:h-4.5 after:w-px after:bg-zinc-700">
+                <p class="text-zinc-300 before:mx-auto before:block before:h-4.5 before:w-px before:bg-zinc-600 after:mx-auto after:block after:h-4.5 after:w-px after:bg-zinc-600">
                   or
                 </p>
               )}
