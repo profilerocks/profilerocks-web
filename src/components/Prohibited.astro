@@ -1,23 +1,21 @@
 ---
 import Ul from "#src/components/Ul.astro";
 import { reportCategoriesDataEntries } from "#src/lib/report";
-import type { HTMLAttributes } from "astro/types";
+import type { ComponentProps } from "astro/types";
 
-type Props = HTMLAttributes<"ul">;
+type Props = ComponentProps<typeof Ul>;
 ---
 
 <Ul {...Astro.props}>
-  {
-    reportCategoriesDataEntries.map(([, value]) => (
-      <li>
-        {value.description ? (
-          <>
-            <strong class="font-medium text-zinc-300">{value.title}:</strong> {value.description}
-          </>
-        ) : (
-          <strong class="font-medium text-zinc-300">{value.title}</strong>
-        )}
-      </li>
-    ))
-  }
+  {reportCategoriesDataEntries.map(([, value]) => (
+    <li>
+      {value.description ? (
+        <>
+          <strong class="font-medium text-zinc-300">{value.title}:</strong> {value.description}
+        </>
+      ) : (
+        <strong class="font-medium text-zinc-300">{value.title}</strong>
+      )}
+    </li>
+  ))}
 </Ul>

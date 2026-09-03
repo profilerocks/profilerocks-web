@@ -1,15 +1,12 @@
 ---
 import { Icon } from "astro-icon/components";
 import LinkPillOutline from "#src/components/LinkPillOutline.astro";
+import type { ComponentProps } from "astro/types";
 
-import type { HTMLAttributes } from "astro/types";
-
-type Props = HTMLAttributes<"a">;
-
-const { props } = Astro;
+type Props = ComponentProps<typeof LinkPillOutline>;
 ---
 
-<LinkPillOutline {...props}>
+<LinkPillOutline {...Astro.props}>
   <Icon class="ms-auto drop-shadow-xs drop-shadow-black" name="arrow/left" size="1.25em" />
   <slot />
 </LinkPillOutline>
