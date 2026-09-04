@@ -1,9 +1,12 @@
 ---
 import emails from "#shared/email.json";
+import Button from "#src/components/Button.astro";
 import CheckboxGroup from "#src/components/CheckboxGroup.astro";
 import Link from "#src/components/Link.astro";
 import LinkBack from "#src/components/LinkBack.astro";
+import Input from "#src/components/Input.astro";
 import Strong from "#src/components/Strong.astro";
+import Textarea from "#src/components/Textarea.astro";
 import ArticleLayout from "#src/layouts/ArticleLayout.astro";
 import { reportCategoriesDataEntries } from "#src/lib/report";
 
@@ -229,14 +232,7 @@ const emailReportHref = `mailto:${emails.report}`;
         <label class="block pb-1.5" for="profile-url">
           URL
         </label>
-        <input
-          class="border-2 border-zinc-700 bg-zinc-950 text-zinc-300 w-full p-2 rounded-md"
-          id="profile-url"
-          name="url"
-          placeholder="e.g. https://profile.rocks/profile_example"
-          required
-          type="url"
-        />
+        <Input id="profile-url" name="url" placeholder="e.g. https://profile.rocks/profile_example" required type="url" />
       </div>
       <div class="mbs-6">
         <p class="text-lg">Categories:</p>
@@ -259,17 +255,23 @@ const emailReportHref = `mailto:${emails.report}`;
           </CheckboxGroup>
         </div>
       </div>
-      <div>
-        <label for="user-email">Your email address</label>
-        <input id="user-email" name="email" placeholder="e.g. someone@example.com" required type="email" />
+      <div class="my-6">
+        <label class="block pb-1.5" for="user-email">
+          Your email address
+        </label>
+        <Input id="user-email" name="email" placeholder="e.g. someone@example.com" required type="email" />
       </div>
       <div>
-        <label for="user-name">Your full name</label>
-        <input autocomplete="name" id="user-name" maxlength="255" name="userName" placeholder="e.g. John Doe" required type="text" />
+        <label class="block pb-1.5" for="user-name">
+          Your full name
+        </label>
+        <Input autocomplete="name" id="user-name" maxlength="255" name="userName" placeholder="e.g. John Doe" required type="text" />
       </div>
-      <div>
-        <label for="details">Additional details</label>
-        <textarea id="details" maxlength="8000" name="details"></textarea>
+      <div class="my-6">
+        <label class="block pb-1.5" for="details">
+          Additional details
+        </label>
+        <Textarea id="details" maxlength="8000" name="details" />
       </div>
       <CheckboxGroup id="faith" name="faith" required value="1">
         I submit this report in good faith and agree to the{" "}
@@ -281,13 +283,13 @@ const emailReportHref = `mailto:${emails.report}`;
           Terms of Service
         </Link>
       </CheckboxGroup>
-      <div class="flex flex-wrap-reverse items-center justify-between gap-7">
+      <div class="flex flex-wrap-reverse items-center justify-between gap-7 mbs-7 sm:mbs-5">
         <LinkBack class="pe-3.5" href="/i/contact">
           Other contact options
         </LinkBack>
-        <button id="btn-submit-report" type="submit">
+        <Button class="px-3.5" id="btn-submit-report" type="submit">
           Submit report
-        </button>
+        </Button>
       </div>
     </fieldset>
     <input id="necessary" name="necessary" type="checkbox" value="1" />

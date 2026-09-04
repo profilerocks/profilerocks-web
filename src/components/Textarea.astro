@@ -1,0 +1,14 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+type Props = HTMLAttributes<"textarea">;
+
+const {
+  props: { class: className, ...props }
+} = Astro;
+---
+
+<textarea
+  class:list={["border-2 border-zinc-700 bg-zinc-950 text-zinc-300 w-full p-2 rounded-md", className]}
+  {...props}
+><slot /></textarea>
