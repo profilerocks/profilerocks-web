@@ -38,7 +38,9 @@ const iconDimension = "1.25em";
 </header>
 
 <style is:global>
-  body:has(.hamburger:checked) {
-    overflow: hidden;
+  @media (width < 48rem) {
+    body:has(.hamburger:checked) {
+      overflow: hidden;
+    }
   }
 </style>
