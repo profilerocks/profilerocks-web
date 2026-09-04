@@ -3,201 +3,58 @@ import { HREF_APP } from "astro:env/client";
 import { Icon } from "astro-icon/components";
 import { PLATFORM_DESCRIPTION } from "astro:env/client";
 import LinkNext from "#src/components/LinkNext.astro";
-import MainLayout from "#src/layouts/MainLayout.astro";
+import Strong from "#src/components/Strong.astro";
+import DefaultLayout from "#src/layouts/DefaultLayout.astro";
 ---
 
-<MainLayout description={PLATFORM_DESCRIPTION}>
-  <div class="flex flex-col items-center mx-auto max-w-7xl lg:flex-row lg:gap-20 lg:mbs-4">
-    <div class="mx-auto max-w-2xl lg:mbe-40">
-      <h1 class="bg-linear-45 from-emerald-400 to-yellow-300 bg-clip-text text-center text-transparent text-4xl font-extrabold lg:text-5xl">Make the Map of Your Online Presence</h1>
-      <h2 class="text-2xl text-center">Create micro-pages and profiles easily and instantly</h2>
-      <LinkNext class="mbs-8 text-lg lg:text-xl mx-auto" href={HREF_APP}>
-        <Icon name="rocket" size="1.25em" />
-        Get started now
-      </LinkNext>
+<DefaultLayout description={PLATFORM_DESCRIPTION}>
+  <main class="flex-1 px-6 mbs-4">
+    <div class="flex flex-col gap-10">
+      <div class="">
+        <h1 class="bg-linear-45 from-emerald-400 to-yellow-300 bg-clip-text text-transparent text-3xl font-extrabold sm:text-4xl">
+          Make the Map of Your Online Presence
+        </h1>
+        <h2 class="text-xl mbs-4 sm:text-2xl">Create micro-pages and profiles easily and instantly</h2>
+        <LinkNext class="mbs-6 text-lg" href={HREF_APP}>
+          <Icon name="rocket" size="1.25em" />
+          Get started now
+        </LinkNext>
+      </div>
+      <img
+        alt="Micropage example"
+        class="border-2 border-zinc-700 rounded-2xl aspect-3/4 object-cover object-top select-none hover:border-emerald-400 transition-colors max-w-md w-full mx-auto"
+        draggable="false"
+        src="/profile.webp"
+        title="Micropage example"
+      />
     </div>
-    <img alt="Micropage example" class="profile-img" draggable="false" src="/profile.webp" title="Micropage example" />
-  </div>
-  <div class="grid-features">
-    <figure class="feature-card">
-      <Icon class="feature-icon" name="external" />
-      <figcaption>
-        <h2>Embed Content</h2>
-        <p>
-          Seamlessly integrate content from <strong>YouTube</strong>, <strong>Dailymotion</strong>, and more.{" "}
-          <a href="/i/faq#details-external-content">Supported external websites</a>
-        </p>
-      </figcaption>
-    </figure>
-    <figure class="feature-card">
-      <Icon class="feature-icon" name="markdown" />
-      <figcaption>
-        <h2>Write Markdown</h2>
-        <p>Format your content effortlessly using the familiar syntax you already know</p>
-      </figcaption>
-    </figure>
-    <figure class="feature-card">
-      <Icon class="feature-icon" name="security" />
-      <figcaption>
-        <h2>Privacy First</h2>
-        <p>
-          <strong>profile.rocks</strong> never tracks visitors, uses advertising cookies, or sells your data. Your privacy is guaranteed
-        </p>
-      </figcaption>
-    </figure>
-  </div>
-</MainLayout>
-
-<style>
-  .content {
-    margin-inline: auto;
-    max-width: 37em;
-  }
-
-  .feature-card {
-    display: flex;
-    position: relative;
-    gap: 1.5em;
-    margin: 0;
-    h2 {
-      display: flex;
-      align-items: center;
-      gap: 0.375em;
-      margin-block: 0 0.375em;
-      font-weight: 500;
-      font-size: 1.75em;
-    }
-    p {
-      margin: 0;
-      color: var(--color-3);
-      font-size: 1.1em;
-      line-height: 1.6;
-    }
-    &:not(:first-of-type) {
-      /**
-       * Use pseudo-element instead of border because padding has no effect to elements with position absolute.
-       */
-      &::before {
-        position: absolute;
-        inset-block-start: -1.375em;
-        background: var(--color-border);
-        width: 100%;
-        height: 0.0625em;
-        content: "";
-      }
-    }
-  }
-
-  .feature-icon {
-    position: absolute;
-    inset-block-start: 0.125em;
-    inset-inline-end: 0;
-    $size: 2em;
-    min-width: $size;
-    min-height: $size;
-    color: var(--color-highlight);
-  }
-
-  .grid-features {
-    display: grid;
-    position: relative;
-    gap: 2.75em;
-    margin-inline: auto;
-    margin-block: 5em 1em;
-    max-width: max-content;
-  }
-
-  .link-get-started {
-    margin-inline: auto;
-    margin-block-start: 2.5em;
-    font-size: 1.25em;
-  }
-
-  .home {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-inline: auto;
-    max-width: 100em;
-  }
-
-  .home-description {
-    font-size: clamp(1.375em, 3vw, 1.5em);
-    line-height: 1.5;
-    text-align: center;
-  }
-
-  .home-title {
-    background: linear-gradient(45deg, var(--color-highlight), var(--color-premium));
-    background-clip: text;
-    color: transparent;
-    font-weight: 800;
-    font-size: clamp(2.25em, 5vw, 3.125em);
-  }
-
-  .profile-img {
-    display: block;
-    transition-duration: 0.3s;
-    transition-property: border-color, box-shadow;
-    margin-inline: auto;
-    margin-block-start: 3em;
-    border: 2px solid var(--color-border);
-    border-radius: 1em;
-    max-width: 90%;
-    max-height: 46em;
-    object-fit: cover;
-    user-select: none;
-    &:hover {
-      box-shadow: 0 0.25em 2em var(--color-highlight);
-      border-color: var(--color-highlight);
-    }
-  }
-
-  @media (width > 70em) {
-    .home {
-      flex-direction: row;
-      gap: 5em;
-      margin-block-start: 1em;
-    }
-
-    .content {
-      margin-block-end: 10em;
-    }
-
-    .feature-card {
-      &::before {
-        display: none;
-      }
-    }
-
-    .feature-icon {
-      position: static;
-      border: 2px solid var(--color-border);
-      border-radius: 50%;
-      background: var(--color-input);
-      padding: 0.75em;
-    }
-
-    .grid-features {
-      &::before {
-        position: absolute;
-        inset-inline-start: 1.8125em;
-        background: var(--color-border);
-        width: 0.15em;
-        height: 80%;
-        content: "";
-      }
-    }
-
-    .link-get-started {
-      max-width: 20em;
-      text-align: center;
-    }
-
-    .profile-img {
-      height: 75vh;
-      min-height: 35em;
-      max-height: 40em;
-    }
-  }
-</style>
+    <div class="mbs-10 *:relative">
+      <figure>
+        <Icon class="text-emerald-400 absolute inset-e-0" name="external" size="1.75em" />
+        <figcaption>
+          <h2 class="text-2xl">Embed Content</h2>
+          <p class="text-zinc-400 mbs-2">
+            Seamlessly integrate content from <Strong>YouTube</Strong>, <Strong>Dailymotion</Strong>, and more.{" "}
+            <a href="/i/faq#details-external-content">Supported external websites</a>
+          </p>
+        </figcaption>
+      </figure>
+      <figure class="my-6">
+        <Icon class="text-emerald-400 absolute inset-e-0" name="markdown" size="1.75em" />
+        <figcaption>
+          <h2 class="text-2xl">Write Markdown</h2>
+          <p class="text-zinc-400 mbs-2">Format your content effortlessly using the familiar syntax you already know</p>
+        </figcaption>
+      </figure>
+      <figure>
+        <Icon class="text-emerald-400 absolute inset-e-0" name="security" size="1.75em" />
+        <figcaption>
+          <h2 class="text-2xl">Privacy First</h2>
+          <p class="text-zinc-400 mbs-2">
+            <Strong>profile.rocks</Strong> never tracks visitors, uses advertising cookies, or sells your data. Your privacy is guaranteed
+          </p>
+        </figcaption>
+      </figure>
+    </div>
+  </main>
+</DefaultLayout>
