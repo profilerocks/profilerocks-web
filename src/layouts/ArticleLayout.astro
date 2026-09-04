@@ -7,7 +7,7 @@ type Props = ComponentProps<typeof DefaultLayout>;
 
 <DefaultLayout {...Astro.props}>
   <slot name="head" slot="head" />
-  <main class="mx-auto max-w-5xl flex-1 px-4 pbs-2 sm:px-6 sm:pbs-4">
+  <main class="mx-auto max-w-5xl flex-1 px-4 pbs-4 sm:px-6">
     <slot />
   </main>
 </DefaultLayout>
