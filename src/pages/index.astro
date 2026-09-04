@@ -7,11 +7,11 @@ import MainLayout from "#src/layouts/MainLayout.astro";
 ---
 
 <MainLayout description={PLATFORM_DESCRIPTION}>
-  <div class="home">
-    <div class="content">
-      <h1 class="home-title">Make the Map of Your Online Presence</h1>
-      <h2 class="home-description">Create micro-pages and profiles easily and instantly</h2>
-      <LinkNext class="link-get-started" href={HREF_APP}>
+  <div class="flex flex-col items-center mx-auto max-w-7xl lg:flex-row lg:gap-20 lg:mbs-4">
+    <div class="mx-auto max-w-2xl lg:mbe-40">
+      <h1 class="bg-linear-45 from-emerald-400 to-yellow-300 bg-clip-text text-center text-transparent text-4xl font-extrabold lg:text-5xl">Make the Map of Your Online Presence</h1>
+      <h2 class="text-2xl text-center">Create micro-pages and profiles easily and instantly</h2>
+      <LinkNext class="mbs-8 text-lg lg:text-xl mx-auto" href={HREF_APP}>
         <Icon name="rocket" size="1.25em" />
         Get started now
       </LinkNext>
