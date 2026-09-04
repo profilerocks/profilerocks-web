@@ -2,6 +2,8 @@
 import { HREF_APP } from "astro:env/client";
 import { Icon } from "astro-icon/components";
 import { PLATFORM_DESCRIPTION } from "astro:env/client";
+import HomeFeature from "#src/components/HomeFeature.astro";
+import Link from "#src/components/Link.astro";
 import LinkNext from "#src/components/LinkNext.astro";
 import Strong from "#src/components/Strong.astro";
 import DefaultLayout from "#src/layouts/DefaultLayout.astro";
@@ -28,33 +30,22 @@ import DefaultLayout from "#src/layouts/DefaultLayout.astro";
         title="Micropage example"
       />
     </div>
-    <div class="mbs-10 *:relative">
-      <figure>
-        <Icon class="text-emerald-400 absolute inset-e-0" name="external" size="1.75em" />
-        <figcaption>
-          <h2 class="text-2xl">Embed Content</h2>
-          <p class="text-zinc-400 mbs-2">
-            Seamlessly integrate content from <Strong>YouTube</Strong>, <Strong>Dailymotion</Strong>, and more.{" "}
-            <a href="/i/faq#details-external-content">Supported external websites</a>
-          </p>
-        </figcaption>
-      </figure>
-      <figure class="my-6">
-        <Icon class="text-emerald-400 absolute inset-e-0" name="markdown" size="1.75em" />
-        <figcaption>
-          <h2 class="text-2xl">Write Markdown</h2>
-          <p class="text-zinc-400 mbs-2">Format your content effortlessly using the familiar syntax you already know</p>
-        </figcaption>
-      </figure>
-      <figure>
-        <Icon class="text-emerald-400 absolute inset-e-0" name="security" size="1.75em" />
-        <figcaption>
-          <h2 class="text-2xl">Privacy First</h2>
-          <p class="text-zinc-400 mbs-2">
-            <Strong>profile.rocks</Strong> never tracks visitors, uses advertising cookies, or sells your data. Your privacy is guaranteed
-          </p>
-        </figcaption>
-      </figure>
+    <div class="flex flex-col gap-7 relative max-w-max mx-auto mbs-12 *:relative *:flex *:items-start *:gap-4 before:bg-zinc-700 before:absolute before:inset-s-5.75 before:inset-bs-11.75 lg:before:w-0.5 lg:before:h-32.5">
+      <HomeFeature icon="external">
+        <Fragment slot="title">Embed Content</Fragment>
+        Seamlessly integrate content from <Strong>YouTube</Strong>, <Strong>Dailymotion</Strong>, and more.{" "}
+        <Link href="/i/faq#details-external-content">Supported external websites</Link>
+      </HomeFeature>
+
+      <HomeFeature icon="markdown">
+        <Fragment slot="title">Write Markdown</Fragment>
+        Format your content effortlessly using the familiar syntax you already know
+      </HomeFeature>
+
+      <HomeFeature icon="security">
+        <Fragment slot="title">Privacy First</Fragment>
+        <Strong>profile.rocks</Strong> never tracks visitors, uses advertising cookies, or sells your data. Your privacy is guaranteed
+      </HomeFeature>
     </div>
   </main>
 </DefaultLayout>

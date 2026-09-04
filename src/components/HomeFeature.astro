@@ -1,0 +1,24 @@
+---
+import { Icon } from "astro-icon/components";
+import Strong from "#src/components/Strong.astro";
+
+interface Props {
+  icon: string;
+}
+---
+
+<figure>
+  <Icon
+    class="text-emerald-400 absolute inset-e-0 border-zinc-700 text-2xl lg:text-5xl lg:bg-zinc-900 lg:p-2.5 lg:rounded-full lg:static lg:border-2"
+    name={Astro.props.icon}
+  />
+
+  <figcaption>
+    <h2 class="text-2xl">
+      <slot name="title" />
+    </h2>
+    <p class="text-zinc-400 mbs-1">
+      <slot />
+    </p>
+  </figcaption>
+</figure>
