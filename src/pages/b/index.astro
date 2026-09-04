@@ -6,75 +6,27 @@ import MainLayout from "#src/layouts/MainLayout.astro";
 ---
 
 <MainLayout>
-  <h1>Blog</h1>
-  <ul class="blog-entries">
+  <h1 class="text-center text-3xl">Blog</h1>
+  <div class="mx-auto max-w-3xl *:border-bs *:border-emerald-400 *:pbs-4 *:mbs-5">
     {blogCollection.map(post => {
       const href = "/b/" + post.id;
 
       return (
-        <li class="blog-entry">
-          <p class="blog-entry-meta">
-            <>
-              <time datetime={post.data.date.toISOString().split("T")[0]}>{post.data.date.toDateString()}</time>
-              <span title="Author">{post.data.author}</span>
-            </>
+        <article>
+          <p class="flex gap-4 justify-between px-2.5 text-zinc-400">
+            <time datetime={post.data.date.toISOString().split("T")[0]}>{post.data.date.toDateString()}</time>
+            <span title="Author">{post.data.author}</span>
           </p>
-          <h2 class="blog-entry-title">
-            <a {href} class="blog-entry-title-link">
-              {post.data.title}
-            </a>
-          </h2>
-          <p class="blog-entry-description">{post.data.description}</p>
+          <a {href} class="block px-2.5 text-2xl text-emerald-400 hover:text-emerald-300 active:text-emerald-200 transition-colors mbs-2">
+            {post.data.title}
+          </a>
+          <p class="px-2.5 text-zinc-300 mbs-2 mbe-4">{post.data.description}</p>
           <LinkNext {href}>
-            <Icon name="page" size="1.25em" />
+            <Icon class="drop-shadow-xs drop-shadow-black" name="page" size="1.25em" />
             Read more
           </LinkNext>
-        </li>
+        </article>
       );
     })}
-  </ul>
+  </div>
 </MainLayout>
-
-<style>
-  .blog-entries {
-    margin-inline: auto;
-    padding: 0;
-    max-width: 47.0625em;
-  }
-
-  .blog-entry-description,
-  .blog-entry-meta,
-  .blog-entry-title {
-    padding-inline: 0.625rem;
-  }
-
-  .blog-entry-description {
-    margin-block-start: 0.5em;
-    color: var(--color-2);
-  }
-
-  .blog-entry {
-    border-block-start: thin solid var(--color-highlight);
-    list-style: none;
-  }
-
-  .blog-entry-meta {
-    display: flex;
-    justify-content: space-between;
-    gap: 1em;
-    margin-block: 1em 0.375em;
-    color: var(--color-3);
-  }
-
-  .blog-entry-title {
-    margin-block: 0;
-    font-size: 1.375em;
-  }
-
-  .blog-entry-title-link {
-    width: 100%;
-    color: var(--color-highlight) !important;
-    text-decoration: none;
-    white-space: normal;
-  }
-</style>

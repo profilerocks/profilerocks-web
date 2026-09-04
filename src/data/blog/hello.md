@@ -1,7 +1,7 @@
 ---
 title: "Welcome to the profile.rocks blog"
 date: 2026-03-08
-description: "Everything you need to know about the latest news, updates, and changelogs from profile.rocks."
+description: "Everything you need to know about the latest news, updates, and changelogs from profile.rocks"
 author: "Stefan Samson"
 ---
 
