@@ -1,0 +1,19 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+type Props = Exclude<HTMLAttributes<"input">, "type">;
+
+const {
+  props: { class: className, id, title, ...props }
+} = Astro;
+---
+
+<div class:list={["select-none relative", className]} {title}>
+  <input class="size-4 peer absolute inset-bs-3.5 inset-s-2" {id} type="checkbox" {...props} />
+  <label
+    class="block py-2.5 ps-9 pe-2 peer-checked:text-zinc-100 peer-hover:text-zinc-300 peer-active:text-zinc-200 text-zinc-400 peer-hover:bg-zinc-900 peer-active:bg-zinc-900 w-full rounded-md"
+    for={id}
+  >
+    <slot />
+  </label>
+</div>
