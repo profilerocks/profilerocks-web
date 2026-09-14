@@ -6,7 +6,6 @@ Built with [Astro](https://astro.build/), an outstanding framework.
 
 - [ESLint](https://eslint.org/) configured
 - [Prettier](https://prettier.io/) configured
-- [Sass](https://sass-lang.com/) & [SCSS](https://sass-lang.com/) support
 - Sitemap generator
 - [TypeScript](https://www.typescriptlang.org/) (checks JavaScript files too)
 

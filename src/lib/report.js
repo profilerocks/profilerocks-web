@@ -22,10 +22,6 @@ export const reportCategoriesData = {
     title: "Confusing links",
     description: "Links that are intentionally confusing, misleading, or fraudulent."
   },
-  fraud: {
-    title: "Scam or fraud",
-    description: "Deceiving users for financial gain."
-  },
   harassment: {
     title: "Harassment",
     description: "Targeted insults or hate speech."
@@ -49,6 +45,10 @@ export const reportCategoriesData = {
   phishing: {
     title: "Phishing",
     description: "Attempting to steal user credentials or data."
+  },
+  scam: {
+    title: "Scam or fraud",
+    description: "Deceiving users for financial gain, including the sale of profile names."
   },
   "self-harm": {
     title: "Self-harm",
