@@ -1,4 +1,3 @@
-import cloudflare from "@astrojs/cloudflare";
 import sitemap from "@astrojs/sitemap";
 import tailwindcss from "@tailwindcss/vite";
 import { defineConfig, envField, fontProviders } from "astro/config";
@@ -54,15 +53,12 @@ export default defineConfig({
 
   trailingSlash: "never",
 
-  // @ts-expect-error: `redirects` is modified in the loop above.
-  redirects,
+  /**
+   * @ts-expect-error: `redirects` is modified in the loop above.
+   */
+  // redirects,
 
   output: "static",
-
-  // TODO: add cloudflare adapter and fix MIME.
-  adapter: cloudflare({
-    imageService: "compile"
-  }),
 
   integrations: [
     icon(),
