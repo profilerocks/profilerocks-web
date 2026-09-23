@@ -10,20 +10,16 @@ type Props = ComponentProps<typeof BaseHead>;
   <head>
     <BaseHead {...Astro.props} />
     <slot name="head" />
-    <Font cssVariable="--font-inter" />
+    <Font cssVariable="--font-inter" preload />
   </head>
 
-  <body class="flex min-h-full flex-col bg-black text-zinc-200">
+  <body class="flex min-h-full flex-col bg-black text-zinc-200 font-(family-name:--font-inter)">
     <slot />
   </body>
 </html>
 
 <style is:global>
   @import "tailwindcss";
-
-  @theme inline {
-    --font-sans: var(--font-inter);
-  }
 
   :root {
     color-scheme: dark light;

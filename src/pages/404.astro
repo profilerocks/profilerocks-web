@@ -1,5 +1,5 @@
 ---
-import IconRobotConfused from "#src/icons/robot/confused.svg";
+import { Icon } from "astro-icon/components";
 import MainLayout from "#src/layouts/MainLayout.astro";
 ---
 
@@ -20,7 +20,7 @@ import MainLayout from "#src/layouts/MainLayout.astro";
   </Fragment>
 
   <figure class="flex flex-col items-center justify-center">
-    <IconRobotConfused class="max-w-48 text-emerald-400" />
+    <Icon name="robot/confused" class="max-w-48 text-emerald-400" size="100%" />
     <figcaption class="text-center">
       <h1 class="text-6xl tabular-nums">404</h1>
       <p class="text-3xl text-zinc-400 mbs-1">Not found</p>

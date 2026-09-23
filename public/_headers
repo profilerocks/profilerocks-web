@@ -13,104 +13,16 @@
 # `Strict-Transport-Security` HSTS should be handled in the CDN or reverse proxy.
 # `X-Content-Type-Options: nosniff` can be set in Cloudflare when HSTS is enabled.
 
+/apple-touch-icon.png
 
-# IMAGE
+/favicon-96x96.png
 
-/*.apng
-  ! X-DNS-Prefetch-Control
-  ! X-Download-Options
-  ! X-Permitted-Cross-Domain-Policies
-  ! X-XSS-Protection
-  Content-Security-Policy: frame-ancestors 'self'
+/favicon.ico
 
-/*.avif
-  ! X-DNS-Prefetch-Control
-  ! X-Download-Options
-  ! X-Permitted-Cross-Domain-Policies
-  ! X-XSS-Protection
-  Content-Security-Policy: frame-ancestors 'self'
-
-/*.gif
-  ! X-DNS-Prefetch-Control
-  ! X-Download-Options
-  ! X-Permitted-Cross-Domain-Policies
-  ! X-XSS-Protection
-  Content-Security-Policy: frame-ancestors 'self'
-
-/*.jpeg
-  ! X-DNS-Prefetch-Control
-  ! X-Download-Options
-  ! X-Permitted-Cross-Domain-Policies
-  ! X-XSS-Protection
-  Content-Security-Policy: frame-ancestors 'self'
-
-/*.jpg
-  ! X-DNS-Prefetch-Control
-  ! X-Download-Options
-  ! X-Permitted-Cross-Domain-Policies
-  ! X-XSS-Protection
-  Content-Security-Policy: frame-ancestors 'self'
-
-/*.png
-  ! X-DNS-Prefetch-Control
-  ! X-Download-Options
-  ! X-Permitted-Cross-Domain-Policies
-  ! X-XSS-Protection
-  Content-Security-Policy: frame-ancestors 'self'
-
-/*.webp
-  ! X-DNS-Prefetch-Control
-  ! X-Download-Options
-  ! X-Permitted-Cross-Domain-Policies
-  ! X-XSS-Protection
-  Content-Security-Policy: frame-ancestors 'self'
-
-# VIDEO
-
-/*.av1
-  ! X-DNS-Prefetch-Control
-  ! X-Download-Options
-  ! X-Permitted-Cross-Domain-Policies
-  ! X-XSS-Protection
-  Content-Security-Policy: frame-ancestors 'self'
-
-/*.mp4
-  ! X-DNS-Prefetch-Control
-  ! X-Download-Options
-  ! X-Permitted-Cross-Domain-Policies
-  ! X-XSS-Protection
-  Content-Security-Policy: frame-ancestors 'self'
-
-/*.ogv
-  ! X-DNS-Prefetch-Control
-  ! X-Download-Options
-  ! X-Permitted-Cross-Domain-Policies
-  ! X-XSS-Protection
-  Content-Security-Policy: frame-ancestors 'self'
-
-/robots.txt
-  ! Content-Security-Policy
-
-/apple-icon*
-  ! Content-Security-Policy
-  Cross-Origin-Resource-Policy: cross-origin
-
-/apple-touch-icon*
-  ! Content-Security-Policy
-  Cross-Origin-Resource-Policy: cross-origin
-
-/favicon*
-  ! Content-Security-Policy
-  Cross-Origin-Resource-Policy: cross-origin
-
-/og.*
-  ! Content-Security-Policy
-  Cross-Origin-Resource-Policy: cross-origin
-
-/web-app-manifest-*
-  ! Content-Security-Policy
-  Cross-Origin-Resource-Policy: cross-origin
+/favicon.svg
 
 /humans.txt
-  ! Content-Security-Policy
-  Cross-Origin-Resource-Policy: cross-origin
+
+/logo-long.png
+
+/og.jpg
