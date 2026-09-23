@@ -14,15 +14,22 @@
 # `X-Content-Type-Options: nosniff` can be set in Cloudflare when HSTS is enabled.
 
 /apple-touch-icon.png
+  Cross-Origin-Resource-Policy: cross-origin
 
 /favicon-96x96.png
+  Cross-Origin-Resource-Policy: cross-origin
 
 /favicon.ico
+  Cross-Origin-Resource-Policy: cross-origin
 
 /favicon.svg
+  Cross-Origin-Resource-Policy: cross-origin
 
 /humans.txt
+  Cross-Origin-Resource-Policy: cross-origin
 
 /logo-long.png
+  Cross-Origin-Resource-Policy: cross-origin
 
 /og.jpg
+  Cross-Origin-Resource-Policy: cross-origin
