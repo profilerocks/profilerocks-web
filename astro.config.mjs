@@ -53,10 +53,8 @@ export default defineConfig({
 
   trailingSlash: "never",
 
-  /**
-   * @ts-expect-error: `redirects` is modified in the loop above.
-   */
-  // redirects,
+  // @ts-expect-error: `redirects` is modified in the loop above.
+  redirects,
 
   output: "static",
 
