@@ -78,14 +78,10 @@ export default defineConfig({
   security: {
     checkOrigin: true,
     /**
-     * Astro by default only sets script-src and style-src in the HTML.
+     * Astro by default only sets font-src, script-src and style-src in the HTML.
      * Rest of directives are set in the `public/_headers` file.
      */
-    csp: {
-      scriptDirective: {
-        resources: ["'self'", "https://challenges.cloudflare.com"]
-      }
-    }
+    csp: true
   },
 
   build: {
@@ -176,13 +172,6 @@ export default defineConfig({
       name: "Inter",
       cssVariable: "--font-inter",
       weights: [300, 400, 500, 800],
-      subsets: ["latin"]
-    },
-    {
-      provider: fontSource,
-      name: "JetBrains Mono",
-      cssVariable: "--font-jetbrains-mono",
-      weights: [400],
       subsets: ["latin"]
     }
   ]
