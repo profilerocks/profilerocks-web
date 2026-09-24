@@ -1,5 +1,5 @@
 /*
-  Content-Security-Policy: base-uri 'none';child-src 'self' https://profile.rocks;connect-src 'self' https://profile.rocks;default-src 'self';font-src 'self';form-action 'self' https://profile.rocks;frame-ancestors 'self';frame-src 'self' https://challenges.cloudflare.com;img-src 'self' blob: data: https://profile.rocks https://app.profile.rocks https://assets.profile.rocks;manifest-src 'self';object-src 'none';upgrade-insecure-requests
+  Content-Security-Policy: base-uri 'none';connect-src 'self' https://profile.rocks;default-src 'self';form-action 'self' https://profile.rocks;frame-ancestors 'self';frame-src 'self' https://challenges.cloudflare.com;object-src 'none';script-src 'self' 'unsafe-inline' 'wasm-unsafe-eval' https://challenges.cloudflare.com;style-src 'self' 'unsafe-inline';upgrade-insecure-requests
   Cross-Origin-Opener-Policy: same-origin
   Cross-Origin-Resource-Policy: same-site
   Origin-Agent-Cluster: ?1

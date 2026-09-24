@@ -10,7 +10,6 @@ import redirects from "./shared/redirects.json";
 const OUT_DIR = "./dist";
 
 const {
-  API = "https://profile.rocks",
   HREF_APP = "https://app.profile.rocks",
   HREF_SETTINGS = "https://app.profile.rocks/u/settings",
   SITE = "https://www.profile.rocks"
@@ -77,20 +76,10 @@ export default defineConfig({
 
   security: {
     checkOrigin: true,
+    /**
+     * `/public/_headers` contains additional directives and headers.
+     */
     csp: {
-      directives: [
-        "base-uri 'none'",
-        `child-src 'self' ${API}`,
-        `connect-src 'self' ${API}`,
-        "default-src 'self'",
-        "font-src 'self'",
-        `form-action 'self' ${API}`,
-        "frame-ancestors 'self'",
-        `frame-src 'self' ${API} https://challenges.cloudflare.com`,
-        `img-src 'self'`,
-        "manifest-src 'self'",
-        "media-src 'self'"
-      ],
       scriptDirective: {
         resources: ["'self'", "https://challenges.cloudflare.com"],
         strictDynamic: false
@@ -135,7 +124,7 @@ export default defineConfig({
       API: envField.string({
         context: "client",
         access: "public",
-        default: API,
+        default: "https://profile.rocks",
         url: true
       }),
       CONTROLLER: envField.string({
