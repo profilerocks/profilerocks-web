@@ -34,8 +34,7 @@ const prettierConfig = {
   /**
    * `prettier-plugin-astro` custom properties
    */
-  astroAllowShorthand: true,
-  astroCompressHTML: "jsx"
+  astroAllowShorthand: true
 };
 
 export default prettierConfig;
