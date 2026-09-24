@@ -7,11 +7,11 @@ import { loadEnv } from "vite";
 import { viteStaticCopy } from "vite-plugin-static-copy";
 import redirects from "./shared/redirects.json";
 
-const DEFAULT_HREF_APP = "https://app.profile.rocks";
 const OUT_DIR = "./dist";
 
 const {
-  HREF_APP = DEFAULT_HREF_APP,
+  API = "https://profile.rocks",
+  HREF_APP = "https://app.profile.rocks",
   HREF_SETTINGS = "https://app.profile.rocks/u/settings",
   SITE = "https://www.profile.rocks"
 } = loadEnv(process.env.NODE_ENV || "production", process.cwd());
@@ -77,11 +77,25 @@ export default defineConfig({
 
   security: {
     checkOrigin: true,
-    /**
-     * Astro by default only sets font-src, script-src and style-src in the HTML.
-     * Rest of directives are set in the `public/_headers` file.
-     */
-    csp: true
+    csp: {
+      directives: [
+        "base-uri 'none'",
+        `child-src 'self' ${API}`,
+        `connect-src 'self' ${API}`,
+        "default-src 'self'",
+        "font-src 'self'",
+        `form-action 'self' ${API}`,
+        "frame-ancestors 'self'",
+        `frame-src 'self' ${API} https://challenges.cloudflare.com`,
+        `img-src 'self'`,
+        "manifest-src 'self'",
+        "media-src 'self'"
+      ],
+      scriptDirective: {
+        resources: ["'self'", "https://challenges.cloudflare.com"],
+        strictDynamic: false
+      }
+    }
   },
 
   build: {
@@ -118,6 +132,12 @@ export default defineConfig({
 
   env: {
     schema: {
+      API: envField.string({
+        context: "client",
+        access: "public",
+        default: API,
+        url: true
+      }),
       CONTROLLER: envField.string({
         context: "client",
         access: "public"
@@ -129,7 +149,7 @@ export default defineConfig({
       HREF_APP: envField.string({
         context: "client",
         access: "public",
-        default: DEFAULT_HREF_APP,
+        default: HREF_APP,
         url: true
       }),
       HREF_PROFILE: envField.string({

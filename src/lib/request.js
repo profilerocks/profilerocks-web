@@ -1,4 +1,13 @@
-import { HREF_PROFILE } from "astro:env/client";
+import { API } from "astro:env/client";
+
+/**
+ * @function getResourceAPI
+ * @param {string} input
+ * @returns {string}
+ */
+function getResourceAPI(input) {
+  return API + input;
+}
 
 /**
  * @async
@@ -7,7 +16,7 @@ import { HREF_PROFILE } from "astro:env/client";
  * @returns {Promise<Response>}
  */
 export async function requestProfileDataForWebReport(profilePublicId) {
-  return await fetch(HREF_PROFILE + "/s/report/profile/" + profilePublicId + "/data", {
+  return await fetch(getResourceAPI("/s/report/profile/" + profilePublicId + "/data"), {
     method: "POST"
   });
 }
@@ -30,7 +39,7 @@ export async function requestProfileReportCreation(data) {
     }
   }
 
-  return await fetch(HREF_PROFILE + "/s/report/profile", {
+  return await fetch(getResourceAPI("/s/report/profile"), {
     body: params,
     method: "POST"
   });
