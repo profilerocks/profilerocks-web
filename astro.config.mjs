@@ -81,7 +81,7 @@ export default defineConfig({
      */
     csp: {
       scriptDirective: {
-        resources: ["'self'", "https://challenges.cloudflare.com"],
+        resources: ["'self'", "'wasm-unsafe-eval'", "https://challenges.cloudflare.com"],
         strictDynamic: false
       }
     }
