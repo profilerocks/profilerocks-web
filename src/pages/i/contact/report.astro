@@ -13,198 +13,6 @@ import { reportCategoriesDataEntries } from "#src/lib/report";
 const emailReportHref = `mailto:${emails.report}`;
 ---
 
-<script>
-  import { HREF_APP, HREF_PROFILE, SITE } from "astro:env/client";
-  import { isValid as isEmailValid } from "mailchecker";
-  import { isBase64UrlIdValid } from "#src/lib/id";
-  import { isProfileNameIdValid } from "#src/lib/profile";
-  import { requestProfileDataForWebReport, requestProfileReportCreation } from "#src/lib/request";
-
-  const inputProfileUrlEl = document.getElementById("profile-url") as HTMLInputElement;
-  const inputUserEmailEl = document.getElementById("user-email") as HTMLInputElement;
-  const inputUserNameEl = document.getElementById("user-name") as HTMLInputElement;
-  const profilePublicId = new URLSearchParams(location.search).get("public_id");
-
-  let profileData: {
-    name_id: string;
-    display_name?: string;
-    photo?: boolean;
-  };
-
-  if (profilePublicId) {
-    window.history.replaceState(null, "", window.location.pathname);
-
-    inputProfileUrlEl.disabled = true;
-
-    const inputProfileUrlPlaceholder = inputProfileUrlEl.placeholder;
-
-    inputProfileUrlEl.placeholder = "Loading...";
-
-    if (isBase64UrlIdValid(profilePublicId)) {
-      requestProfileDataForWebReport(profilePublicId)
-        .then(async res => {
-          if (res.ok) {
-            profileData = await res.json();
-
-            const anchorSendEmailEl = document.getElementById("a-report-email") as HTMLAnchorElement;
-
-            if (anchorSendEmailEl) {
-              anchorSendEmailEl.href += "?subject=Report%3A%20" + profileData.name_id;
-            }
-
-            inputProfileUrlEl.value = HREF_PROFILE + "/" + profileData.name_id;
-          }
-        })
-        .finally(() => {
-          inputProfileUrlEl.disabled = false;
-          inputProfileUrlEl.placeholder = inputProfileUrlPlaceholder;
-        });
-    }
-  }
-
-  function eventInputRemoveValidity(this: HTMLInputElement, event: Event) {
-    const el = (event.currentTarget || event.target) as HTMLInputElement;
-    el.setCustomValidity("");
-    el.reportValidity();
-  }
-
-  function triggerInputValidity(inputEl: HTMLInputElement, message: string) {
-    alert(message);
-    inputEl.setCustomValidity(message);
-    inputEl.reportValidity();
-  }
-
-  function triggerInputUrlValidity() {
-    triggerInputValidity(inputProfileUrlEl, "Invalid URL");
-  }
-
-  inputProfileUrlEl.addEventListener("input", eventInputRemoveValidity);
-  inputUserEmailEl.addEventListener("input", eventInputRemoveValidity);
-
-  /**
-   * Under EU DSA, CSAM reports are anonymous by default. If the user does not provide an email address and name, they will be set to "Anonymous".
-   */
-  (document.getElementById("csam") as HTMLInputElement).addEventListener("change", event => {
-    // @ts-expect-error: event.currentTarget and event.target are not defined as HTMLInputElement.
-    if ((event.currentTarget || event.target)?.checked) {
-      inputUserEmailEl.required = false;
-      inputUserNameEl.required = false;
-    } else {
-      inputUserEmailEl.required = true;
-      inputUserNameEl.required = true;
-    }
-  });
-
-  (document.getElementById("report-form") as HTMLFormElement).addEventListener("submit", async event => {
-    event.preventDefault();
-
-    inputUserNameEl.value = inputUserNameEl.value.trim();
-
-    const textareaDetailsEl = document.getElementById("details") as HTMLTextAreaElement;
-
-    textareaDetailsEl.value = textareaDetailsEl.value.trim();
-
-    if (inputUserEmailEl.value && !isEmailValid(inputUserEmailEl.value)) {
-      triggerInputValidity(inputUserEmailEl, "Invalid email address");
-      return;
-    }
-
-    const formData = new FormData((event.currentTarget || event.target) as HTMLFormElement);
-
-    if (!textareaDetailsEl.value) {
-      formData.delete("details");
-    }
-
-    const categories = formData.getAll("category");
-
-    if ((!inputUserEmailEl.value || !inputUserNameEl.value) && !categories.includes("csam")) {
-      return;
-    }
-
-    if (!categories.length) {
-      formData.delete("category");
-    }
-
-    const profileUrlString = formData.get("url");
-
-    formData.delete("url");
-
-    if (!profileUrlString || typeof profileUrlString !== "string") {
-      return;
-    }
-
-    const profileUrl = URL.parse(profileUrlString);
-
-    if (!profileUrl) {
-      return;
-    }
-
-    if (import.meta.env.PROD) {
-      profileUrl.protocol = "https:";
-    }
-
-    switch (profileUrl.origin) {
-      case HREF_APP:
-      case HREF_PROFILE:
-      case SITE:
-        break;
-      default:
-        triggerInputUrlValidity();
-        return;
-    }
-
-    const nameId = profileUrl.pathname.replaceAll("/", "");
-
-    if (profilePublicId && nameId === profileData?.name_id) {
-      formData.set("profilePublicId", profilePublicId);
-    } else if (isProfileNameIdValid(nameId)) {
-      formData.set("profileNameId", nameId);
-    } else {
-      triggerInputUrlValidity();
-      return;
-    }
-
-    const fieldsetReportFormEl = document.getElementById("report-form-fieldset") as HTMLFieldSetElement;
-
-    fieldsetReportFormEl.disabled = true;
-
-    const buttonSubmitReportEl = document.getElementById("btn-submit-report") as HTMLButtonElement;
-    const buttonSubmitReportTextContent = buttonSubmitReportEl.textContent;
-
-    buttonSubmitReportEl.textContent = "Creating...";
-
-    try {
-      const res = await requestProfileReportCreation(formData);
-
-      if (res.status === 409) {
-        alert("You have already reported this profile.");
-        buttonSubmitReportEl.textContent = buttonSubmitReportTextContent;
-        fieldsetReportFormEl.disabled = false;
-        return;
-      }
-
-      if (!res.ok) {
-        throw new Error("Failed to create profile report.");
-      }
-
-      buttonSubmitReportEl.textContent = "Report successfully submitted";
-
-      let message = "The report has been successfully sent.";
-
-      if (inputUserEmailEl.value) {
-        message += " You should receive an email soon about the report details.";
-      }
-
-      alert(message);
-    } catch (error) {
-      console.error(error);
-      alert("An error occurred while submitting the report. Please check the URL and try again later.");
-      buttonSubmitReportEl.textContent = buttonSubmitReportTextContent;
-      fieldsetReportFormEl.disabled = false;
-    }
-  });
-</script>
-
 <ArticleLayout title="Report">
   <Fragment slot="head">
     <meta name="robots" content="noindex" />
@@ -294,6 +102,198 @@ const emailReportHref = `mailto:${emails.report}`;
     </fieldset>
     <input id="necessary" name="necessary" type="checkbox" value="1" />
   </form>
+
+  <script>
+    import { HREF_APP, HREF_PROFILE, SITE } from "astro:env/client";
+    import { isValid as isEmailValid } from "mailchecker";
+    import { isBase64UrlIdValid } from "#src/lib/id";
+    import { isProfileNameIdValid } from "#src/lib/profile";
+    import { requestProfileDataForWebReport, requestProfileReportCreation } from "#src/lib/request";
+
+    const inputProfileUrlEl = document.getElementById("profile-url") as HTMLInputElement;
+    const inputUserEmailEl = document.getElementById("user-email") as HTMLInputElement;
+    const inputUserNameEl = document.getElementById("user-name") as HTMLInputElement;
+    const profilePublicId = new URLSearchParams(location.search).get("public_id");
+
+    let profileData: {
+      name_id: string;
+      display_name?: string;
+      photo?: boolean;
+    };
+
+    if (profilePublicId) {
+      window.history.replaceState(null, "", window.location.pathname);
+
+      inputProfileUrlEl.disabled = true;
+
+      const inputProfileUrlPlaceholder = inputProfileUrlEl.placeholder;
+
+      inputProfileUrlEl.placeholder = "Loading...";
+
+      if (isBase64UrlIdValid(profilePublicId)) {
+        requestProfileDataForWebReport(profilePublicId)
+          .then(async res => {
+            if (res.ok) {
+              profileData = await res.json();
+
+              const anchorSendEmailEl = document.getElementById("a-report-email") as HTMLAnchorElement;
+
+              if (anchorSendEmailEl) {
+                anchorSendEmailEl.href += "?subject=Report%3A%20" + profileData.name_id;
+              }
+
+              inputProfileUrlEl.value = HREF_PROFILE + "/" + profileData.name_id;
+            }
+          })
+          .finally(() => {
+            inputProfileUrlEl.disabled = false;
+            inputProfileUrlEl.placeholder = inputProfileUrlPlaceholder;
+          });
+      }
+    }
+
+    function eventInputRemoveValidity(this: HTMLInputElement, event: Event) {
+      const el = (event.currentTarget || event.target) as HTMLInputElement;
+      el.setCustomValidity("");
+      el.reportValidity();
+    }
+
+    function triggerInputValidity(inputEl: HTMLInputElement, message: string) {
+      alert(message);
+      inputEl.setCustomValidity(message);
+      inputEl.reportValidity();
+    }
+
+    function triggerInputUrlValidity() {
+      triggerInputValidity(inputProfileUrlEl, "Invalid URL");
+    }
+
+    inputProfileUrlEl.addEventListener("input", eventInputRemoveValidity);
+    inputUserEmailEl.addEventListener("input", eventInputRemoveValidity);
+
+    /**
+     * Under EU DSA, CSAM reports are anonymous by default. If the user does not provide an email address and name, they will be set to "Anonymous".
+     */
+    (document.getElementById("csam") as HTMLInputElement).addEventListener("change", event => {
+      // @ts-expect-error: event.currentTarget and event.target are not defined as HTMLInputElement.
+      if ((event.currentTarget || event.target)?.checked) {
+        inputUserEmailEl.required = false;
+        inputUserNameEl.required = false;
+      } else {
+        inputUserEmailEl.required = true;
+        inputUserNameEl.required = true;
+      }
+    });
+
+    (document.getElementById("report-form") as HTMLFormElement).addEventListener("submit", async event => {
+      event.preventDefault();
+
+      inputUserNameEl.value = inputUserNameEl.value.trim();
+
+      const textareaDetailsEl = document.getElementById("details") as HTMLTextAreaElement;
+
+      textareaDetailsEl.value = textareaDetailsEl.value.trim();
+
+      if (inputUserEmailEl.value && !isEmailValid(inputUserEmailEl.value)) {
+        triggerInputValidity(inputUserEmailEl, "Invalid email address");
+        return;
+      }
+
+      const formData = new FormData((event.currentTarget || event.target) as HTMLFormElement);
+
+      if (!textareaDetailsEl.value) {
+        formData.delete("details");
+      }
+
+      const categories = formData.getAll("category");
+
+      if ((!inputUserEmailEl.value || !inputUserNameEl.value) && !categories.includes("csam")) {
+        return;
+      }
+
+      if (!categories.length) {
+        formData.delete("category");
+      }
+
+      const profileUrlString = formData.get("url");
+
+      formData.delete("url");
+
+      if (!profileUrlString || typeof profileUrlString !== "string") {
+        return;
+      }
+
+      const profileUrl = URL.parse(profileUrlString);
+
+      if (!profileUrl) {
+        return;
+      }
+
+      if (import.meta.env.PROD) {
+        profileUrl.protocol = "https:";
+      }
+
+      switch (profileUrl.origin) {
+        case HREF_APP:
+        case HREF_PROFILE:
+        case SITE:
+          break;
+        default:
+          triggerInputUrlValidity();
+          return;
+      }
+
+      const nameId = profileUrl.pathname.replaceAll("/", "");
+
+      if (profilePublicId && nameId === profileData?.name_id) {
+        formData.set("profilePublicId", profilePublicId);
+      } else if (isProfileNameIdValid(nameId)) {
+        formData.set("profileNameId", nameId);
+      } else {
+        triggerInputUrlValidity();
+        return;
+      }
+
+      const fieldsetReportFormEl = document.getElementById("report-form-fieldset") as HTMLFieldSetElement;
+
+      fieldsetReportFormEl.disabled = true;
+
+      const buttonSubmitReportEl = document.getElementById("btn-submit-report") as HTMLButtonElement;
+      const buttonSubmitReportTextContent = buttonSubmitReportEl.textContent;
+
+      buttonSubmitReportEl.textContent = "Creating...";
+
+      try {
+        const res = await requestProfileReportCreation(formData);
+
+        if (res.status === 409) {
+          alert("You have already reported this profile.");
+          buttonSubmitReportEl.textContent = buttonSubmitReportTextContent;
+          fieldsetReportFormEl.disabled = false;
+          return;
+        }
+
+        if (!res.ok) {
+          throw new Error("Failed to create profile report.");
+        }
+
+        buttonSubmitReportEl.textContent = "Report successfully submitted";
+
+        let message = "The report has been successfully sent.";
+
+        if (inputUserEmailEl.value) {
+          message += " You should receive an email soon about the report details.";
+        }
+
+        alert(message);
+      } catch (error) {
+        console.error(error);
+        alert("An error occurred while submitting the report. Please check the URL and try again later.");
+        buttonSubmitReportEl.textContent = buttonSubmitReportTextContent;
+        fieldsetReportFormEl.disabled = false;
+      }
+    });
+  </script>
 </ArticleLayout>
 
 <style>

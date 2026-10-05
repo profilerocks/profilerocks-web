@@ -6,27 +6,9 @@ import Summary from "#src/components/Summary.astro";
 import MainLayout from "#src/layouts/MainLayout.astro";
 ---
 
-<script>
-  function openActiveDetails() {
-    const id = window.location.hash.replace("#", "");
-
-    if (id) {
-      const target = document.getElementById(id);
-
-      if (target && target instanceof HTMLDetailsElement) {
-        target.open = true;
-      }
-    }
-  }
-
-  // Run on page load
-  window.addEventListener("DOMContentLoaded", openActiveDetails);
-  // Run if the hash changes without reloading
-  window.addEventListener("hashchange", openActiveDetails);
-</script>
-
 <MainLayout title="FAQs">
   <h1 class="text-center text-3xl">Frequently Asked Questions</h1>
+
   <section class="mx-auto mbs-4 max-w-3xl *:scroll-mbs-12.5 *:border-be *:border-zinc-700 *:details-content:h-0 *:details-content:overflow-clip *:details-content:opacity-0 *:details-content:transition-all *:details-content:transition-discrete *:open:details-content:h-auto *:open:details-content:opacity-100 [interpolate-size:allow-keywords]">
     <details class="group" id="details-external-content">
       <Summary>Which websites are supported for external content?</Summary>
@@ -55,4 +37,23 @@ import MainLayout from "#src/layouts/MainLayout.astro";
       <p class="pbs-2 pbe-5 text-zinc-400">To access premium features on multiple profiles, each one must be upgraded individually.</p>
     </details>
   </section>
+  
+  <script>
+    function openActiveDetails() {
+      const id = window.location.hash.replace("#", "");
+
+      if (id) {
+        const target = document.getElementById(id);
+
+        if (target && target instanceof HTMLDetailsElement) {
+          target.open = true;
+        }
+      }
+    }
+
+    // Run on page load
+    window.addEventListener("DOMContentLoaded", openActiveDetails);
+    // Run if the hash changes without reloading
+    window.addEventListener("hashchange", openActiveDetails);
+  </script>
 </MainLayout>
