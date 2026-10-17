@@ -22,13 +22,26 @@ import Ul from "#src/components/Ul.astro";
   <h2 class="text-2xl text-zinc-300">1. Data collected by the platform</h2>
   <Ul class="mbs-3">
     <li>
-      <Strong>Account data:</Strong> email addresses, contact names, passkeys, OAuth IDs...
+      <Strong>Account data:</Strong> your email address, name, passkey data, and OAuth identifier, as applicable to the sign-in method you
+      use.
     </li>
     <li>
-      <Strong>Profile content:</Strong> links, text, images...
+      <Strong>Google Sign-up and Sign-in:</Strong> if you choose to register or log in using Google, only your Google account email
+      address, full name, and unique OAuth ID are accessed, collected, and processed. No other Google account data or permissions are
+      requested or accessed, including access to your contacts, files, or calendar. Your Google password is not received. These Google
+      account details are used only for authentication, secure account creation, and verifying your identity. Google processes your data
+      under its own{" "}
+      <Link href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">
+        Privacy Policy
+      </Link>
+      .
     </li>
     <li>
-      <Strong>Reports:</Strong> reported profiles, email addresses and names of reporters, messages...
+      <Strong>Profile content:</Strong> the links, text, and images you add to your profile.
+    </li>
+    <li>
+      <Strong>Reports:</Strong> information about the profile being reported, the categories you select for the report, your email address
+      and name as the reporter, and the message you submit with the report.
     </li>
   </Ul>
 
@@ -65,13 +78,20 @@ import Ul from "#src/components/Ul.astro";
   <h2 class="mbs-6 text-2xl text-zinc-300">3. Purpose and legal basis</h2>
   <Ul class="mbs-3">
     <li>
-      <Strong>Contract performance:</Strong> account creation, profiles...
+      <Strong>Contract performance (GDPR Article 6(1)(b)):</Strong> account data is processed to create and maintain your account and
+      provide the login method you choose. If you use Google Sign-up or Sign-in, your Google email address, full name, and unique OAuth
+      ID are processed exclusively to authenticate you, create your account securely, and verify your identity. These Google account
+      details are not used for advertising, profiling, or any other purpose. Profile content is also processed to provide the profile
+      features you request.
     </li>
     <li>
-      <Strong>Legitimate interest: </Strong>security via Cloudflare
+      <Strong>Legitimate interests (GDPR Article 6(1)(f)):</Strong> technical information is processed for platform security, and reports
+      are processed to investigate and address abuse, protect users, and enforce platform rules. These interests are balanced against your
+      rights and freedoms.
     </li>
     <li>
-      <Strong>Legal obligation:</Strong> tax, anti-fraud
+      <Strong>Legal obligation (GDPR Article 6(1)(c)):</Strong> relevant information is processed where necessary to comply with
+      applicable legal obligations, including tax and anti-fraud requirements.
     </li>
   </Ul>
 
@@ -168,5 +188,5 @@ import Ul from "#src/components/Ul.astro";
     For information regarding the governing law and jurisdiction, please refer to the <Link href="/i/legal-notice">Legal Notice</Link> page.
   </p>
 
-  <p class="mbs-6 text-zinc-500">Last updated: April 2026</p>
+  <p class="mbs-6 text-zinc-500">Last updated: October 2026</p>
 </ArticleLayout>
